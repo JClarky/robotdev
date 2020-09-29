@@ -9,6 +9,11 @@ void full_deployment()
     system("\"copy .\\main\\main_code .\\robot\\main\"");
     system("\"del .\\robot\\main\\simulation_interface.cpp\"");
 
+    system("\"copy .\\main\\main_code .\\simulation\\main\"");
+    system("\"del .\\simulation\\main\\hardware_interface.cpp\"");
+
+    system("sim_build.bat");
+
     system("git_update.bat");
 }
 

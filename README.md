@@ -1,15 +1,10 @@
 # Robot Development 2021
 Robot development repo
 
-/main
-	
-	Contains all raw code
+/main folder contains all raw code
 
-/robot
-	
-	Contains ONLY robot code, this folder should be deployed to!
+/robot folder contains ONLY robot code, this folder should be deployed to!
 
-/simulation
-	
-	Contains ONLY simulation code, this folder should be deployed to!
+/simulation contains ONLY simulation code, this folder should be deployed to!
+
 	
