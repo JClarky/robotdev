@@ -21,13 +21,13 @@ void sim_deployment()
 
     // Build
 
-    char* version;
+    /*char* version;
     cout << "Build version: ";
-    cin >> version;  
+    cin >> version;  */
 
-    //system("/simulation/build.bat");
+    system("/simulation/build.bat");
     //cout << "test";
-    system("g++ ./main/main.cpp -o ./builds/build_"+*version);
+    //system("g++ ./main/main.cpp -o ./builds/build_"+*version);
 }
 
 int main()
