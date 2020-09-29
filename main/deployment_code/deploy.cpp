@@ -6,12 +6,17 @@ void full_deployment()
 {
     cout << "\nFULL DEPLOYMENT SELECTED\n";
 
-    system("git add .");
+    
 }
 
 void sim_deployment()
 {
     cout << "\nSIMULATION DEPLOYMENT SELECTED\n";
+
+    system("git add ../main_code/*");
+    system("git reset ../main_code/hardware_interface.cpp");
+    system("git commit -m \"SIM DEPLOYMENT\"");
+    system("git push origin simulation");
 }
 
 int main()
