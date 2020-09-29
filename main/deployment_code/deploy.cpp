@@ -6,7 +6,8 @@ void full_deployment()
 {
     cout << "\nFULL DEPLOYMENT SELECTED\n";
 
-    
+    system("\"copy .\\main\\main_code .\\robot\\main\"");
+    system("git_update.bat");
 }
 
 void sim_deployment()
