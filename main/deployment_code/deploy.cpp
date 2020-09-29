@@ -13,21 +13,12 @@ void sim_deployment()
 {
     cout << "\nSIMULATION DEPLOYMENT SELECTED\n";
 
-    // Sort Files
-
     system("\"copy .\\main\\main_code .\\simulation\\main\"");
     system("\"del .\\simulation\\main\\hardware_interface.cpp\"");
+
+    system("sim_build.bat");
+
     system("git_update.bat");
-
-    // Build
-
-    /*char* version;
-    cout << "Build version: ";
-    cin >> version;  */
-
-    system("/simulation/build.bat");
-    //cout << "test";
-    //system("g++ ./main/main.cpp -o ./builds/build_"+*version);
 }
 
 int main()
