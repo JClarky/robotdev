@@ -13,14 +13,20 @@ void sim_deployment()
 {
     cout << "\nSIMULATION DEPLOYMENT SELECTED\n";
 
-    /*system("git add ../main/main_code/*");
-    system("git reset ../main/main_code/hardware_interface.cpp");
-    system("git commit -m \"SIM DEPLOYMENT\"");
-    system("git push origin simulation");*/
+    // Sort Files
 
     system("\"copy .\\main\\main_code .\\simulation\\main\"");
     system("\"del .\\simulation\\main\\hardware_interface.cpp\"");
     system("git_update.bat");
+
+    // Build
+
+    /*char* version;
+    cout << "Build version: ";
+    cin >> version;  */  
+
+    //system("/simulation/build.bat");
+    cout << "test";
 }
 
 int main()
