@@ -13,10 +13,14 @@ void sim_deployment()
 {
     cout << "\nSIMULATION DEPLOYMENT SELECTED\n";
 
-    system("git add ../main_code/*");
-    system("git reset ../main_code/hardware_interface.cpp");
+    /*system("git add ../main/main_code/*");
+    system("git reset ../main/main_code/hardware_interface.cpp");
     system("git commit -m \"SIM DEPLOYMENT\"");
-    system("git push origin simulation");
+    system("git push origin simulation");*/
+
+    system("\"copy .\\main\\main_code .\\simulation\\main\"");
+    system("\"del .\\simulation\\main\\hardware_interface.cpp\"");
+    system("git_update.bat");
 }
 
 int main()
