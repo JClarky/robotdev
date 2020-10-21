@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "C:/DEV/vcpkg/installed/x86-windows/include/json/json.h"
+#include <jsoncpp/json/json.h>
 
 using namespace std;
 

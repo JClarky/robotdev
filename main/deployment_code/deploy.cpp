@@ -1,32 +1,49 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
+
+void sim_build()
+{
+    string version;
+    cout << "Build Version: ";
+    cin >> version;
+    string command = "g++ ./simulation/main/main.cpp ./simulation/main/simulation_interface.cpp -o ./simulation/builds/build_"+version+" -ljsoncpp";
+    system(command.c_str());
+}
+
+void git_update()
+{
+    system("git add .");
+    system("git commit -m \"SYNC MAIN FOLDER\"");
+    system("git push origin master");
+}
 
 void full_deployment()
 {
     cout << "\nFULL DEPLOYMENT SELECTED\n";
 
-    system("\"copy .\\main\\main_code .\\robot\\main\"");
-    system("\"del .\\robot\\main\\simulation_interface.cpp\"");
+    system("rsync -av ./main/main_code/ ./robot/main/");
+    system("rm ./robot/main/simulation_interface.cpp");
 
-    system("\"copy .\\main\\main_code .\\simulation\\main\"");
-    system("\"del .\\simulation\\main\\hardware_interface.cpp\"");
+    system("rsync -av ./main/main_code/ ./simulation/main/");
+    system("rm ./simulation/main/hardware_interface.cpp");
 
-    system("sim_build.bat");
+    sim_build();
 
-    system("git_update.bat");
+    git_update();
 }
 
 void sim_deployment()
 {
     cout << "\nSIMULATION DEPLOYMENT SELECTED\n";
 
-    system("\"copy .\\main\\main_code .\\simulation\\main\"");
-    system("\"del .\\simulation\\main\\hardware_interface.cpp\"");
+    system("rsync -a main/main_code/ simulation/main/");
+    system("rm simulation/main/hardware_interface.cpp");
 
-    system("sim_build.bat");
+    sim_build();
 
-    system("git_update.bat");
+    git_update();
 }
 
 int main()
