@@ -3,10 +3,12 @@
 
 using namespace std;
 
+// g++ ./main/deployment_code/deploy.cpp -o deploy
+
 void sim_build()
 {
     string version;
-    cout << "Build Version: ";
+    cout << "Sim build version: ";
     cin >> version;
     string command = "g++ ./simulation/main/main.cpp ./simulation/main/simulation_interface.cpp -o ./simulation/builds/build_"+version+" -ljsoncpp";
     system(command.c_str());
@@ -17,6 +19,15 @@ void git_update()
     system("git add .");
     system("git commit -m \"SYNC MAIN FOLDER\"");
     system("git push origin master");
+}
+
+void robot_build()
+{
+    string version;
+    cout << "Robot build version: ";
+    cin >> version;
+    string command = "g++ ./robot/main/main.cpp ./robot/main/hardware_interface.cpp -o ./robot/builds/build_"+version+" -lpigpio";
+    system(command.c_str());
 }
 
 void full_deployment()
@@ -30,6 +41,8 @@ void full_deployment()
     system("rm ./simulation/main/hardware_interface.cpp");
 
     sim_build();
+
+    robot_build();
 
     git_update();
 }

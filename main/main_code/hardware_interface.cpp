@@ -75,7 +75,7 @@ void arm()
 	gpioServo(RIGHT_MOTOR_PIN, CENTER_THROTTLE);
 	sleep(2);
 }
-/*
+
 int main()
 {
 	float speed = 0;
@@ -113,4 +113,4 @@ int main()
 		stop();
 		return 0;
 	}
-}*/
+}
