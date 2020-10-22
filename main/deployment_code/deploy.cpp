@@ -28,8 +28,8 @@ void robot_build()
     cin >> version;
     string command = "g++ ./robot/main/main.cpp ./robot/main/hardware_interface.cpp -o ./robot/builds/build_"+version+" -lpigpio";
     system(command.c_str());
-    string command_2 = "g++ -m32 ./robot/main/main.cpp ./robot/main/hardware_interface.cpp -o ./robot/builds/current -lpigpio";
-    system(command_2.c_str());
+    //string command_2 = "g++ ./robot/main/main.cpp ./robot/main/hardware_interface.cpp -o ./robot/builds/current -lpigpio";
+    //system(command_2.c_str());
 }
 
 void full_deployment()
