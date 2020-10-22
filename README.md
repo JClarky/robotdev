@@ -9,5 +9,3 @@ Only edits files in main folder. Use deploy.exe to build and deploy to git.
 
 /simulation contains ONLY simulation code, this folder should be deployed to!
 
-testing123
-	
