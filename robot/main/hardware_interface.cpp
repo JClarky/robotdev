@@ -11,6 +11,8 @@ using namespace std;
 #define MIN_THROTTLE		1040
 #define CENTER_THROTTLE		1500
 
+//g++ -o main run.cpp -lpigpio
+
 bool initalise()
 {
 	if (gpioInitialise() > 0)
@@ -90,22 +92,32 @@ int main()
 			cin >> input;
 			if (input == "d")
 			{
-				speed = speed + 15;
+				//speed = speed + 15;
+                move(15,-15);
 			}
 			else if (input == "a")
 			{
-				speed = speed - 15;
+				//speed = speed - 15;
+                move(-15,15);
+			}
+            else if (input == "w")
+			{
+				move(100,100);
 			}
 			else if (input == "s")
 			{
-				speed = 0;
+				move(-10,-10);
+			}
+			else if (input == "f")
+			{
+				move(0,0);
 			}
 			else
 			{
 				throw("Bad input");
 			}
             //cout << speed;
-            move(speed, speed);
+            //move(speed, speed);
 		}
 	}
 	catch (const std::exception&)
