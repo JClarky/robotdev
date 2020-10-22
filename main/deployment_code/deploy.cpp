@@ -65,6 +65,8 @@ int main()
 {
     cout << "DEPLOYMENT INITIALISED\n";
 
+    system("git pull origin master --rebase");
+
     bool deploying = false;
 
     while(!deploying)
