@@ -5,6 +5,7 @@ using namespace std;
 
 // g++ ./main/deployment_code/deploy.cpp -o deploy
 
+/*
 void sim_build()
 {
     string version;
@@ -12,7 +13,7 @@ void sim_build()
     cin >> version;
     string command = "g++ ./simulation/main/main.cpp ./simulation/main/simulation_interface.cpp -o ./simulation/builds/build_"+version+" -ljsoncpp";
     system(command.c_str());
-}
+}*/
 
 void git_update()
 {
@@ -21,7 +22,7 @@ void git_update()
     system("git push origin master");
 }
 
-void robot_build()
+/*void robot_build()
 {
     string version;
     cout << "Robot build version: ";
@@ -30,7 +31,7 @@ void robot_build()
     system(command.c_str());
     //string command_2 = "g++ ./robot/main/main.cpp ./robot/main/hardware_interface.cpp -o ./robot/builds/current -lpigpio";
     //system(command_2.c_str());
-}
+}*/
 
 void full_deployment()
 {
@@ -42,9 +43,9 @@ void full_deployment()
     system("rsync -av ./main/main_code/ ./simulation/main/");
     system("rm ./simulation/main/hardware_interface.cpp");
 
-    sim_build();
+    //sim_build();
 
-    robot_build();
+    //robot_build();
 
     git_update();
 }
@@ -56,7 +57,7 @@ void sim_deployment()
     system("rsync -a main/main_code/ simulation/main/");
     system("rm simulation/main/hardware_interface.cpp");
 
-    sim_build();
+    //sim_build();
 
     git_update();
 }
