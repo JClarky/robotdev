@@ -55,6 +55,9 @@ int main()
         else if (user_dec == "n")
         {
             deploying = true;
+            system("git add .");
+            system("git commit -m \"ROBOT BUILD\"");
+            system("git push origin master");
             run();
         }
         else
