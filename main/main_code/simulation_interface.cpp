@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <jsoncpp/json/json.h>
+#include <json/json.h>
 
 using namespace std;
 
@@ -10,6 +10,9 @@ using namespace std;
 
 // DESCRIPTION
 // Interface for the simulator
+
+float l = 0;
+float r = 0;
 
 class output
 {
@@ -33,6 +36,7 @@ void move(float left_motor, float right_motor)
     Json::Value root;
     root["left_motor"] = left_motor;
     root["right_motor"] = right_motor;
+    //cout << root;
 
     ofstream input_file;
     input_file.open("C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/simulation/input.json");
@@ -72,16 +76,18 @@ int main()
 {
     while(true)
     {
-        float l;
-        float r;
-
         cout << "left motor:";
         cin >> l;
+
+        update();
+        move(l, r);
 
         cout << "right motor:";
         cin >> r;
 
         update();
         move(l, r);
+
+        
     }    
 }

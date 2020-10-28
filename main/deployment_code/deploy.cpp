@@ -5,16 +5,6 @@ using namespace std;
 
 // g++ ./main/deployment_code/deploy.cpp -o deploy
 
-/*
-void sim_build()
-{
-    string version;
-    cout << "Sim build version: ";
-    cin >> version;
-    string command = "g++ ./simulation/main/main.cpp ./simulation/main/simulation_interface.cpp -o ./simulation/builds/build_"+version+" -ljsoncpp";
-    system(command.c_str());
-}*/
-
 void git_update()
 {
     system("git add .");
@@ -22,44 +12,20 @@ void git_update()
     system("git push origin master");
 }
 
-/*void robot_build()
+void robot_build()
 {
     string version;
     cout << "Robot build version: ";
     cin >> version;
     string command = "g++ ./robot/main/main.cpp ./robot/main/hardware_interface.cpp -o ./robot/builds/build_"+version+" -lpigpio";
     system(command.c_str());
-    //string command_2 = "g++ ./robot/main/main.cpp ./robot/main/hardware_interface.cpp -o ./robot/builds/current -lpigpio";
-    //system(command_2.c_str());
-}*/
-
-void full_deployment()
-{
-    cout << "\nFULL DEPLOYMENT SELECTED\n";
-
-    system("rsync -av ./main/main_code/ ./robot/main/");
-    system("rm ./robot/main/simulation_interface.cpp");
-
-    system("rsync -av ./main/main_code/ ./simulation/main/");
-    system("rm ./simulation/main/hardware_interface.cpp");
-
-    //sim_build();
-
-    //robot_build();
-
-    git_update();
+    string command_2 = "g++ ./robot/main/main.cpp ./robot/main/hardware_interface.cpp -o ./robot/builds/current -lpigpio";
+    system(command_2.c_str());
 }
 
-void sim_deployment()
+void run()
 {
-    cout << "\nSIMULATION DEPLOYMENT SELECTED\n";
-
-    system("rsync -a main/main_code/ simulation/main/");
-    system("rm simulation/main/hardware_interface.cpp");
-
-    //sim_build();
-
-    git_update();
+    cout << "run stuff lmao";
 }
 
 int main()
@@ -75,18 +41,21 @@ int main()
         // Full deployment or just sim deployment
         string user_dec;
 
-        cout << "Is this a full deployment? (y/n) ";
+        cout << "Do you want to build? (y/n) ";
         cin >> user_dec;
 
         if(user_dec == "y")
         {
             deploying = true;
-            full_deployment();
+            robot_build();
+            system("git add .");
+            system("git commit -m \"ROBOT BUILD\"");
+            system("git push origin master");
         }
         else if (user_dec == "n")
         {
             deploying = true;
-            sim_deployment();
+            run();
         }
         else
         {
