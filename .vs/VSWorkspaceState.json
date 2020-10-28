@@ -3,8 +3,10 @@
     "",
     "\\main",
     "\\main\\main_code",
-    "\\robot"
+    "\\robot",
+    "\\simulation",
+    "\\simulation\\main"
   ],
-  "SelectedNode": "\\main\\main_code\\simulation_interface.cpp",
+  "SelectedNode": "\\simulation\\main",
   "PreviewInSolutionExplorer": false
 }
