@@ -1,3 +1,6 @@
+#ifndef HARDWARE_INTERFACE.H
+#define HARDWARE_INTERFACE.H
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -93,3 +96,5 @@ int main()
     }    
 }
 */
+
+#endif
