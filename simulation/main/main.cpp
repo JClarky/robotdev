@@ -79,7 +79,8 @@ void mode_maze()
             drawContours(contoured, contours, idx, (0,255,0), 2, LINE_8, hierarchy);
         }*/
 
-        drawContours(contoured, contours, largest_contour_index, (0,255,0), 2, LINE_8, hierarchy);
+        //drawContours(contoured, contours, idx, (0,255,0), 2, LINE_8, hierarchy);
+        drawContours(contoured, contours,largest_contour_index, Scalar( 0, 255, 0 ), 2);
 
         //drawContours(contoured, contours, 0, (0,255,0), FILLED, 8, hierarchy);
 
