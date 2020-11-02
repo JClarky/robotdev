@@ -55,7 +55,7 @@ void mode_maze()
         Mat contoured;
         Mat drawing = Mat::zeros( threshold_img.size(), CV_8UC3 );
         findContours(threshold_img.clone(), contours, hierarchy, 1, CHAIN_APPROX_NONE);
-
+        cout << size(contours);
         //cout << contoured;
 
         try
