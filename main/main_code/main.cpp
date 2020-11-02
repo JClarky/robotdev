@@ -89,13 +89,14 @@ void mode_maze()
             cout <<"cx";
             cout << cx;
             cout << "\n";
+           // drawContours(contoured, contours,largest_contour_index, Scalar( 0, 255, 0 ), 2);
         }
         catch(const std::exception& e)
         {
             std::cerr << e.what() << '\n';
         }
         
-        drawContours(contoured, contours,largest_contour_index, Scalar( 0, 255, 0 ), 2);
+        
 
         //drawContours(contoured, contours, 0, (0,255,0), FILLED, 8, hierarchy);
 
