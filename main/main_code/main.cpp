@@ -53,8 +53,10 @@ void mode_maze()
         
         Mat contoured = frame.clone();
         findContours(threshold_img.clone(), contours, hierarchy, 1, CHAIN_APPROX_NONE);
-        cout << size(contours);
-        //cout << contoured;
+
+        cout << "\nContour";
+        cout << contours[0];
+        cout << "\n";
 
         int idx = 0;
         for( ; idx >= 0; idx = hierarchy[idx][0] )
