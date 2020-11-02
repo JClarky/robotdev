@@ -53,25 +53,18 @@ void mode_maze()
         
 
         Mat contoured;
+        Mat drawing = Mat::zeros( threshold_img.size(), CV_8UC3 );
         findContours(threshold_img.clone(), contours, hierarchy, 1, CHAIN_APPROX_NONE);
-        //drawContours(contoured, contours, -1, (0,255,0), 1);
-        //findContours(contoured, contours, hierarchy, RETR_LIST, CHAIN_APPROX_NONE);
 
-        /*for( size_t i = 0; i< contours.size(); i++ )
-        {
-            Scalar color = Scalar(0, 255, 0);
-            drawContours(contoured, contours, (int)i, color, 1);
-        }*/
         //cout << contoured;
 
         try
         {
-            drawContours(contoured, contours, -1, (0, 255, 0), 1);
-            //imshow("RAW", frame);
             //imshow("GREY", grey);
             imshow("BLUR", blur);
             imshow("THRESHOLD", threshold_img);
             imshow("CONTOURED", contoured);
+            imshow("drawing", drawing);
         }
         catch(const exception& e)
         {
