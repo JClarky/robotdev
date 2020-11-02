@@ -80,6 +80,21 @@ void mode_maze()
         }*/
 
         //drawContours(contoured, contours, idx, (0,255,0), 2, LINE_8, hierarchy);
+        try
+        {
+            drawContours(contoured, contours,largest_contour_index, Scalar( 0, 255, 0 ), 2);
+            vector<Moments> mu(contours.size() );
+            mu[0] = moments(contours[largest_contour_index]);
+            float cx = mu[0].m10 / mu[0].m00;
+            cout <<"cx";
+            cout << cx;
+            cout << "\n";
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
+        
         drawContours(contoured, contours,largest_contour_index, Scalar( 0, 255, 0 ), 2);
 
         //drawContours(contoured, contours, 0, (0,255,0), FILLED, 8, hierarchy);
