@@ -13,6 +13,8 @@ using namespace std;
 using namespace cv;
 
 bool maze;
+int threshold_min = 70;
+int threshold_max = 255;
 
 void mode_maze()
 {
@@ -27,20 +29,35 @@ void mode_maze()
     }
     
     while(maze)
-    {
-        cout << "gtfo cam starting";
-        
+    {        
         cap.read(frame); // Reads the cameras frame
         if(frame.empty())
         {
             cout << "lmao the frame is blank";
             break;
         }
+
         Mat grey;
         cvtColor(frame, grey, COLOR_BGR2GRAY);
 
-        imshow("RAW", frame);
-        imshow("GREY", grey);
+        Mat blur;
+        GaussianBlur(grey, blur, Size(9,9), 0);
+
+        Mat threshold_img;
+        threshold(blur, threshold_img, threshold_min, threshold_max, THRESH_BINARY_INV);
+
+        vector<vector<Point> > contours;
+        vector<Vec4i> hierarchy;
+        findContours(threshold_img.clone(), contours, hierarchy, 1, CHAIN_APPROX_NONE);
+
+        Mat contoured;
+        drawContours(contoured, contours, -1, (0,255,0), 1);
+
+        //imshow("RAW", frame);
+        //imshow("GREY", grey);
+        imshow("BLUR", blur);
+        imshow("THRESHOLD", threshold_img);
+        imshow("CONTOURED", contoured);
 
         if (waitKey(5) >= 0)
             break;
