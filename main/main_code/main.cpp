@@ -53,11 +53,20 @@ void mode_maze()
         Mat contoured;
         drawContours(contoured, contours, -1, (0,255,0), 1);
 
-        //imshow("RAW", frame);
-        //imshow("GREY", grey);
-        imshow("BLUR", blur);
-        imshow("THRESHOLD", threshold_img);
-        imshow("CONTOURED", contoured);
+        try
+        {
+            //imshow("RAW", frame);
+            //imshow("GREY", grey);
+            imshow("BLUR", blur);
+            imshow("THRESHOLD", threshold_img);
+            imshow("CONTOURED", contoured);
+        }
+        catch(const exception& e)
+        {
+            cerr << e.what() << '\n';
+            cout << "imshow error";
+        }        
+        
 
         if (waitKey(5) >= 0)
             break;
