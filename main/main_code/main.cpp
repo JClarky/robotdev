@@ -58,11 +58,27 @@ void mode_maze()
         cout << contours[0];
         cout << "\n";
 
+        int largest_area;
+        int largest_contour_index;
+
+        for( size_t i = 0; i< contours.size(); i++ ) // iterate through each contour.
+        {
+            double area = contourArea( contours[i] );  //  Find the area of contour
+
+            if( area > largest_area )
+            {
+                largest_area = area;
+                largest_contour_index = i;               //Store the index of largest contour 
+            }
+        }
+
         int idx = 0;
-        for( ; idx >= 0; idx = hierarchy[idx][0] )
+        /*for( ; idx >= 0; idx = hierarchy[idx][0] )
         {
             drawContours(contoured, contours, idx, (0,255,0), 2, LINE_8, hierarchy);
-        }
+        }*/
+
+        drawContours(contoured, contours, largest_contour_index, (0,255,0), 2, LINE_8, hierarchy);
 
         //drawContours(contoured, contours, 0, (0,255,0), FILLED, 8, hierarchy);
 
