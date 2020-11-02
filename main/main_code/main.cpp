@@ -16,6 +16,8 @@ bool maze;
 int threshold_min = 70;
 int threshold_max = 255;
 
+RNG rng(12345);
+
 void mode_maze()
 {
     Mat frame; // Stores video frame
@@ -51,7 +53,13 @@ void mode_maze()
         findContours(threshold_img.clone(), contours, hierarchy, 1, CHAIN_APPROX_NONE);
 
         Mat contoured;
-        drawContours(contoured, contours, -1, (0,255,0), 1);
+        //drawContours(contoured, contours, -1, (0,255,0), 1);
+
+        for( size_t i = 0; i< contours.size(); i++ )
+        {
+            Scalar color = Scalar( rng.uniform(0, 256), rng.uniform(0,256), rng.uniform(0,256) );
+            drawContours(contoured, contours, (int)i, color, 2, LINE_8, hierarchy, 0 );
+        }
 
         try
         {
