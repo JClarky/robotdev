@@ -15,6 +15,8 @@ using namespace cv;
 bool maze;
 int threshold_min = 70;
 int threshold_max = 255;
+int largest_area = 0;
+int largest_contour_index = 0;
 
 RNG rng(12345);
 
@@ -58,8 +60,7 @@ void mode_maze()
         cout << contours[0];
         cout << "\n";
 
-        int largest_area;
-        int largest_contour_index;
+        
 
         for( size_t i = 0; i< contours.size(); i++ ) // iterate through each contour.
         {
