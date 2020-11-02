@@ -50,7 +50,7 @@ void mode_maze()
 
         vector<vector<Point> > contours;
         vector<Vec4i> hierarchy;
-        findContours(threshold_img.clone(), contours, hierarchy, 1, CHAIN_APPROX_NONE);
+        //findContours(threshold_img.clone(), contours, hierarchy, 1, CHAIN_APPROX_NONE);
 
         Mat contoured;
         //drawContours(contoured, contours, -1, (0,255,0), 1);
