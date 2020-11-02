@@ -54,12 +54,14 @@ void mode_maze()
 
         Mat contoured;
         //drawContours(contoured, contours, -1, (0,255,0), 1);
+        findContours(contoured, contours, hierarchy, RETR_LIST, CHAIN_APPROX_NONE);
 
-        for( size_t i = 0; i< contours.size(); i++ )
+        /*for( size_t i = 0; i< contours.size(); i++ )
         {
-            Scalar color = Scalar( rng.uniform(0, 256), rng.uniform(0,256), rng.uniform(0,256) );
-            drawContours(contoured, contours, (int)i, color, 2, LINE_8, hierarchy, 0 );
-        }
+            Scalar color = Scalar(0, 255, 0);
+            drawContours(contoured, contours, (int)i, color, 1);
+        }*/
+        cout << contoured;
 
         try
         {
