@@ -51,7 +51,7 @@ void mode_maze()
         vector<vector<Point> > contours;
         vector<Vec4i> hierarchy;
         
-        Mat contoured = Mat::zeros( frame.size(), CV_8UC3 );
+        Mat contoured = frame.clone();
         findContours(threshold_img.clone(), contours, hierarchy, 1, CHAIN_APPROX_NONE);
         cout << size(contours);
         //cout << contoured;
@@ -59,7 +59,7 @@ void mode_maze()
         int idx = 0;
         for( ; idx >= 0; idx = hierarchy[idx][0] )
         {
-            drawContours(contoured, contours, idx, (0,255,0), 1, 8, hierarchy);
+            drawContours(contoured, contours, idx, (0,255,0), 2, LINE_8, hierarchy);
         }
 
         //drawContours(contoured, contours, 0, (0,255,0), FILLED, 8, hierarchy);
