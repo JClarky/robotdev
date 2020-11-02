@@ -56,7 +56,14 @@ void mode_maze()
         cout << size(contours);
         //cout << contoured;
 
-        drawContours(contoured, contours, 0, (0,255,0), FILLED, 8, hierarchy);
+        int idx = 0;
+        for( ; idx >= 0; idx = hierarchy[idx][0] )
+        {
+            Scalar color( rand()&255, rand()&255, rand()&255 );
+            drawContours(contoured, contours, idx, color, FILLED, 8, hierarchy );
+        }
+
+        //drawContours(contoured, contours, 0, (0,255,0), FILLED, 8, hierarchy);
 
         try
         {
