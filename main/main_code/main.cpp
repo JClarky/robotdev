@@ -13,7 +13,7 @@ using namespace std;
 using namespace cv;
 
 bool maze;
-int threshold_min = 70;
+int threshold_min = 50;
 int threshold_max = 255;
 int largest_area = 0;
 int largest_contour_index = 0;
@@ -56,12 +56,11 @@ void mode_maze()
         Mat contoured = frame.clone();
         findContours(threshold_img.clone(), contours, hierarchy, 1, CHAIN_APPROX_NONE);
 
-        cout << "\nContour";
-        cout << contours[0];
-        cout << "\n";
+        //cout << "\nContour";
+        //cout << contours[0];
+        //cout << "\n";
 
         
-
         for( size_t i = 0; i< contours.size(); i++ ) // iterate through each contour.
         {
             double area = contourArea( contours[i] );  //  Find the area of contour
