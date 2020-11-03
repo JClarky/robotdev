@@ -55,49 +55,32 @@ void mode_maze()
         
         Mat contoured = frame.clone();
         findContours(threshold_img.clone(), contours, hierarchy, 1, CHAIN_APPROX_NONE);
-
-        //cout << "\nContour";
-        //cout << contours[0];
-        //cout << "\n";
-
         
         for( size_t i = 0; i< contours.size(); i++ ) // iterate through each contour.
         {
-            double area = contourArea( contours[i] );  //  Find the area of contour
+            double area = contourArea( contours[i] );  
 
             if( area > largest_area )
             {
                 largest_area = area;
-                largest_contour_index = i;               //Store the index of largest contour 
+                largest_contour_index = i;              
             }
         }
 
-        int idx = 0;
-        /*for( ; idx >= 0; idx = hierarchy[idx][0] )
-        {
-            drawContours(contoured, contours, idx, (0,255,0), 2, LINE_8, hierarchy);
-        }*/
-
-        //drawContours(contoured, contours, idx, (0,255,0), 2, LINE_8, hierarchy);
         try
         {
-            drawContours(contoured, contours,largest_contour_index, Scalar( 0, 255, 0 ), 2);
-            vector<Moments> mu(contours.size() );
+            drawContours(contoured, contours, largest_contour_index, Scalar( 0, 255, 0 ), 2);
+            vector<Moments> mu(contours.size());
             mu[0] = moments(contours[largest_contour_index]);
             float cx = mu[0].m10 / mu[0].m00;
-            cout <<"cx";
-            cout << cx;
+            cout << "cx: " << cx;
             cout << "\n";
-           // drawContours(contoured, contours,largest_contour_index, Scalar( 0, 255, 0 ), 2);
         }
-        catch(const std::exception& e)
+        catch(const exception& e)
         {
-            std::cerr << e.what() << '\n';
-        }
+            cerr << e.what() << '\n';
+        }      
         
-        
-
-        //drawContours(contoured, contours, 0, (0,255,0), FILLED, 8, hierarchy);
 
         try
         {
