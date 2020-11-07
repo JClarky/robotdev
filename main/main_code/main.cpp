@@ -95,6 +95,35 @@ void mode_maze()
         float cx_m = cx(f_mid);
         float cx_r = cx(f_right);
 
+        if (cx_l)
+        {
+            move(-10,100);
+        }
+        else if (cx_m)
+        {
+            float c = img_width / 2;
+            if (cx_m > c)
+            {
+                cx_m = cx_m - c;
+                float r = (cx_m / c) * 100;
+                move(100, r);
+            }
+            else
+            {
+                float l = (cx_m / c) * 100;
+                move(l, 100);
+            }
+
+        }
+        else if (cx_r)
+        {
+            move(100, -10);
+        }
+        else
+        {
+            move(100, -20);
+        }
+
         imshow("l", f_left);
         imshow("m", f_mid);
         imshow("r", f_right);
