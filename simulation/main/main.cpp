@@ -2,6 +2,7 @@
 #include <stdio.h>
 //#include <hardware_interface.h>
 //#include <simulation_interface.h>
+#include "main.h"
 
 // OpenCV libraries
 #include <opencv2/core.hpp>

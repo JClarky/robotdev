@@ -1,0 +1,15 @@
+﻿  main.cpp
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.cpp(43,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.cpp(50,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.cpp(59,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.cpp(61,31): warning C4244: 'argument': conversion from 'float' to '_Tp', possible loss of data
+          with
+          [
+              _Tp=int
+          ]
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.cpp(61,45): warning C4244: 'argument': conversion from 'float' to '_Tp', possible loss of data
+          with
+          [
+              _Tp=int
+          ]
+  VSRobotDev.vcxproj -> C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\VSRobotDev.exe
