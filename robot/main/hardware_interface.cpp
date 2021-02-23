@@ -79,7 +79,7 @@ void arm()
 }
 
 int main()
-{
+{	
 	float speed = 0;
     initalise();
     arm();
@@ -120,8 +120,9 @@ int main()
             //move(speed, speed);
 		}
 	}
-	catch (const std::exception&)
+	catch(const exception& e)
 	{
+		cerr << e.what() << '\n';
 		stop();
 		return 0;
 	}
