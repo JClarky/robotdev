@@ -1,5 +1,5 @@
-#ifndef HARDWARE_INTERFACE.H
-#define HARDWARE_INTERFACE.H
+#ifndef SIMULATION_INTERFACE.H
+#define SIMULATION_INTERFACE.H
 
 #include <iostream>
 #include <fstream>
@@ -13,9 +13,6 @@ using namespace std;
 
 // DESCRIPTION
 // Interface for the simulator
-
-float l = 0;
-float r = 0;
 
 class output
 {
@@ -32,69 +29,30 @@ class output
 
         float gamepad_left_y;
         float gamepad_left_x;
-};
 
-void move(float left_motor, float right_motor)
-{
-    Json::Value root;
-    root["left_motor"] = left_motor;
-    root["right_motor"] = right_motor;
-    //cout << root;
-
-    ofstream input_file;
-    input_file.open("C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/simulation/input.json");
-    input_file << root;
-    input_file.close();
-}
-
-void update()
-{
-    Json::Value root2;
-    ifstream output_file;
-    output_file.open("C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/simulation/output.json");
-    output_file >> root2;
-    output_file.close();
-
-    output out;
-
-    out.gamepad_left_x = root2["gamepad_left_x"].asFloat();
-    out.gamepad_left_y = root2["gamepad_left_y"].asFloat();
-
-    out.gamepad_right_x = root2["gamepad_right_x"].asFloat();
-    out.gamepad_right_y = root2["gamepad_right_y"].asFloat();
-
-    out.s_left_distance = root2["s_left_distance"].asFloat();
-    out.s_middle_distance = root2["s_middle_distance"].asFloat();
-    out.s_right_distance = root2["s_right_distance"].asFloat();
-
-    out.s_left_line = root2["s_left_line"].asFloat();
-    out.s_right_line = root2["s_right_line"].asFloat();
-
-    //cout << out;
-}
-
-// temp main
-
-/*
-int main()
-{
-    while(true)
+    void update()
     {
-        cout << "left motor:";
-        cin >> l;
+        Json::Value root2;
+        ifstream output_file;
+        output_file.open("C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/simulation/output.json");
+        output_file >> root2;
+        output_file.close();
 
-        update();
-        move(l, r);
+        output out;
 
-        cout << "right motor:";
-        cin >> r;
+        out.gamepad_left_x = root2["gamepad_left_x"].asFloat();
+        out.gamepad_left_y = root2["gamepad_left_y"].asFloat();
 
-        update();
-        move(l, r);
+        out.gamepad_right_x = root2["gamepad_right_x"].asFloat();
+        out.gamepad_right_y = root2["gamepad_right_y"].asFloat();
 
-        
-    }    
-}
-*/
+        out.s_left_distance = root2["s_left_distance"].asFloat();
+        out.s_middle_distance = root2["s_middle_distance"].asFloat();
+        out.s_right_distance = root2["s_right_distance"].asFloat();
+
+        out.s_left_line = root2["s_left_line"].asFloat();
+        out.s_right_line = root2["s_right_line"].asFloat();
+    }
+};
 
 #endif

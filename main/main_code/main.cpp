@@ -179,14 +179,8 @@ void sumo_mode()
 
 int main()
 {
-    try
-    {
-        maze = true;
-        
-    }
-    catch (const std::exception&)
-    {
-        cout << "maze error";
-    }
+    maze = true;
     mode_maze();
+    output out;
+    cout << out.s_left_distance;
 }
