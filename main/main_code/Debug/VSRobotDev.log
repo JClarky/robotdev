@@ -14,6 +14,6 @@ C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code
           [
               _Tp=int
           ]
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.cpp(134,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.cpp(185): warning C4700: uninitialized local variable 'out' used
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.cpp(136,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.cpp(107): warning C4700: uninitialized local variable 'out' used
   VSRobotDev.vcxproj -> C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\..\..\simulation\builds\current\current.exe

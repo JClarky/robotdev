@@ -102,7 +102,9 @@ void mode_maze()
     
     // Main loops for maze mode
     while(maze)
-    {    
+    {
+        output out;
+        cout << out.s_left_distance;
         //cap.read(frame);
         frame = imread("C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/simulation/cam.jpg");
 
@@ -180,7 +182,5 @@ void sumo_mode()
 int main()
 {
     maze = true;
-    mode_maze();
-    output out;
-    cout << out.s_left_distance;
+    mode_maze();    
 }
