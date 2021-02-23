@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include "main.h"
 
+#include <chrono>
+#include <thread>
+
 // OpenCV libraries
 #include <opencv2/core.hpp>
 #include <opencv2/videoio.hpp>
@@ -11,6 +14,8 @@
 // Namepaces
 using namespace std;
 using namespace cv;
+
+output out;
 
 // Camera setup
 int threshold_min = 40;
@@ -102,9 +107,7 @@ void mode_maze()
     
     // Main loops for maze mode
     while(maze)
-    {
-        output out;
-        cout << out.s_left_distance;
+    {         
         //cap.read(frame);
         frame = imread("C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/simulation/cam.jpg");
 
@@ -171,6 +174,45 @@ void mode_maze()
     return;
 }
 
+void follow()
+{
+    while (true)
+    {
+        using namespace std::this_thread; // sleep_for, sleep_until
+        using namespace std::chrono; // nanoseconds, system_clock, seconds
+
+        sleep_for(nanoseconds(10));
+        sleep_until(system_clock::now() + nanoseconds(10000));
+
+        out.update(out);
+
+        float A[3] = { out.s_left_distance , out.s_middle_distance , out.s_right_distance };
+        const int N = sizeof(A) / sizeof(int);
+
+        int idx = distance(A, max_element(A, A + N));
+
+        cout << idx << "\n";
+        if (A[idx] == 0)
+        {
+            move(100, -100);
+        }        
+        else if (idx == 0 || out.s_left_distance != 0)
+        {
+           move(-20, 100);            
+        }
+        else if (idx == 1 || out.s_right_distance != 0)
+        {
+            move(100, -20);
+        }
+        else if(out.s_middle_distance != 0)
+        {
+            move(100, 100);
+        }
+
+    }
+    
+}
+
 void sumo_mode()
 {
     if (true)
@@ -180,7 +222,9 @@ void sumo_mode()
 }
 
 int main()
-{
-    maze = true;
-    mode_maze();    
+{     
+    //maze = true;
+    //mode_maze();   
+    out.update(out);
+    follow();
 }
