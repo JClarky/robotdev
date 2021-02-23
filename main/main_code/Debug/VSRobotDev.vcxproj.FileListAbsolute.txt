@@ -1,15 +1,1 @@
 C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\VSRobotDev.vcxproj.CopyComplete
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\VSRobotDev.exe
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\VSRobotDev.pdb
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\jsoncpp.dll
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\opencv_cored.dll
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\zlibd1.dll
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\opencv_highguid.dll
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\opencv_videoiod.dll
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\opencv_imgcodecsd.dll
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\opencv_imgprocd.dll
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\jpeg62.dll
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\webpd.dll
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\libpng16d.dll
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\tiffd.dll
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\lzmad.dll
