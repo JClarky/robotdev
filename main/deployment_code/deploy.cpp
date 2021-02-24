@@ -41,8 +41,11 @@ int main()
         // Full deployment or just sim deployment
         string user_dec;
 
-        cout << "Do you want to build? (y/n) ";
+        cout << "Do you want to build robot code? (y/n) ";
         cin >> user_dec;
+
+        system("xcopy C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/main/main_code C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/robot/main");
+        system("del C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/robot/main/simulation_interface.cpp");
 
         if(user_dec == "y")
         {
