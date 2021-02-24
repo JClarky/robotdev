@@ -12,7 +12,6 @@ using namespace std;
 #define CENTER_THROTTLE		1500
 
 //g++ -o main run.cpp -lpigpio
-//testing 123
 
 bool initalise()
 {

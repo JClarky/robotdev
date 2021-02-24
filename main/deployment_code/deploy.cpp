@@ -3,7 +3,8 @@
 
 using namespace std;
 
-// g++ ./main/deployment_code/deploy.cpp -o deploy
+// g++ ./main/deployment_code/deploy.cpp -o deploy_windows
+// g++ ./main/deployment_code/deploy.cpp -o deploy_rpi
 
 void git_update()
 {
