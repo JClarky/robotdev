@@ -4,8 +4,8 @@
 
 using namespace std;
 
-#define LEFT_MOTOR_PIN      14
-#define RIGHT_MOTOR_PIN     15
+#define LEFT_MOTOR_PIN      12
+#define RIGHT_MOTOR_PIN     13
 
 #define MAX_THROTTLE        1960  
 #define MIN_THROTTLE		1040
@@ -31,7 +31,6 @@ void stop()
 {
 	gpioServo(LEFT_MOTOR_PIN, 0);
 	gpioServo(RIGHT_MOTOR_PIN, 0);
-	gpioTerminate();
 }
 
 void move(float left, float right) // value from -100 to 100
@@ -85,7 +84,7 @@ void arm()
 }
 
 int main()
-{	
+{
 	float speed = 0;
     initalise();
     arm();
@@ -94,7 +93,7 @@ int main()
 		while (true)
 		{
 			string input;
-			cout << "d to increase, a to decrease, s to idle: ";
+			cout << "w forward, a left, s backward, d right, f 0: ";
 			cin >> input;
 			if (input == "d")
 			{
@@ -108,7 +107,7 @@ int main()
 			}
             else if (input == "w")
 			{
-				move(100,100);
+				move(10,10);
 			}
 			else if (input == "s")
 			{
@@ -120,15 +119,15 @@ int main()
 			}
 			else
 			{
+				move(0,0);
 				throw("Bad input");
 			}
             //cout << speed;
             //move(speed, speed);
 		}
 	}
-	catch(const exception& e)
+	catch (const std::exception&)
 	{
-		cerr << e.what() << '\n';
 		stop();
 		return 0;
 	}
