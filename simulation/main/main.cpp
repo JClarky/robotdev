@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdio.h>
-#include "main.h"
+#include "simulation_interface.h"
 
 #include <chrono>
 #include <thread>
@@ -221,10 +221,47 @@ void sumo_mode()
     }
 }
 
+void testing()
+{
+    int speed = 0;
+    try
+    {
+        while (true)
+        {
+            string input;
+            cout << "d to increase, a to decrease, s to idle: ";
+            cin >> input;
+            if (input == "d")
+            {
+                speed = speed + 15;
+            }
+            else if (input == "a")
+            {
+                speed = speed - 15;
+            }
+            else if (input == "s")
+            {
+                speed = 0;
+            }
+            else
+            {
+                throw("Bad input");
+                speed = 0;
+            }
+            move(speed, speed);
+        }
+    }
+    catch (const exception& e)
+    {
+        cerr << e.what() << '\n';
+    }
+}
+
 int main()
 {     
     //maze = true;
     //mode_maze();   
     out.update(out);
-    follow();
+    //follow();
+    testing();
 }

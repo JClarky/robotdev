@@ -73,9 +73,14 @@ void move(float left, float right) // value from -100 to 100
 
 void arm()
 {
+	gpioServo(LEFT_MOTOR_PIN, MAX_THROTTLE);
+	gpioServo(RIGHT_MOTOR_PIN, MAX_THROTTLE);
+	sleep(2);
+	gpioServo(LEFT_MOTOR_PIN, MIN_THROTTLE);
+	gpioServo(RIGHT_MOTOR_PIN, MIN_THROTTLE);
+	sleep(2);
 	gpioServo(LEFT_MOTOR_PIN, CENTER_THROTTLE);
 	gpioServo(RIGHT_MOTOR_PIN, CENTER_THROTTLE);
-	sleep(2);
 }
 
 int main()

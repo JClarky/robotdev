@@ -1,7 +1,7 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(453,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(467,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (VisualStudioDev.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   main.cpp
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.h(52,27): warning C4101: 'e': unreferenced local variable
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\simulation_interface.h(52,27): warning C4101: 'e': unreferenced local variable
 C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.cpp(60,23): warning C4018: '<': signed/unsigned mismatch
 C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.cpp(69,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.cpp(79,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
@@ -16,4 +16,6 @@ C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code
               _Tp=int
           ]
 C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.cpp(139,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.cpp(251,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\main.cpp(251,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   VSRobotDev.vcxproj -> C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\..\..\simulation\builds\current\current.exe
