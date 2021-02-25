@@ -1,6 +1,7 @@
 #include <pigpio.h>
 #include <unistd.h>
 #include <iostream>
+#include "hardware_interface.h"
 
 using namespace std;
 
@@ -10,10 +11,11 @@ using namespace std;
 #define MAX_THROTTLE        1960  
 #define MIN_THROTTLE		1040
 #define CENTER_THROTTLE		1500
+#define ARM_THROTTLE		1400
 
 //g++ -o main run.cpp -lpigpio
 
-bool initalise()
+bool initalise_gpio()
 {
 	if (gpioInitialise() > 0)
 	{
@@ -73,51 +75,9 @@ void move(float left, float right) // value from -100 to 100
 
 void arm()
 {
-	gpioServo(LEFT_MOTOR_PIN, 1400);
-	gpioServo(RIGHT_MOTOR_PIN, 1400);
+	gpioServo(LEFT_MOTOR_PIN, ARM_THROTTLE);
+	gpioServo(RIGHT_MOTOR_PIN, ARM_THROTTLE);
 	sleep(2);
-}
-
-int main()
-{
-	float speed = 0;
-    initalise();
-    arm();
-	try
-	{
-		while (true)
-		{
-			string input;
-			cout << "d increase, a decrease, s idle ";
-			cin >> input;
-			if (input == "d")
-			{
-				speed = speed + 15;
-                //move(15,-15);
-			}
-			else if (input == "a")
-			{
-				speed = speed - 15;
-                //move(-15,15);
-			}
-			else if (input == "s")
-			{
-				//move(-10,-10);
-				speed = 0;
-			}
-			else
-			{
-				speed = 0;
-				move(0,0);
-				throw("Bad input");
-			}
-            //cout << speed;
-            move(speed, speed);
-		}
-	}
-	catch (const std::exception&)
-	{
-		stop();
-		return 0;
-	}
+	gpioServo(LEFT_MOTOR_PIN, CENTER_THROTTLE);
+	gpioServo(RIGHT_MOTOR_PIN, CENTER_THROTTLE);
 }

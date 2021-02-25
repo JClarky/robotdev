@@ -1,84 +1,45 @@
 #ifndef HARDWARE_INTERFACE.H
 #define HARDWARE_INTERFACE.H
 
-#include <pigpio.h>
-#include <unistd.h>
-#include <iostream>
+bool initalise();
 
-using namespace std;
+void stop();
 
-#define LEFT_MOTOR_PIN      14
-#define RIGHT_MOTOR_PIN     15
+void move(float left, float right);
 
-#define MAX_THROTTLE        1960  
-#define MIN_THROTTLE		1040
-#define CENTER_THROTTLE		1500
+void arm();
 
-//g++ -o main run.cpp -lpigpio
-
-bool initalise()
+class output
 {
-	if (gpioInitialise() > 0)
-	{
-		// init fail
-		return(false);
-	}
-	else
-	{
-		// init success
-		return(true);
-	}
-}
+    public:
+        float s_left_line;
+        float s_right_line;
 
-void stop()
-{
-	gpioServo(LEFT_MOTOR_PIN, 0);
-	gpioServo(RIGHT_MOTOR_PIN, 0);
-}
+        float s_left_distance;
+        float s_middle_distance;
+        float s_right_distance;
 
-void move(float left, float right) // value from -100 to 100
-{
-	float upper_range = MAX_THROTTLE - CENTER_THROTTLE;
-	float lower_range = CENTER_THROTTLE - MIN_THROTTLE;
+        float gamepad_right_y;
+        float gamepad_right_x;
 
-	float l_percentage = left / 100;
-	float r_percentage = right / 100;
+        float gamepad_left_y;
+        float gamepad_left_x;
 
-    float l_value;
-    float r_value;
+    void update(output& out)
+    {
+		out.gamepad_left_x = 1;
+		out.gamepad_left_y = 1;
 
-	if (l_percentage > 0)
-	{
-		l_value = l_percentage * upper_range;
-		l_value = l_value + CENTER_THROTTLE;
-	}
-	else
-	{
-		l_value = l_percentage * lower_range;
-		l_value = l_value + CENTER_THROTTLE;
-	}
+		out.gamepad_right_x = 1;
+		out.gamepad_right_y = 1;
 
-	if (r_percentage > 0)
-	{
-		r_value = r_percentage * upper_range;
-		r_value = r_value + CENTER_THROTTLE;
-	}
-	else
-	{
-		r_value = r_percentage * lower_range;
-		r_value = r_value + CENTER_THROTTLE;
-	}
+		out.s_left_distance = 1;
+		out.s_middle_distance = 1;
+		out.s_right_distance = 1;
 
-	gpioServo(LEFT_MOTOR_PIN, (int)l_value);
-	gpioServo(RIGHT_MOTOR_PIN, (int)r_value);
-    cout << l_value;
-}
-
-void arm()
-{
-	gpioServo(LEFT_MOTOR_PIN, CENTER_THROTTLE);
-	gpioServo(RIGHT_MOTOR_PIN, CENTER_THROTTLE);
-	sleep(2);
-}
+		out.s_left_line = 1;
+		out.s_right_line = 1;
+    }
+};
 
 #endif

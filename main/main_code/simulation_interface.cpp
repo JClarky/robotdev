@@ -2,7 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <json/json.h>
-#include "main.h"
+#include "simulation_interface.h"
 
 using namespace std;
 

@@ -11,19 +11,19 @@ void move(float left_motor, float right_motor);
 
 class output
 {
-public:
-    float s_left_line;
-    float s_right_line;
+    public:
+        float s_left_line;
+        float s_right_line;
 
-    float s_left_distance;
-    float s_middle_distance;
-    float s_right_distance;
+        float s_left_distance;
+        float s_middle_distance;
+        float s_right_distance;
 
-    float gamepad_right_y;
-    float gamepad_right_x;
+        float gamepad_right_y;
+        float gamepad_right_x;
 
-    float gamepad_left_y;
-    float gamepad_left_x;
+        float gamepad_left_y;
+        float gamepad_left_x;
 
     void update(output& out)
     {

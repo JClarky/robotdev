@@ -1,9 +1,11 @@
 #include <iostream>
 #include <stdio.h>
-#include "simulation_interface.h"
-
 #include <chrono>
 #include <thread>
+
+// Simulation or Hardware build
+//#include "simulation_interface.h"
+#include "hardware_interface.h"
 
 // OpenCV libraries
 #include <opencv2/core.hpp>
@@ -223,38 +225,40 @@ void sumo_mode()
 
 void testing()
 {
-    int speed = 0;
     try
-    {
-        while (true)
-        {
-            string input;
-            cout << "d to increase, a to decrease, s to idle: ";
-            cin >> input;
-            if (input == "d")
-            {
-                speed = speed + 10;
-            }
-            else if (input == "a")
-            {
-                speed = speed - 10;
-            }
-            else if (input == "s")
-            {
-                speed = 0;
-            }
-            else
-            {
-                throw("Bad input");
-                speed = 0;
-            }
+	{
+        float speed = 0;
+		while (true)
+		{
+			string input;
+			cout << "d increase, a decrease, s idle ";
+			cin >> input;
+			if (input == "d")
+			{
+				speed = speed + 15;
+			}
+			else if (input == "a")
+			{
+				speed = speed - 15;
+			}
+			else if (input == "s")
+			{
+				speed = 0;
+			}
+			else
+			{
+				speed = 0;
+				move(0,0);
+				throw("Bad input");
+			}
             move(speed, speed);
-        }
-    }
-    catch (const exception& e)
-    {
-        cerr << e.what() << '\n';
-    }
+		}
+	}
+	catch (const std::exception&)
+	{
+		stop();
+		return 0;
+	}
 }
 
 int main()
