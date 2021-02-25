@@ -1,11 +1,25 @@
+/**
+ * @file main.cpp 
+ * @author Jayden Clark
+ * 
+ * @brief 
+ * This code is the main source file the robot
+ * It controls all main high level logic of the robot
+ * This mainly includes mode control
+ * 
+ * @version 0.1
+ * @date 2021-02-25 * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
+
 #include <iostream>
 #include <stdio.h>
 #include <chrono>
 #include <thread>
 
-// Simulation or Hardware build
-//#include "simulation_interface.h"
-#include "hardware_interface.h"
+#include "main.h"
 
 // OpenCV libraries
 #include <opencv2/core.hpp>
@@ -17,7 +31,7 @@
 using namespace std;
 using namespace cv;
 
-output out;
+Output out;
 
 // Camera setup
 int threshold_min = 40;
@@ -180,8 +194,8 @@ void follow()
 {
     while (true)
     {
-        using namespace std::this_thread; // sleep_for, sleep_until
-        using namespace std::chrono; // nanoseconds, system_clock, seconds
+        using namespace this_thread; // sleep_for, sleep_until
+        using namespace chrono; // nanoseconds, system_clock, seconds
 
         sleep_for(nanoseconds(10));
         sleep_until(system_clock::now() + nanoseconds(10000));
@@ -256,8 +270,7 @@ void testing()
 	}
 	catch (const std::exception&)
 	{
-		stop();
-		return 0;
+		stop_motors();
 	}
 }
 

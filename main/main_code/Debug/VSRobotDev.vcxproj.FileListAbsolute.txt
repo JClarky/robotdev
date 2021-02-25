@@ -1,1 +1,3 @@
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\builds\current\current.exe.lastcodeanalysissucceeded
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\NativeCodeAnalysis.read.1.tlog
 C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\Debug\VSRobotDev.vcxproj.CopyComplete

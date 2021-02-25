@@ -1,7 +1,26 @@
+/**
+ * @file hardware_interface.cpp 
+ * @author Jayden Clark
+ * 
+ * @brief 
+ * This code is the interface for all hardware on the PI.
+ * Hardware
+ * 		Camera
+ * 		Line sensors
+ * 		Distance sensors
+ * 		Motors 
+ * 
+ * @version 0.1
+ * @date 2021-02-25 * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
+
 #include <pigpio.h>
 #include <unistd.h>
 #include <iostream>
-#include "hardware_interface.h"
+#include "main.h"
 
 using namespace std;
 
@@ -13,7 +32,6 @@ using namespace std;
 #define CENTER_THROTTLE		1500
 #define ARM_THROTTLE		1400
 
-//g++ -o main run.cpp -lpigpio
 
 bool initalise_gpio()
 {
@@ -29,11 +47,30 @@ bool initalise_gpio()
 	}
 }
 
+
+void arm()
+{
+	gpioServo(LEFT_MOTOR_PIN, ARM_THROTTLE);
+	gpioServo(RIGHT_MOTOR_PIN, ARM_THROTTLE);
+	sleep(2);
+	gpioServo(LEFT_MOTOR_PIN, CENTER_THROTTLE);
+	gpioServo(RIGHT_MOTOR_PIN, CENTER_THROTTLE);
+}
+
+
+/*			        			*/
+/*			Definitions			*/
+/*			        			*/
+
+/* Stop function; shuts off motors */
+
 void stop()
 {
 	gpioServo(LEFT_MOTOR_PIN, 0);
 	gpioServo(RIGHT_MOTOR_PIN, 0);
 }
+
+/* Move function; controls motor speeds */
 
 void move(float left, float right) // value from -100 to 100
 {
@@ -73,11 +110,20 @@ void move(float left, float right) // value from -100 to 100
     cout << l_value;
 }
 
-void arm()
+/* Output class update function; sensor update */
+
+void Output::update(Output& out)
 {
-	gpioServo(LEFT_MOTOR_PIN, ARM_THROTTLE);
-	gpioServo(RIGHT_MOTOR_PIN, ARM_THROTTLE);
-	sleep(2);
-	gpioServo(LEFT_MOTOR_PIN, CENTER_THROTTLE);
-	gpioServo(RIGHT_MOTOR_PIN, CENTER_THROTTLE);
+	out.gamepad_left_x = 1;
+	out.gamepad_left_y = 1;
+
+	out.gamepad_right_x = 1;
+	out.gamepad_right_y = 1;
+
+	out.s_left_distance = 1;
+	out.s_middle_distance = 1;
+	out.s_right_distance = 1;
+
+	out.s_left_line = 1;
+	out.s_right_line = 1;
 }
