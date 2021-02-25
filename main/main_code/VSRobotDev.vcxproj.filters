@@ -18,15 +18,12 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="simulation_interface.cpp">
+    <ClCompile Include="_interface\simulation_interface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="simulation_interface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

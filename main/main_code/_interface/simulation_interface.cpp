@@ -17,16 +17,22 @@
  * 
  */
 
-
+// General libraries
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <json/json.h>
 #include "main.h"
 
+// Namespaces 
 using namespace std;
 
 
+/*			        			*/
+/*			Definitions			*/
+/*			        			*/
+
+/* Move function; controls motor speeds */
 void move(float left_motor, float right_motor)
 {
     Json::Value root;
@@ -39,11 +45,13 @@ void move(float left_motor, float right_motor)
     input_file.close();
 }
 
+/* Stop function; shuts off motors */
 void stop_motors()
 {
     move(0, 0);
 }
 
+/* Output class update function; sim sensor update */
 void Output::update(Output& out)
 {
     try

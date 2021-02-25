@@ -16,14 +16,18 @@
  * 
  */
 
-
+// General libraries
 #include <pigpio.h>
 #include <unistd.h>
 #include <iostream>
-#include "main.h"
 
+// Header files
+#include "../main.h"
+
+// Namespaces
 using namespace std;
 
+// Variables definitions
 #define LEFT_MOTOR_PIN      12
 #define RIGHT_MOTOR_PIN     13
 

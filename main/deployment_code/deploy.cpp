@@ -18,9 +18,9 @@ void robot_build()
     string version;
     cout << "Robot build version: ";
     cin >> version;
-    string command = "g++ ./robot/main/main.cpp ./robot/main/hardware_interface.cpp -o ./robot/builds/build_"+version+" -lpigpio";
+    string command = "g++ ./robot/main/main.cpp ./robot/main/_interface/hardware_interface.cpp -o ./robot/builds/build_"+version+" -lpigpio";
     system(command.c_str());
-    string command_2 = "g++ ./robot/main/main.cpp ./robot/main/hardware_interface.cpp -o ./robot/builds/current -lpigpio";
+    string command_2 = "g++ ./robot/main/main.cpp ./robot/main/_interface/hardware_interface.cpp -o ./robot/builds/current -lpigpio";
     system(command_2.c_str());
 }
 
@@ -46,7 +46,7 @@ int main()
         cin >> user_dec;
 
         system("xcopy C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/main/main_code C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/robot/main");
-        system("del C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/robot/main/simulation_interface.cpp");
+        system("del C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/robot/main/_interface/simulation_interface.cpp");
 
         if(user_dec == "y")
         {
