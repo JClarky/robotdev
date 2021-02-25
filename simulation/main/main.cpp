@@ -1,9 +1,25 @@
+/**
+ * @file main.cpp 
+ * @author Jayden Clark
+ * 
+ * @brief 
+ * This code is the main source file the robot
+ * It controls all main high level logic of the robot
+ * This mainly includes mode control
+ * 
+ * @version 0.1
+ * @date 2021-02-25 * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
+
 #include <iostream>
 #include <stdio.h>
-#include "simulation_interface.h"
-
 #include <chrono>
 #include <thread>
+
+#include "main.h"
 
 // OpenCV libraries
 #include <opencv2/core.hpp>
@@ -15,7 +31,7 @@
 using namespace std;
 using namespace cv;
 
-output out;
+Output out;
 
 // Camera setup
 int threshold_min = 40;
@@ -178,8 +194,8 @@ void follow()
 {
     while (true)
     {
-        using namespace std::this_thread; // sleep_for, sleep_until
-        using namespace std::chrono; // nanoseconds, system_clock, seconds
+        using namespace this_thread; // sleep_for, sleep_until
+        using namespace chrono; // nanoseconds, system_clock, seconds
 
         sleep_for(nanoseconds(10));
         sleep_until(system_clock::now() + nanoseconds(10000));
@@ -223,38 +239,39 @@ void sumo_mode()
 
 void testing()
 {
-    int speed = 0;
     try
-    {
-        while (true)
-        {
-            string input;
-            cout << "d to increase, a to decrease, s to idle: ";
-            cin >> input;
-            if (input == "d")
-            {
-                speed = speed + 10;
-            }
-            else if (input == "a")
-            {
-                speed = speed - 10;
-            }
-            else if (input == "s")
-            {
-                speed = 0;
-            }
-            else
-            {
-                throw("Bad input");
-                speed = 0;
-            }
+	{
+        float speed = 0;
+		while (true)
+		{
+			string input;
+			cout << "d increase, a decrease, s idle ";
+			cin >> input;
+			if (input == "d")
+			{
+				speed = speed + 15;
+			}
+			else if (input == "a")
+			{
+				speed = speed - 15;
+			}
+			else if (input == "s")
+			{
+				speed = 0;
+			}
+			else
+			{
+				speed = 0;
+				move(0,0);
+				throw("Bad input");
+			}
             move(speed, speed);
-        }
-    }
-    catch (const exception& e)
-    {
-        cerr << e.what() << '\n';
-    }
+		}
+	}
+	catch (const std::exception&)
+	{
+		stop_motors();
+	}
 }
 
 int main()

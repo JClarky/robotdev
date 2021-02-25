@@ -39,7 +39,7 @@ void move(float left_motor, float right_motor)
     input_file.close();
 }
 
-void stop()
+void stop_motors()
 {
     move(0, 0);
 }
