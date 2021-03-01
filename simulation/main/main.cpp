@@ -13,12 +13,13 @@
  * 
  */
 
-
+// General libraries
 #include <iostream>
 #include <stdio.h>
 #include <chrono>
 #include <thread>
 
+// Header files
 #include "main.h"
 
 // OpenCV libraries
@@ -31,6 +32,7 @@
 using namespace std;
 using namespace cv;
 
+// Hardware/Sim interface
 Output out;
 
 // Camera setup

@@ -37,16 +37,28 @@ int main()
 
     bool deploying = false;
 
+    // Copy
+    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\main.cpp C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\robot\\main");
+    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\main.h C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\robot\\main");
+    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\_interface C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\robot\\main");
+    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\_modes C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\robot\\main");
+
+    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\main.cpp C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\simulation\\main");
+    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\main.h C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\simulation\\main");
+    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\_interface C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\simulation\\main");
+    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\_modes C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\simulation\\main");
+
+    // Del
+    system("del C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/robot/main/simulation_interface.cpp");
+    system("del C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/simulation/main/hardware_interface.cpp");
+
     while(!deploying)
     {
         // Full deployment or just sim deployment
         string user_dec;
 
         cout << "Do you want to build robot code? (y/n) ";
-        cin >> user_dec;
-
-        system("xcopy C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/main/main_code C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/robot/main");
-        system("del C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/robot/main/_interface/simulation_interface.cpp");
+        cin >> user_dec;       
 
         if(user_dec == "y")
         {
