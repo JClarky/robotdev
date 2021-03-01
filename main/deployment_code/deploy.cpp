@@ -33,7 +33,7 @@ int main()
 {
     cout << "DEPLOYMENT INITIALISED\n";
 
-    system("git pull origin master --rebase");
+    system("git pull origin master");
 
     bool deploying = false;
 
@@ -72,7 +72,7 @@ int main()
         {
             deploying = true;
             system("git add .");
-            system("git commit -m \"ROBOT BUILD\"");
+            system("git commit -m \"DEPLOY\"");
             system("git push origin master");
             run();
         }
