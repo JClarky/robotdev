@@ -1,5 +1,0 @@
-﻿  main.cpp
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(8,10): fatal error C1083: Cannot open include file: 'opencv2/core.hpp': No such file or directory
-  simulation_interface.cpp
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\simulation_interface.cpp(4,10): fatal error C1083: Cannot open include file: 'json/json.h': No such file or directory
-  Generating Code...
