@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="..\..\simulation\main\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="_interface\simulation_interface.cpp">
+    <ClCompile Include="..\..\simulation\main\simulation_interface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
+    <ClInclude Include="..\..\simulation\main\main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
