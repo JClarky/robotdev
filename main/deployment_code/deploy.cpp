@@ -49,8 +49,8 @@ int main()
     system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\_modes C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\simulation\\main");
 
     // Del
-    system("del C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/robot/main/simulation_interface.cpp");
-    system("del C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/simulation/main/hardware_interface.cpp");
+    system("del C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\robot\\main\\simulation_interface.cpp");
+    system("del C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\simulation\\main\\hardware_interface.cpp");
 
     while(!deploying)
     {
