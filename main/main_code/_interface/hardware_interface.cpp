@@ -22,7 +22,7 @@
 #include <iostream>
 
 // Header files
-#include "../main.h"
+#include "main.h"
 
 // Namespaces
 using namespace std;
