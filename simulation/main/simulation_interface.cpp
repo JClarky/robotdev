@@ -51,6 +51,12 @@ void stop_motors()
     move(0, 0);
 }
 
+/* Arm function; pretends to arm */
+void start_motors()
+{
+    move(0, 0);
+}
+
 /* Output class update function; sim sensor update */
 void Output::update(Output& out)
 {

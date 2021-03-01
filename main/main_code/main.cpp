@@ -264,7 +264,7 @@ void testing()
 			else
 			{
 				speed = 0;
-				move(0,0);
+				stop_motors();
 				throw("Bad input");
 			}
             move(speed, speed);
@@ -278,9 +278,12 @@ void testing()
 
 int main()
 {     
+    start_motors();
     //maze = true;
     //mode_maze();   
     out.update(out);
     //follow();
-    testing();
+    testing();    
+
+    return 0;
 }

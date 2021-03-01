@@ -61,17 +61,26 @@ void arm()
 	gpioServo(RIGHT_MOTOR_PIN, CENTER_THROTTLE);
 }
 
-
 /*			        			*/
 /*			Definitions			*/
 /*			        			*/
 
 /* Stop function; shuts off motors */
 
-void stop()
+void start_motors()
+{
+	initalise_gpio();
+	arm();
+}
+
+
+/* Stop function; shuts off motors */
+
+void stop_motors()
 {
 	gpioServo(LEFT_MOTOR_PIN, 0);
 	gpioServo(RIGHT_MOTOR_PIN, 0);
+	gpioTerminate();
 }
 
 /* Move function; controls motor speeds */
