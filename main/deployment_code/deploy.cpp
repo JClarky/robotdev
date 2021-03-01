@@ -6,27 +6,15 @@ using namespace std;
 // g++ ./main/deployment_code/deploy.cpp -o deploy_windows
 // g++ ./main/deployment_code/deploy.cpp -o deploy_rpi
 
-void git_update()
-{
-    system("git add .");
-    system("git commit -m \"SYNC MAIN FOLDER\"");
-    system("git push origin master");
-}
-
 void robot_build()
 {
     string version;
     cout << "Robot build version: ";
     cin >> version;
-    string command = "g++ ./robot/main/main.cpp ./robot/main/_interface/hardware_interface.cpp -o ./robot/builds/build_"+version+" -lpigpio";
+    string command = "g++ ./robot/main/main.cpp ./robot/main/hardware_interface.cpp -o ./robot/builds/build_"+version+" -lpigpio";
     system(command.c_str());
-    string command_2 = "g++ ./robot/main/main.cpp ./robot/main/_interface/hardware_interface.cpp -o ./robot/builds/current -lpigpio";
+    string command_2 = "g++ ./robot/main/main.cpp ./robot/main/hardware_interface.cpp -o ./robot/builds/current -lpigpio";
     system(command_2.c_str());
-}
-
-void run()
-{
-    cout << "run stuff lmao";
 }
 
 int main()
@@ -74,7 +62,6 @@ int main()
             system("git add .");
             system("git commit -m \"DEPLOY\"");
             system("git push origin master");
-            run();
         }
         else
         {

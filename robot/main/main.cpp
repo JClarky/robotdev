@@ -7,7 +7,7 @@
  * It controls all main high level logic of the robot
  * This mainly includes mode control
  * 
- * @version 0.1
+ * @version 1
  * @date 2021-02-25 * 
  * @copyright Copyright (c) 2021
  * 
@@ -282,8 +282,8 @@ int main()
     //maze = true;
     //mode_maze();   
     out.update(out);
-    //follow();
-    testing();    
+    follow();
+    //testing();    
 
     return 0;
 }

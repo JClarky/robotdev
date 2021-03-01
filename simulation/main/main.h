@@ -5,7 +5,7 @@
  * @brief 
  * This code is the declerations for all shared functions
  * 
- * @version 0.1
+ * @version 0.3
  * @date 2021-02-26 * 
  * @copyright Copyright (c) 2021
  * 
