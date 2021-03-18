@@ -205,7 +205,7 @@ void follow()
         out.update(out); // Update the struct classs with current sensor data
 
         float distances[3] = { out.s_left_distance , out.s_middle_distance , out.s_right_distance }; // store distance values into common array
-        const int distances_size = sizeof(A) / sizeof(int); // find size of N as bytes to store integer varies by system
+        const int distances_size = sizeof(distances) / sizeof(int); // find size of N as bytes to store integer varies by system
 
         for(int i = 0; i < 3; i++)
         {
@@ -216,7 +216,7 @@ void follow()
 
         cout << idx << "\n"; // Print chosen index
 
-        if (A[idx] == 0) 
+        if (distances[idx] == 0) 
         {
             move(100, -100);
         }        

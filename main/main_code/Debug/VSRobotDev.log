@@ -15,7 +15,4 @@ C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\mai
               _Tp=int
           ]
 C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(157,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  simulation_interface.cpp
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\simulation_interface.cpp(85,23): warning C4101: 'e': unreferenced local variable
-  Generating Code...
   VSRobotDev.vcxproj -> C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\..\..\simulation\builds\current\current.exe
