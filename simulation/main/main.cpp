@@ -199,31 +199,40 @@ void follow()
         using namespace this_thread; // sleep_for, sleep_until
         using namespace chrono; // nanoseconds, system_clock, seconds
 
-        sleep_for(nanoseconds(10));
-        sleep_until(system_clock::now() + nanoseconds(10000));
+        sleep_for(nanoseconds(10)); // wait 10000 nano seconds otherwise we refresh faster than frame rate
+        sleep_until(system_clock::now() + nanoseconds(10000)); // 
 
-        out.update(out);
+        out.update(out); // Update the struct classs with current sensor data
 
-        float A[3] = { out.s_left_distance , out.s_middle_distance , out.s_right_distance };
-        const int N = sizeof(A) / sizeof(int);
+        float distances[3] = { out.s_left_distance , out.s_middle_distance , out.s_right_distance }; // store distance values into common array
+        const int distances_size = sizeof(A) / sizeof(int); // find size of N as bytes to store integer varies by system
 
-        int idx = distance(A, max_element(A, A + N));
+        for(int i = 0; i < 3; i++)
+        {
+            cout << i << ":" << distances[i];
+        }
 
-        cout << idx << "\n";
-        if (A[idx] == 0)
+        int idx = distance(distances, max_element(distances, distances + distances_size)); // finds index of your minimum distance in array
+
+        cout << idx << "\n"; // Print chosen index
+
+        if (A[idx] == 0) 
         {
             move(100, -100);
         }        
         else if (idx == 0 || out.s_left_distance != 0)
         {
+           cout << out.s_left_distance << "\n"; // Print chosen index value
            move(-20, 100);            
         }
         else if (idx == 1 || out.s_right_distance != 0)
         {
+            cout << out.s_right_distance << "\n"; // Print chosen index value
             move(100, -20);
         }
         else if(out.s_middle_distance != 0)
         {
+            cout << out.s_middle_distance << "\n"; // Print chosen index value
             move(100, 100);
         }
 
