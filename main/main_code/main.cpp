@@ -249,8 +249,8 @@ void follow()
         const int distances_size = sizeof(distances) / sizeof(int); // find size of N as bytes to store integer varies by system
         int idx = distance(distances, max_element(distances, distances + distances_size));
         float left = distances[0];
-        float straight = distances[0];
-        float right = distances[0];
+        float straight = distances[1];
+        float right = distances[2];
 
         float left_motor_speed = 0;
         float right_motor_speed = 0;
