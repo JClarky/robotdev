@@ -15,39 +15,7 @@ C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\mai
               _Tp=int
           ]
 C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(162,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(202,36): warning C4804: '<': unsafe use of type 'bool' in operation
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(202,35): warning C4804: '<': unsafe use of type 'bool' in operation
 C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(248,43): error C2065: 'A': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(282,17): error C2065: 'distance_angle': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(284,17): error C2065: 'x': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(284,86): error C2065: 'distance_angle': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(286,17): error C2065: 'y': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(286,27): error C2065: 'x': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(288,17): error C2065: 'theta2': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(288,43): error C2065: 'distance_angle': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(288,63): error C2065: 'x': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(290,17): error C2065: 'z': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(290,49): error C2065: 'y': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(290,72): error C2065: 'y': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(290,80): error C2065: 'theta2': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(292,17): error C2065: 'theta': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(292,35): error C2065: 'z': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(292,66): error C2065: 'y': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(292,91): error C2065: 'z': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(294,57): error C2065: 'theta': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(300,17): error C2065: 'distance_angle': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(302,17): error C2065: 'x': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(302,87): error C2065: 'distance_angle': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(304,17): error C2065: 'y': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(304,27): error C2065: 'x': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(306,17): error C2065: 'theta2': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(306,43): error C2065: 'distance_angle': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(306,63): error C2065: 'x': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(308,17): error C2065: 'z': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(308,49): error C2065: 'y': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(308,72): error C2065: 'y': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(308,80): error C2065: 'theta2': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(310,17): error C2065: 'theta': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(310,35): error C2065: 'z': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(310,66): error C2065: 'y': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(310,91): error C2065: 'z': undeclared identifier
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(311,58): error C2065: 'theta': undeclared identifier
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(286,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(304,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
