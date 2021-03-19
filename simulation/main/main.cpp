@@ -199,6 +199,7 @@ void mode_maze()
 
 bool valid(float distance)
 {
+    cout << distance;
     if(0 < distance < max_distance)
     {
         return(true);
