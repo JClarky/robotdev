@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <chrono>
 #include <thread>
+#include <math.h>  
 
 // Header files
 #include "main.h"
@@ -45,6 +46,10 @@ int img_height = 480;
 
 // Mode
 bool maze;
+
+float max_distance = 500; // Max distance to follow
+float left_angle = -30;
+float right_angle = 30;
 
 // Get center of blob
 float cx(Mat frame)
@@ -192,6 +197,41 @@ void mode_maze()
     return;
 }
 
+bool valid(float distance)
+{
+    if(0 < distance < max_distance)
+    {
+        return(true);
+    }
+    else
+    {
+        return(false);
+    }
+}
+
+float angle(int idx)
+{
+    if(idx == 0)
+    {
+        return(left_angle);
+    }
+    if(idx == 1)
+    {
+        return(right_angle);
+    }
+    else
+    {
+        return(0);
+    }
+}
+
+float map(min_1, max_1, min_2, max_2, x)
+{ 
+    // min_1 and max_1 is motor scale
+    // min_2 and max_2 is theta scale
+    return( (min_1-max_1) * ( (x-min_2) / (max_2-min_2) ) + max_1 );
+}
+
 void follow()
 {
     while (true)
@@ -206,35 +246,96 @@ void follow()
 
         float distances[3] = { out.s_left_distance , out.s_middle_distance , out.s_right_distance }; // store distance values into common array
         const int distances_size = sizeof(A) / sizeof(int); // find size of N as bytes to store integer varies by system
+        int idx = distance(distances, max_element(distances, distances + distances_size));
+        float left = distances[0];
+        float straight = distances[0];
+        float right = distances[0];
 
+        float left_motor_speed = 0;
+        float right_motor_speed = 0;
+
+        /*
         for(int i = 0; i < 3; i++)
         {
             cout << i << ":" << distances[i];
-        }
+        }*/
 
-        int idx = distance(distances, max_element(distances, distances + distances_size)); // finds index of your minimum distance in array
+        /* Logic following mode;
+            - If we have 3 valid distances find the smallest and get its angle
+            - If we have 2 distances (centre and side) find the angle of the enemy
+            - If we have 1 distance use its angle
+            - If we have no distances just spin around
+        */
 
-        cout << idx << "\n"; // Print chosen index
-
-        if (A[idx] == 0) 
+        // 3 valid distances
+        if(true == valid(left) == valid(straight) == valid(right))
         {
-            move(100, -100);
+            int idx = distance(distances, min_element(distances, distances + distances_size)); // finds index of minimum distance in array
+            float theta = angle(idx);            
         }        
-        else if (idx == 0 || out.s_left_distance != 0)
+        // If 2 distances (centre and side)
+        else if(valid(straight)) // If centre is valid
         {
-           cout << out.s_left_distance << "\n"; // Print chosen index value
-           move(-20, 100);            
+            if(valid(left)) // If left valid 
+            {
+                // convert angle to positive
+                distance_angle = left_angle * -1;
+                // x is distance between straight and left
+                x = sqrt( pow(straight, 2) + pow(left, 2) -2 * straight * left * cos(distance_angle));
+                // y is straight to centre of x
+                y = 0.5 * x;
+                // theta2 is angle between y and straight
+                theta2 = asin( (left * sin(distance_angle)) / (x) );
+                // z from centre of x to theta angle
+                z = sqrt( pow(straight, 2) + pow(y, 2) -2 * straight * y * cos(theta2));
+                // angle from centre
+                theta = acos( (pow(z, 2) + pow(straight, 2) - pow(y, 2)) / (2 * straight * z) );
+                right_motor_speed = 100;
+                left_motor_speed = map(-50, 100, 0, 50, theta);
+                
+            }
+            else if(valid(right)) // If right valid 
+            {
+                // convert angle to positive
+                distance_angle = right_angle;
+                // x is distance between straight and right
+                x = sqrt( pow(straight, 2) + pow(right, 2) -2 * straight * left * cos(distance_angle));
+                // y is straight to centre of x
+                y = 0.5 * x;
+                // theta2 is angle between y and straight
+                theta2 = asin( (left * sin(distance_angle)) / (x) );
+                // z from centre of x to theta angle
+                z = sqrt( pow(straight, 2) + pow(y, 2) -2 * straight * y * cos(theta2));
+                // angle from centre
+                theta = acos( (pow(z, 2) + pow(straight, 2) - pow(y, 2)) / (2 * straight * z) );
+                right_motor_speed = map(-50, 100, 0, 50, theta);
+                left_motor_speed = 100;
+            }
         }
-        else if (idx == 1 || out.s_right_distance != 0)
+        // If 1 distance is valid (bias left side)
+        else
         {
-            cout << out.s_right_distance << "\n"; // Print chosen index value
-            move(100, -20);
-        }
-        else if(out.s_middle_distance != 0)
-        {
-            cout << out.s_middle_distance << "\n"; // Print chosen index value
-            move(100, 100);
-        }
+            if (distances[idx] == 0) 
+            {
+                move(100, -100);
+            }        
+            else if (idx == 0 || out.s_left_distance != 0)
+            {
+                cout << out.s_left_distance << "\n"; // Print chosen index value
+                move(-20, 100);            
+            }
+            else if (idx == 1 || out.s_right_distance != 0)
+            {
+                cout << out.s_right_distance << "\n"; // Print chosen index value
+                move(100, -20);
+            }
+            else if(out.s_middle_distance != 0)
+            {
+                cout << out.s_middle_distance << "\n"; // Print chosen index value
+                move(100, 100);
+            }
+        }  
+        move(left_motor_speed, right_motor_speed);      
 
     }
     
