@@ -225,7 +225,7 @@ float angle(int idx)
     }
 }
 
-float map(min_1, max_1, min_2, max_2, x)
+float map(float min_1, float max_1, float min_2, float max_2, float x)
 { 
     // min_1 and max_1 is motor scale
     // min_2 and max_2 is theta scale
@@ -279,17 +279,17 @@ void follow()
             if(valid(left)) // If left valid 
             {
                 // convert angle to positive
-                distance_angle = left_angle * -1;
+                float distance_angle = left_angle * -1;
                 // x is distance between straight and left
-                x = sqrt( pow(straight, 2) + pow(left, 2) -2 * straight * left * cos(distance_angle));
+                float x = sqrt( pow(straight, 2) + pow(left, 2) -2 * straight * left * cos(distance_angle));
                 // y is straight to centre of x
-                y = 0.5 * x;
+                float y = 0.5 * x;
                 // theta2 is angle between y and straight
-                theta2 = asin( (left * sin(distance_angle)) / (x) );
+                float theta2 = asin( (left * sin(distance_angle)) / (x) );
                 // z from centre of x to theta angle
-                z = sqrt( pow(straight, 2) + pow(y, 2) -2 * straight * y * cos(theta2));
+                float z = sqrt( pow(straight, 2) + pow(y, 2) -2 * straight * y * cos(theta2));
                 // angle from centre
-                theta = acos( (pow(z, 2) + pow(straight, 2) - pow(y, 2)) / (2 * straight * z) );
+                float theta = acos( (pow(z, 2) + pow(straight, 2) - pow(y, 2)) / (2 * straight * z) );
                 right_motor_speed = 100;
                 left_motor_speed = map(-50, 100, 0, 50, theta);
                 
@@ -297,17 +297,17 @@ void follow()
             else if(valid(right)) // If right valid 
             {
                 // convert angle to positive
-                distance_angle = right_angle;
+                float distance_angle = right_angle;
                 // x is distance between straight and right
-                x = sqrt( pow(straight, 2) + pow(right, 2) -2 * straight * left * cos(distance_angle));
+                float x = sqrt( pow(straight, 2) + pow(right, 2) -2 * straight * left * cos(distance_angle));
                 // y is straight to centre of x
-                y = 0.5 * x;
+                float y = 0.5 * x;
                 // theta2 is angle between y and straight
-                theta2 = asin( (left * sin(distance_angle)) / (x) );
+                float theta2 = asin( (left * sin(distance_angle)) / (x) );
                 // z from centre of x to theta angle
-                z = sqrt( pow(straight, 2) + pow(y, 2) -2 * straight * y * cos(theta2));
+                float z = sqrt( pow(straight, 2) + pow(y, 2) -2 * straight * y * cos(theta2));
                 // angle from centre
-                theta = acos( (pow(z, 2) + pow(straight, 2) - pow(y, 2)) / (2 * straight * z) );
+                float theta = acos( (pow(z, 2) + pow(straight, 2) - pow(y, 2)) / (2 * straight * z) );
                 right_motor_speed = map(-50, 100, 0, 50, theta);
                 left_motor_speed = 100;
             }
