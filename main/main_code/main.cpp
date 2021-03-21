@@ -298,7 +298,7 @@ void follow()
             move(left_motor_speed, right_motor_speed);
         }        
         // If 2 distances (centre and side)
-        else if(valid(straight)) // If centre is valid
+        else if(valid(straight) == true && valid(left) == true || valid(straight) == true && valid(right) == true) // If centre is valid
         {
             cout << "\n3 2 dist";
             if(valid(left)) // If left valid 
