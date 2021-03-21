@@ -295,6 +295,7 @@ void follow()
             }
             
             cout << "\ntheta" << theta;
+            move(left_motor_speed, right_motor_speed);
         }        
         // If 2 distances (centre and side)
         else if(valid(straight)) // If centre is valid
@@ -335,6 +336,7 @@ void follow()
                 right_motor_speed = map(-50, 100, 0, 50, theta);
                 left_motor_speed = 100;
             }
+            move(left_motor_speed, right_motor_speed);
         }
         // If 1 distance is valid (bias left side)
         else
@@ -363,8 +365,7 @@ void follow()
                 move(100, 100);
                 cout << "\n100,100";
             }
-        }  
-        move(left_motor_speed, right_motor_speed);      
+        }                
 
     }
     
