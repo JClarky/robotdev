@@ -16,6 +16,6 @@ C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\mai
           ]
 C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(162,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(203,37): warning C4804: '<': unsafe use of type 'bool' in operation
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(309,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(327,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(310,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(328,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   VSRobotDev.vcxproj -> C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\..\..\simulation\builds\current\current.exe
