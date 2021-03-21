@@ -199,9 +199,10 @@ void mode_maze()
 
 bool valid(float distance)
 {
-    cout << distance;
+    cout << "\n dist:" << distance;
     if(0.1 < distance < max_distance)
     {
+        cout << "\n yes";
         return(true);
     }
     else
@@ -251,9 +252,9 @@ void follow()
         float left = distances[0];
         float straight = distances[1];
         float right = distances[2];
-        cout << "\nleft: " << left;
+        /*cout << "\nleft: " << left;
         cout << "\nstraight: " << straight;
-        cout << "\nright: " << right;
+        cout << "\nright: " << right;*/
 
         float left_motor_speed = 0;
         float right_motor_speed = 0;
