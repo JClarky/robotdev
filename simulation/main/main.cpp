@@ -241,7 +241,7 @@ void follow()
         using namespace chrono; // nanoseconds, system_clock, seconds
 
         sleep_for(nanoseconds(10)); // wait 10000 nano seconds otherwise we refresh faster than frame rate
-        sleep_until(system_clock::now() + nanoseconds(10000)); // change to 10000
+        sleep_until(system_clock::now() + nanoseconds(100000)); // change to 10000
 
         out.update(out); // Update the struct classs with current sensor data
 
@@ -272,8 +272,25 @@ void follow()
         if(true == valid(left) == valid(straight) == valid(right))
         {
             cout << "\n3 distances";
-            int idx = distance(distances, max_element(distances, distances + distances_size)); // finds index of minimum distance in array
-            float theta = angle(idx);            
+            int idx = distance(distances, min_element(distances, distances + distances_size)); // finds index of minimum distance in array
+            float theta = angle(idx); 
+            if(idx == 0)     
+            {
+                right_motor_speed = 100;
+                left_motor_speed = map(-50, 100, 0, 50, theta);
+            }
+            else if(idx == 1)
+            {
+                right_motor_speed = map(-50, 100, 0, 50, theta);
+                left_motor_speed = 100;
+            }
+            else
+            {
+                right_motor_speed = 100;
+                left_motor_speed = 100;
+            }
+            
+            cout << "\n" << theta;
         }        
         // If 2 distances (centre and side)
         else if(valid(straight)) // If centre is valid

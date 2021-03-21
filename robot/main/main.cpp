@@ -272,8 +272,25 @@ void follow()
         if(true == valid(left) == valid(straight) == valid(right))
         {
             cout << "\n3 distances";
-            int idx = distance(distances, max_element(distances, distances + distances_size)); // finds index of minimum distance in array
-            float theta = angle(idx);            
+            int idx = distance(distances, min_element(distances, distances + distances_size)); // finds index of minimum distance in array
+            float theta = angle(idx); 
+            if(idx == 0)     
+            {
+                right_motor_speed = 100;
+                left_motor_speed = map(-50, 100, 0, 50, theta);
+            }
+            else if(idx == 1)
+            {
+                right_motor_speed = map(-50, 100, 0, 50, theta);
+                left_motor_speed = 100;
+            }
+            else
+            {
+                right_motor_speed = 100;
+                left_motor_speed = 100;
+            }
+            
+            cout << "\n" << theta;
         }        
         // If 2 distances (centre and side)
         else if(valid(straight)) // If centre is valid
