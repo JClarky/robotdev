@@ -272,7 +272,7 @@ void follow()
         if(true == valid(left) == valid(straight) == valid(right))
         {
             cout << "\n3 distances";
-            int idx = distance(distances, min_element(distances, distances + distances_size)); // finds index of minimum distance in array
+            int idx = distance(distances, max_element(distances, distances + distances_size)); // finds index of minimum distance in array
             float theta = angle(idx);            
         }        
         // If 2 distances (centre and side)
