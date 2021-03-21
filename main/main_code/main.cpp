@@ -248,7 +248,7 @@ void follow()
 
         float distances[3] = { out.s_left_distance , out.s_middle_distance , out.s_right_distance }; // store distance values into common array
         const int distances_size = sizeof(distances) / sizeof(int); // find size of N as bytes to store integer varies by system
-        int idx = distance(distances, max_element(distances, distances + distances_size));
+        int idx = distance(distances, min_element(distances, distances + distances_size));
         float left = distances[0];
         float straight = distances[1];
         float right = distances[2];
@@ -342,22 +342,26 @@ void follow()
             cout << "\n1 distance";
             if (distances[idx] == 0) 
             {
+                cout << "\n100,-100";
                 move(100, -100);
             }        
             else if (idx == 0 || out.s_left_distance != 0)
             {
                 cout << out.s_left_distance << "\n"; // Print chosen index value
-                move(-20, 100);            
+                move(-20, 100);           
+                cout << "\n-20,100"; 
             }
             else if (idx == 1 || out.s_right_distance != 0)
             {
                 cout << out.s_right_distance << "\n"; // Print chosen index value
                 move(100, -20);
+                cout << "\n100,-20";
             }
             else if(out.s_middle_distance != 0)
             {
                 cout << out.s_middle_distance << "\n"; // Print chosen index value
                 move(100, 100);
+                cout << "\n100,100";
             }
         }  
         move(left_motor_speed, right_motor_speed);      
