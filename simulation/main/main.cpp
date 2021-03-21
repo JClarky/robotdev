@@ -251,6 +251,9 @@ void follow()
         float left = distances[0];
         float straight = distances[1];
         float right = distances[2];
+        cout << "\nleft: " << left;
+        cout << "\nstraight: " << straight;
+        cout << "\nright: " << right;
 
         float left_motor_speed = 0;
         float right_motor_speed = 0;
@@ -290,7 +293,7 @@ void follow()
                 left_motor_speed = 100;
             }
             
-            cout << "\n" << theta;
+            cout << "\ntheta" << theta;
         }        
         // If 2 distances (centre and side)
         else if(valid(straight)) // If centre is valid
