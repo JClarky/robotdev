@@ -273,7 +273,7 @@ void follow()
         */
 
         // 3 valid distances
-        if(true == valid(left) || true == valid(straight) || true == valid(right))
+        if(valid(left) == true && valid(straight) == true && valid(right) == true)
         {
             cout << "\n3 distances";
             int idx = distance(distances, min_element(distances, distances + distances_size)); // finds index of minimum distance in array
