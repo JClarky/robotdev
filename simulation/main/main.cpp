@@ -360,7 +360,7 @@ void follow()
                 move(100, 100);
                 cout << "\n100,100";
             }
-            else (distances[idx] == 0) 
+            else
             {
                 cout << "\n100,-100";
                 move(100, -100);
