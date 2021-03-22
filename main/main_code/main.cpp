@@ -342,13 +342,13 @@ void follow()
         else
         {
             cout << "\n1 distance";                 
-            if (idx == 0 || out.s_left_distance != 0)
+            if (idx == 0 && out.s_left_distance != 0)
             {
                 cout << out.s_left_distance << "\n"; // Print chosen index value
                 move(-20, 100);           
                 cout << "\n-20,100"; 
             }
-            else if (idx == 1 || out.s_right_distance != 0)
+            else if (idx == 1 && out.s_right_distance != 0)
             {
                 cout << out.s_right_distance << "\n"; // Print chosen index value
                 move(100, -20);
