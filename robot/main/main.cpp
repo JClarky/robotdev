@@ -418,6 +418,7 @@ void testing()
 
 int main()
 {     
+    initalise_gpio();
     start_motors();
     //maze = true;
     //mode_maze();   
