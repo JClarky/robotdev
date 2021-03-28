@@ -50,7 +50,7 @@ bool maze;
 float max_distance = 500; // Max distance to follow
 float left_angle = -30;
 float right_angle = 30;
-
+/*
 // Get center of blob
 float cx(Mat frame)
 {
@@ -196,7 +196,7 @@ void mode_maze()
     }
     return;
 }
-
+*/
 bool valid(float distance)
 {
     cout << "\n dist:" << distance;
