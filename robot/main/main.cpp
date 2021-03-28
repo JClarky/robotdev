@@ -422,8 +422,8 @@ int main()
     //maze = true;
     //mode_maze();   
     out.update(out);
-    follow();
-    //testing();    
+    //follow();
+    testing();    
 
     return 0;
 }
