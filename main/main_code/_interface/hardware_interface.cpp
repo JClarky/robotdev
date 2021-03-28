@@ -39,6 +39,8 @@ using namespace std;
 
 bool initalise_gpio()
 {
+	cout << "\ninitalising\n";
+	gpioInitialise();
 	if (gpioInitialise() > 0)
 	{
 		// init fail
