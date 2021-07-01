@@ -360,7 +360,7 @@ void follow()
                 move(100, 100);
                 cout << "\n100,100";
             }
-            else 
+            else
             {
                 cout << "\n100,-100";
                 move(100, -100);
@@ -418,11 +418,12 @@ void testing()
 
 int main()
 {     
+    // Arm motors & calibrate if required
     start_motors();
     //maze = true;
-    //mode_maze();   
-    out.update(out);
-    follow();
+    mode_maze();   
+    //out.update(out);
+    //follow();
     //testing();    
 
     return 0;

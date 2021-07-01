@@ -31,6 +31,27 @@ using namespace std;
 #define LEFT_MOTOR_PIN      12
 #define RIGHT_MOTOR_PIN     13
 
+// Left distance sensor
+#define LEFT_DISTANCE_PIN_ECHO      17
+#define LEFT_DISTANCE_PIN_TRIGGER    27
+
+// Middle left distance sensor
+#define MIDDLE_LEFT_DISTANCE_PIN_ECHO      18
+#define MIDDLE_LEFT_DISTANCE_PIN_TRIGGER    23
+
+// Middle distance sensor
+#define MIDDLE_DISTANCE_PIN_ECHO      24
+#define MIDDLE_DISTANCE_PIN_TRIGGER    25
+
+// Middle right distance sensor
+#define MIDDLE_RIGHT_DISTANCE_PIN_ECHO      11
+#define MIDDLE_RIGHT_DISTANCE_PIN_TRIGGER    8
+
+// Right distance sensor
+#define RIGHT_DISTANCE_PIN_ECHO      7
+#define RIGHT_DISTANCE_PIN_TRIGGER    1
+
+// ESC throttle values
 #define MAX_THROTTLE        1960  
 #define MIN_THROTTLE		1040
 #define CENTER_THROTTLE		1500
@@ -49,6 +70,8 @@ bool initalise_gpio()
 		// init success
 		return(true);
 	}
+
+	gpioSetMode(0, PI_OUTPUT); //PI_INPUT
 }
 
 
@@ -65,14 +88,13 @@ void arm()
 /*			Definitions			*/
 /*			        			*/
 
-/* Stop function; shuts off motors */
+/* Start function; initalises and arms */
 
 void start_motors()
 {
 	initalise_gpio();
 	arm();
 }
-
 
 /* Stop function; shuts off motors */
 
@@ -133,8 +155,13 @@ void Output::update(Output& out)
 	out.gamepad_right_x = 1;
 	out.gamepad_right_y = 1;
 
+	/* Read distance sensors */
+	
+
 	out.s_left_distance = 1;
+	out.s_middle_left_distance = 1;
 	out.s_middle_distance = 1;
+	out.s_middle_right_distance = 1;
 	out.s_right_distance = 1;
 
 	out.s_left_line = 1;
