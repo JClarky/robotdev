@@ -25,20 +25,21 @@ int main()
 
     bool deploying = false;
 
-    // Copy
-    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\main.cpp C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\robot\\main");
-    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\main.h C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\robot\\main");
-    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\_interface C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\robot\\main");
-    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\_modes C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\robot\\main");
+    // Copy (xcopy and del) (cp and rm)
+    // ./
+    system("cp -R ./main/main_code/main.cpp ./robot/main");
+    system("cp -R ./main/main_code/main.h ./robot/main");
+    system("cp -R ./main/main_code/_interface/* ./robot/main");
+    system("cp -R ./main/main_code/_modes/* ./robot/main");
 
-    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\main.cpp C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\simulation\\main");
-    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\main.h C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\simulation\\main");
-    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\_interface C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\simulation\\main");
-    system("xcopy C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\main\\main_code\\_modes C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\simulation\\main");
+    system("cp -R ./main/main_code/main.cpp ./simulation/main");
+    system("cp -R ./main/main_code/main.h ./simulation/main");
+    system("cp -R ./main/main_code/_interface/* ./simulation/main");
+    system("cp -R ./main/main_code/_modes/* ./simulation/main");
 
     // Del
-    system("del C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\robot\\main\\simulation_interface.cpp");
-    system("del C:\\Users\\jayde\\OneDrive\\Documents\\Code\\Robot_Development\\robotdev\\simulation\\main\\hardware_interface.cpp");
+    system("rm ./robot/main/simulation_interface.cpp");
+    system("rm ./simulation/main/hardware_interface.cpp");
 
     while(!deploying)
     {

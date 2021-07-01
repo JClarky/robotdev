@@ -60,6 +60,7 @@ using namespace std;
 
 bool initalise_gpio()
 {
+	gpioInitialise();
 	if (gpioInitialise() > 0)
 	{
 		// init fail

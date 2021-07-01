@@ -11,6 +11,8 @@
  * @date 2021-02-25 * 
  * @copyright Copyright (c) 2021
  * 
+ * RUN BUILD USING "sudo ./robot/builds/current"
+ *
  */
 
 // General libraries
@@ -19,6 +21,7 @@
 #include <chrono>
 #include <thread>
 #include <math.h>  
+#include <unistd.h>
 
 // Header files
 #include "main.h"
@@ -50,7 +53,7 @@ bool maze;
 float max_distance = 500; // Max distance to follow
 float left_angle = -30;
 float right_angle = 30;
-
+/*
 // Get center of blob
 float cx(Mat frame)
 {
@@ -196,7 +199,7 @@ void mode_maze()
     }
     return;
 }
-
+*/
 bool valid(float distance)
 {
     cout << "\n dist:" << distance;
@@ -379,6 +382,23 @@ void sumo_mode()
     }
 }
 
+bool flip()
+{
+    move(100,100);
+    sleep(1);
+    move(-100,-100);
+    sleep(1);
+    move(0,0);
+    sleep(1);
+    move(-100,-100);
+    sleep(1);
+    move(100,100);
+    sleep(1);
+    move(0,0);
+    return(true);
+    
+}
+
 void testing()
 {
     try
@@ -387,7 +407,7 @@ void testing()
 		while (true)
 		{
 			string input;
-			cout << "d increase, a decrease, s idle ";
+			cout << "d increase, a decrease, s idle, f to flip ";
 			cin >> input;
 			if (input == "d")
 			{
@@ -401,6 +421,11 @@ void testing()
 			{
 				speed = 0;
 			}
+            else if (input == "f")
+            {
+                flip();
+                speed = 0;
+            }
 			else
 			{
 				speed = 0;
@@ -421,10 +446,17 @@ int main()
     // Arm motors & calibrate if required
     start_motors();
     //maze = true;
+<<<<<<< HEAD
     mode_maze();   
     //out.update(out);
     //follow();
     //testing();    
+=======
+    //mode_maze();   
+    out.update(out);
+    //follow();
+    testing();    
+>>>>>>> 63ad0521143e733763b15558170ce170c7bc7443
 
     return 0;
 }
