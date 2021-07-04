@@ -25,15 +25,11 @@
 #include <chrono>
 #include <thread>
 #include <math.h>  
-<<<<<<< HEAD
 #ifdef _WIN32
 #include <Windows.h>
 #else
 #include <unistd.h>
 #endif
-=======
-#include <unistd.h>
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
 
 // Header files
 #include "main.h"
@@ -65,7 +61,6 @@ bool maze;
 float max_distance = 500; // Max distance to follow
 float left_angle = -30;
 float right_angle = 30;
-<<<<<<< HEAD
 
 //
 // Maze mode
@@ -74,13 +69,6 @@ float right_angle = 30;
 // Get center of blob
 float cx(Mat frame)
 {
-=======
-/*
-// Get center of blob
-float cx(Mat frame)
-{
-    return(50);
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
     largest_contour_index = 0;
     largest_area = 0;  
 
@@ -166,42 +154,29 @@ void mode_maze()
         }
         
         // Split image into three sections
-<<<<<<< HEAD
         Mat f_left = frame(Rect(0, img_height/2, img_width/3, img_height/2));
         Mat f_mid = frame(Rect(img_width / 3, img_height/2, img_width / 3, img_height/2));
         Mat f_right = frame(Rect(2*(img_width/3), img_height/2, img_width / 3, img_height/2));
-=======
-        Mat f_left = frame(Rect(0, 0, img_width/3, img_height));
-        Mat f_mid = frame(Rect(img_width / 3, 0, img_width / 3, img_height));
-        Mat f_right = frame(Rect(2*(img_width/3), 0, img_width / 3, img_height));
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
 
         // Get cx of each split frame
         float cx_l = cx(f_left);
         float cx_m = cx(f_mid);
         float cx_r = cx(f_right);
 
-<<<<<<< HEAD
         cout << "cx_l " << cx_l << "\n";
         cout << "cx_m " << cx_m << "\n";
         cout << "cx_r " << cx_r << "\n";
 
-=======
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
         // If there is a contour on the left
         
         if (cx_l)
         {
-<<<<<<< HEAD
             cout << "contour left\n";
-=======
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
             move(-10,100);
         }
         // If there is a contour in the middle
         else if (cx_m)
         {
-<<<<<<< HEAD
             cout << "contour middle\n";
             // Get center pixel value of image
             float c = img_width / 2;
@@ -211,25 +186,13 @@ void mode_maze()
                 cx_m = cx_m - c;
                 float r = (cx_m / c) * 100;
                 cout << "contour mid right\n";
-=======
-            // Get center pixel value of image
-            float c = img_width / 2;
-            // If the the contour is to the right of center
-            if (cx_m > c)
-            {
-                cx_m = cx_m - c;
-                float r = (cx_m / c) * 100;
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
                 move(100, r);
             }
             // If the the contour is to the left of center
             else
             {
                 float l = (cx_m / c) * 100;
-<<<<<<< HEAD
                 cout << "contour mid left\n";
-=======
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
                 move(l, 100);
             }
 
@@ -237,16 +200,12 @@ void mode_maze()
         // If there is a contour on the right
         else if (cx_r)
         {
-<<<<<<< HEAD
             cout << "contour right\n";
-=======
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
             move(100, -10);
         }
         // No contours
         else
         {
-<<<<<<< HEAD
             cout << "contour none\n";
             move(100, -20);
         }
@@ -394,17 +353,11 @@ void mode_maze()
 
         // temppppppppppppppppppppppppppppppppppppppppppppppp
 
-=======
-            move(100, -20);
-        }
-
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
         // Display frames
         imshow("l", f_left);
         imshow("m", f_mid);
         imshow("r", f_right);
 
-<<<<<<< HEAD
         imshow("lc", contoured_f_left);
         imshow("mc", contoured_f_mid);
         imshow("rc", contoured_f_right);
@@ -415,18 +368,11 @@ void mode_maze()
         sleep_for(nanoseconds(10)); // wait 10000 nano seconds otherwise we refresh faster than frame rate
         sleep_until(system_clock::now() + nanoseconds(10000)); // change to 10000
 
-=======
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
         if (waitKey(5) >= 0)
             break;
     }
     return;
 }
-<<<<<<< HEAD
-
-=======
-*/
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
 bool valid(float distance)
 {
     cout << "\n dist:" << distance;
@@ -601,13 +547,10 @@ void follow()
     
 }
 
-<<<<<<< HEAD
 //
 // Sumo mode
 //
 
-=======
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
 void sumo_mode()
 {
     if (true)
@@ -616,7 +559,6 @@ void sumo_mode()
     }
 }
 
-<<<<<<< HEAD
 //
 // Flip command
 //
@@ -624,10 +566,6 @@ void sumo_mode()
 bool flip()
 {
     /*
-=======
-bool flip()
-{
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
     move(100,100);
     sleep(1);
     move(-100,-100);
@@ -640,7 +578,6 @@ bool flip()
     sleep(1);
     move(0,0);
     return(true);
-<<<<<<< HEAD
     */
     return(true);
 }
@@ -649,11 +586,6 @@ bool flip()
 // Testing mode
 //
 
-=======
-    
-}
-
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
 void testing()
 {
     try
@@ -696,22 +628,15 @@ void testing()
 	}
 }
 
-<<<<<<< HEAD
 //
 // Main loop 
 //
 
-=======
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
 int main()
 {     
     // Arm motors & calibrate if required
     start_motors();
-<<<<<<< HEAD
     maze = true;
-=======
-    //maze = true;
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
     mode_maze();   
     //out.update(out);
     //follow();
