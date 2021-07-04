@@ -57,6 +57,10 @@ using namespace std;
 #define CENTER_THROTTLE		1500
 #define ARM_THROTTLE		1400
 
+void sonarTrigger(void);
+
+void sonarEcho(int gpio, int level, uint32_t tick);
+
 
 bool initalise_gpio()
 {
@@ -71,8 +75,44 @@ bool initalise_gpio()
 		// init success
 		return(true);
 	}
+	
+	// Left distance sensor
+	gpioSetMode(LEFT_DISTANCE_PIN_ECHO, PI_OUTPUT); 
+	gpioSetMode(LEFT_DISTANCE_PIN_TRIGGER, PI_INPUT);
+	gpioWrite(LEFT_DISTANCE_PIN_TRIGGER, PI_OFF);
 
-	gpioSetMode(0, PI_OUTPUT); //PI_INPUT
+	// Middle left distance sensor
+	gpioSetMode(MIDDLE_LEFT_DISTANCE_PIN_ECHO, PI_OUTPUT); 
+	gpioSetMode(MIDDLE_LEFT_DISTANCE_PIN_TRIGGER, PI_INPUT);
+	gpioWrite(MIDDLE_LEFT_DISTANCE_PIN_TRIGGER, PI_OFF);
+
+	// Middle distance sensor
+	gpioSetMode(MIDDLE_DISTANCE_PIN_ECHO, PI_OUTPUT); 
+	gpioSetMode(MIDDLE_DISTANCE_PIN_TRIGGER, PI_INPUT);
+	gpioWrite(MIDDLE_DISTANCE_PIN_TRIGGER, PI_OFF);
+
+	// Middle right distance sensor
+	gpioSetMode(MIDDLE_RIGHT_DISTANCE_PIN_ECHO, PI_OUTPUT); 
+	gpioSetMode(MIDDLE_RIGHT_DISTANCE_PIN_TRIGGER, PI_INPUT);
+	gpioWrite(MIDDLE_RIGHT_DISTANCE_PIN_TRIGGER, PI_OFF);
+
+	// Right distance sensor
+	gpioSetMode(RIGHT_DISTANCE_PIN_ECHO, PI_OUTPUT); 
+	gpioSetMode(RIGHT_DISTANCE_PIN_TRIGGER, PI_INPUT);
+	gpioWrite(RIGHT_DISTANCE_PIN_TRIGGER, PI_OFF);
+
+
+	/* update sonars 20 times a second, timer #0 */
+
+    gpioSetTimerFunc(0, 50, sonarTrigger); /* every 50ms */
+
+    /* monitor sonar echos */
+
+    gpioSetAlertFunc(LEFT_DISTANCE_PIN_ECHO, sonarEcho);
+	gpioSetAlertFunc(MIDDLE_LEFT_DISTANCE_PIN_ECHO, sonarEcho);
+	gpioSetAlertFunc(MIDDLE_DISTANCE_PIN_ECHO, sonarEcho);
+	gpioSetAlertFunc(MIDDLE_RIGHT_DISTANCE_PIN_ECHO, sonarEcho);
+	gpioSetAlertFunc(RIGHT_DISTANCE_PIN_ECHO, sonarEcho);	
 }
 
 
@@ -89,7 +129,78 @@ void arm()
 /*			Definitions			*/
 /*			        			*/
 
+void sonarTrigger(void)
+{
+    /* trigger a sonar reading */
+
+    gpioWrite(LEFT_DISTANCE_PIN_TRIGGER, PI_ON);
+    gpioWrite(MIDDLE_LEFT_DISTANCE_PIN_TRIGGER, PI_ON);
+	gpioWrite(MIDDLE_DISTANCE_PIN_TRIGGER, PI_ON);
+    gpioWrite(MIDDLE_RIGHT_DISTANCE_PIN_TRIGGER, PI_ON);
+	gpioWrite(RIGHT_DISTANCE_PIN_TRIGGER, PI_ON);
+
+   	gpioDelay(10); /* 10us trigger pulse */
+
+	gpioWrite(LEFT_DISTANCE_PIN_TRIGGER, PI_OFF);
+    gpioWrite(MIDDLE_LEFT_DISTANCE_PIN_TRIGGER, PI_OFF);
+	gpioWrite(MIDDLE_DISTANCE_PIN_TRIGGER, PI_OFF);
+    gpioWrite(MIDDLE_RIGHT_DISTANCE_PIN_TRIGGER, PI_OFF);
+	gpioWrite(RIGHT_DISTANCE_PIN_TRIGGER, PI_OFF);
+}
+
+void sonarEcho(int gpio, int level, uint32_t tick)
+{
+   static uint32_t startTick, firstTick=0;
+
+   int diffTick;
+
+   if (!firstTick) firstTick = tick;
+
+   if (level == PI_ON)
+   {
+      startTick = tick;
+   }
+   else if (level == PI_OFF)
+   {
+      diffTick = tick - startTick;
+
+      printf("%u %u\n", tick-firstTick, diffTick);
+   }
+}
+
 /* Start function; initalises and arms */
+
+void sonarTrigger(void)
+{
+   /* trigger a sonar reading */
+
+   gpioWrite(SONAR_TRIGGER, PI_ON);
+
+   gpioDelay(10); /* 10us trigger pulse */
+
+   gpioWrite(SONAR_TRIGGER, PI_OFF);
+}
+
+void sonarEcho(int gpio, int level, uint32_t tick)
+{
+   static uint32_t startTick, firstTick=0;
+
+   int diffTick;
+
+   if (!firstTick) firstTick = tick;
+
+   if (level == PI_ON)
+   {
+      startTick = tick;
+   }
+   else if (level == PI_OFF)
+   {
+      diffTick = tick - startTick;
+
+      printf("%u %u\n", tick-firstTick, diffTick);
+   }
+}
+
 
 void start_motors()
 {
@@ -147,6 +258,19 @@ void move(float left, float right) // value from -100 to 100
 }
 
 /* Output class update function; sensor update */
+
+float read_sonar(int trig, int echo)
+{
+	gpioWrite(trig, 0);
+	//pause
+	gpioWrite(trig, 1);
+	//pause
+	gpioWrite(trig, 0);
+	//pause
+	int gpioRead();
+
+	gpioTrigger(trig, 50, 1);
+}
 
 void Output::update(Output& out)
 {

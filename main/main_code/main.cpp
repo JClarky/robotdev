@@ -636,11 +636,11 @@ int main()
 {     
     // Arm motors & calibrate if required
     start_motors();
-    maze = true;
-    mode_maze();   
+    //maze = true;
+    //mode_maze();   
     //out.update(out);
     //follow();
-    //testing();    
+    testing();    
 
     return 0;
 }
