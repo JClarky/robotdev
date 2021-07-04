@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\DEV\vcpkg\installed\x86-windows\include\json\</FILEPATH>
+      <FILENAME>value.h</FILENAME>
+      <LINE>589</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>The enum type 'Json::CommentPlacement' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).</DESCRIPTION>
+    <FUNCTION>Json::Value::setComment</FUNCTION>
+    <DECORATED>?setComment@Value@Json@@QAEXPBDW4CommentPlacement@2@@Z</DECORATED>
+    <FUNCLINE>589</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\DEV\vcpkg\installed\x86-windows\include\json\</FILEPATH>
+      <FILENAME>value.h</FILENAME>
+      <LINE>618</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>The enum type 'Json::ValueType' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).</DESCRIPTION>
+    <FUNCTION>Json::Value::setType</FUNCTION>
+    <DECORATED>?setType@Value@Json@@AAEXW4ValueType@2@@Z</DECORATED>
+    <FUNCLINE>618</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>
