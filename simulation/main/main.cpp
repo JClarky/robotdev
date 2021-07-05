@@ -606,7 +606,7 @@ void testing()
 
 			string input;
 			cout << "d increase, a decrease, s idle, f to flip ";
-			cin >> input;
+			//cin >> input;
 			if (input == "d")
 			{
 				speed = speed + 15;
@@ -628,7 +628,7 @@ void testing()
 			{
 				speed = 0;
 				stop_motors();
-				throw("Bad input");
+				//throw("Bad input");
 			}
             move(speed, speed);
 		}
