@@ -162,8 +162,8 @@ void mode_maze()
     // Main loops for maze mode
     while(maze)
     {         
-        //cap.read(frame);
-        frame = imread("C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/simulation/cam.jpg");
+        cap.read(frame);
+        //frame = imread("C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/simulation/cam.jpg");
 
         if (frame.empty())
         {
