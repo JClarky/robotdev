@@ -20,6 +20,7 @@
  */
 
 // General libraries
+#include <pigpio.h>
 #include <iostream>
 #include <stdio.h>
 #include <chrono>
@@ -61,6 +62,33 @@ bool maze;
 float max_distance = 500; // Max distance to follow
 float left_angle = -30;
 float right_angle = 30;
+
+
+// Left distance sensor
+#define LEFT_DISTANCE_PIN_ECHO      17
+#define LEFT_DISTANCE_PIN_TRIGGER    27
+float left_distance = 0;
+
+// Middle left distance sensor
+#define MIDDLE_LEFT_DISTANCE_PIN_ECHO      18
+#define MIDDLE_LEFT_DISTANCE_PIN_TRIGGER    23
+float middle_left_distance = 0;
+
+// Middle distance sensor
+#define MIDDLE_DISTANCE_PIN_ECHO      24
+#define MIDDLE_DISTANCE_PIN_TRIGGER    25
+float middle_distance = 0;
+
+// Middle right distance sensor
+#define MIDDLE_RIGHT_DISTANCE_PIN_ECHO      11
+#define MIDDLE_RIGHT_DISTANCE_PIN_TRIGGER    8
+float middle_right_distance = 0;
+
+// Right distance sensor
+#define RIGHT_DISTANCE_PIN_ECHO      7
+#define RIGHT_DISTANCE_PIN_TRIGGER    1
+float right_distance = 0;
+
 
 //
 // Maze mode
@@ -647,6 +675,17 @@ int main()
 {     
     // Arm motors & calibrate if required
     start_motors();
+    /* update sonars 20 times a second, timer #0 */
+
+    gpioSetTimerFunc(0, 50, sonarTrigger); /* every 50ms */
+
+    /* monitor sonar echos */
+
+    gpioSetAlertFunc(LEFT_DISTANCE_PIN_ECHO, sonarEcho);
+	gpioSetAlertFunc(MIDDLE_LEFT_DISTANCE_PIN_ECHO, sonarEcho);
+	gpioSetAlertFunc(MIDDLE_DISTANCE_PIN_ECHO, sonarEcho);
+	gpioSetAlertFunc(MIDDLE_RIGHT_DISTANCE_PIN_ECHO, sonarEcho);
+	gpioSetAlertFunc(RIGHT_DISTANCE_PIN_ECHO, sonarEcho);	 
     //maze = true;
     //mode_maze();   
     out.update(out);
