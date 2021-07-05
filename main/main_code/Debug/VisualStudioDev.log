@@ -1,0 +1,6 @@
+﻿  hardware_interface.cpp
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\hardware_interface.cpp(1,10): fatal error C1083: Cannot open include file: 'pigpio.h': No such file or directory
+  main.cpp
+  simulation_interface.cpp
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\simulation_interface.cpp(4,10): fatal error C1083: Cannot open include file: 'jsoncpp/json/json.h': No such file or directory
+  Generating Code...

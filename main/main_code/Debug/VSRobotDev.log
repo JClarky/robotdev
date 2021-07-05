@@ -1,0 +1,76 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(453,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(467,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (VisualStudioDev.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  main.cpp
+<<<<<<< HEAD
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(93,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(102,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(112,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(115,31): warning C4244: 'argument': conversion from 'float' to '_Tp', possible loss of data
+=======
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(83,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(92,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(102,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(105,31): warning C4244: 'argument': conversion from 'float' to '_Tp', possible loss of data
+>>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
+          with
+          [
+              _Tp=int
+          ]
+<<<<<<< HEAD
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(115,45): warning C4244: 'argument': conversion from 'float' to '_Tp', possible loss of data
+=======
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(105,45): warning C4244: 'argument': conversion from 'float' to '_Tp', possible loss of data
+>>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
+          with
+          [
+              _Tp=int
+          ]
+<<<<<<< HEAD
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(178,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(236,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(245,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(255,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(258,42): warning C4244: 'argument': conversion from 'float' to '_Tp', possible loss of data
+          with
+          [
+              _Tp=int
+          ]
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(258,56): warning C4244: 'argument': conversion from 'float' to '_Tp', possible loss of data
+          with
+          [
+              _Tp=int
+          ]
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(279,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(288,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(298,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(301,41): warning C4244: 'argument': conversion from 'float' to '_Tp', possible loss of data
+          with
+          [
+              _Tp=int
+          ]
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(301,55): warning C4244: 'argument': conversion from 'float' to '_Tp', possible loss of data
+          with
+          [
+              _Tp=int
+          ]
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(323,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(332,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(342,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(345,43): warning C4244: 'argument': conversion from 'float' to '_Tp', possible loss of data
+          with
+          [
+              _Tp=int
+          ]
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(345,57): warning C4244: 'argument': conversion from 'float' to '_Tp', possible loss of data
+          with
+          [
+              _Tp=int
+          ]
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(484,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(502,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+=======
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(162,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(311,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\simulation\main\main.cpp(329,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+>>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
+  VSRobotDev.vcxproj -> C:\Users\jayde\OneDrive\Documents\Code\Robot_Development\robotdev\main\main_code\..\..\simulation\builds\current\current.exe
