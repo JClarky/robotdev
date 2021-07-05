@@ -154,22 +154,32 @@ void sonarTrigger(void)
     gpioWrite(LEFT_DISTANCE_PIN_TRIGGER, PI_ON);
 	gpioDelay(10); /* 10us trigger pulse */
 	gpioWrite(LEFT_DISTANCE_PIN_TRIGGER, PI_OFF);
+	
+	gpioDelay(100);
 
     gpioWrite(MIDDLE_LEFT_DISTANCE_PIN_TRIGGER, PI_ON);
 	gpioDelay(10); /* 10us trigger pulse */
 	gpioWrite(MIDDLE_LEFT_DISTANCE_PIN_TRIGGER, PI_OFF);
 
+	gpioDelay(100);
+
 	gpioWrite(MIDDLE_DISTANCE_PIN_TRIGGER, PI_ON);
 	gpioDelay(10); /* 10us trigger pulse */
 	gpioWrite(MIDDLE_DISTANCE_PIN_TRIGGER, PI_OFF);
+
+	gpioDelay(100);
 
     gpioWrite(MIDDLE_RIGHT_DISTANCE_PIN_TRIGGER, PI_ON);
 	gpioDelay(10); /* 10us trigger pulse */
 	gpioWrite(MIDDLE_RIGHT_DISTANCE_PIN_TRIGGER, PI_OFF);
 
+	gpioDelay(100);
+
 	gpioWrite(RIGHT_DISTANCE_PIN_TRIGGER, PI_ON);
 	gpioDelay(10); /* 10us trigger pulse */
 	gpioWrite(RIGHT_DISTANCE_PIN_TRIGGER, PI_OFF);	
+	
+	gpioDelay(100);
 }
 
 void sonarEcho(int gpio, int level, uint32_t tick)
