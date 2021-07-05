@@ -21,9 +21,9 @@ void stop_motors();
 
 void start_motors();
 
-void sonarEcho();
+void sonarEcho(int gpio, int level, uint32_t tick);
 
-void sonarTrigger();
+void sonarTrigger(void);
 
 
 class Output
