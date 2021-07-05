@@ -662,6 +662,7 @@ void testing()
 
 int main()
 {     
+    gpioInitialise();
     // Arm motors & calibrate if required
     start_motors();
     /* update sonars 20 times a second, timer #0 */
