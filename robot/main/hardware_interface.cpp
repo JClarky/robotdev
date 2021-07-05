@@ -302,6 +302,6 @@ void Output::update(Output& out)
 	out.s_left_line = gpioRead(LEFT_LINE_PIN);
 	out.s_right_line = gpioRead(RIGHT_LINE_PIN);
 
-	out.s_button_1 = gpioRead(BUTTON_1_PIN);
+	out.s_button_1 = ;
 	out.s_button_2 = gpioRead(BUTTON_2_PIN);
 }
