@@ -21,6 +21,10 @@ void stop_motors();
 
 void start_motors();
 
+void sonarEcho();
+
+void sonarTrigger();
+
 
 class Output
 {
