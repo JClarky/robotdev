@@ -148,6 +148,7 @@ void arm()
 void sonarTrigger(void)
 {
     /* trigger a sonar reading */
+	cout << "triggger";
 
     gpioWrite(LEFT_DISTANCE_PIN_TRIGGER, PI_ON);
     gpioWrite(MIDDLE_LEFT_DISTANCE_PIN_TRIGGER, PI_ON);

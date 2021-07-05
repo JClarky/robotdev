@@ -8,7 +8,11 @@
  * This mainly includes mode control
  * 
  * @version 1
+<<<<<<< HEAD
  * @date 2021-02-25 
+=======
+ * @date 2021-02-25 * 
+>>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
  * @copyright Copyright (c) 2021
  * 
  * RUN BUILD USING "sudo ./robot/builds/current"
@@ -21,7 +25,6 @@
 #include <chrono>
 #include <thread>
 #include <math.h>  
-#include <pigpio.h>
 #ifdef _WIN32
 #include <Windows.h>
 #else
@@ -644,15 +647,6 @@ int main()
 {     
     // Arm motors & calibrate if required
     start_motors();
-    gpioSetTimerFunc(0, 50, sonarTrigger); /* every 50ms */
-
-    /* monitor sonar echos */
-
-    gpioSetAlertFunc(LEFT_DISTANCE_PIN_ECHO, sonarEcho);
-	gpioSetAlertFunc(MIDDLE_LEFT_DISTANCE_PIN_ECHO, sonarEcho);
-	gpioSetAlertFunc(MIDDLE_DISTANCE_PIN_ECHO, sonarEcho);
-	gpioSetAlertFunc(MIDDLE_RIGHT_DISTANCE_PIN_ECHO, sonarEcho);
-	gpioSetAlertFunc(RIGHT_DISTANCE_PIN_ECHO, sonarEcho);	
     //maze = true;
     //mode_maze();   
     out.update(out);
