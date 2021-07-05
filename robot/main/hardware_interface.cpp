@@ -77,11 +77,13 @@ void sonarEcho(int gpio, int level, uint32_t tick);
 
 bool initalise_gpio()
 {
-	gpioInitialise();
+	
 	if (gpioInitialise() > 0)
 	{
 		// init fail
+		cout << "failure";
 		return(false);
+		
 	}
 
 	// Distance sensors
