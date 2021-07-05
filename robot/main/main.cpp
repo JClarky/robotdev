@@ -8,11 +8,7 @@
  * This mainly includes mode control
  * 
  * @version 1
-<<<<<<< HEAD
  * @date 2021-02-25 
-=======
- * @date 2021-02-25 * 
->>>>>>> 201911181cc4f7b33b992c7cf40fc922d1091811
  * @copyright Copyright (c) 2021
  * 
  * RUN BUILD USING "sudo ./robot/builds/current"
