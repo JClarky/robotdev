@@ -665,9 +665,9 @@ int main()
     gpioInitialise();
     // Arm motors & calibrate if required
     start_motors();
-    /* update sonars 20 times a second, timer #0 */
+    /* update sonars 100 times a second, timer #0 */
 
-    gpioSetTimerFunc(0, 50, sonarTrigger); /* every 50ms */
+    gpioSetTimerFunc(0, 10, sonarTrigger); /* every 50ms */
 
     /* monitor sonar echos */
 
@@ -682,5 +682,6 @@ int main()
     //follow();
     testing();    
 
+    gpioTerminate();
     return 0;
 }
