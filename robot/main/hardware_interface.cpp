@@ -151,11 +151,11 @@ void sonarTrigger(void)
 {
     /* trigger a sonar reading */
 
-    gpioWrite(LEFT_DISTANCE_PIN_TRIGGER, PI_ON);
-    gpioWrite(MIDDLE_LEFT_DISTANCE_PIN_TRIGGER, PI_ON);
-	gpioWrite(MIDDLE_DISTANCE_PIN_TRIGGER, PI_ON);
+    //gpioWrite(LEFT_DISTANCE_PIN_TRIGGER, PI_ON);
+    //gpioWrite(MIDDLE_LEFT_DISTANCE_PIN_TRIGGER, PI_ON);
+	//gpioWrite(MIDDLE_DISTANCE_PIN_TRIGGER, PI_ON);
     gpioWrite(MIDDLE_RIGHT_DISTANCE_PIN_TRIGGER, PI_ON);
-	gpioWrite(RIGHT_DISTANCE_PIN_TRIGGER, PI_ON);
+	//gpioWrite(RIGHT_DISTANCE_PIN_TRIGGER, PI_ON);
 
    	gpioDelay(10); /* 10us trigger pulse */
 
