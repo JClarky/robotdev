@@ -151,19 +151,25 @@ void sonarTrigger(void)
 {
     /* trigger a sonar reading */
 
-    //gpioWrite(LEFT_DISTANCE_PIN_TRIGGER, PI_ON);
-    //gpioWrite(MIDDLE_LEFT_DISTANCE_PIN_TRIGGER, PI_ON);
-	gpioWrite(MIDDLE_DISTANCE_PIN_TRIGGER, PI_ON);
-    //gpioWrite(MIDDLE_RIGHT_DISTANCE_PIN_TRIGGER, PI_ON);
-	//gpioWrite(RIGHT_DISTANCE_PIN_TRIGGER, PI_ON);
-
-   	gpioDelay(10); /* 10us trigger pulse */
-
+    gpioWrite(LEFT_DISTANCE_PIN_TRIGGER, PI_ON);
+	gpioDelay(10); /* 10us trigger pulse */
 	gpioWrite(LEFT_DISTANCE_PIN_TRIGGER, PI_OFF);
-    gpioWrite(MIDDLE_LEFT_DISTANCE_PIN_TRIGGER, PI_OFF);
+
+    gpioWrite(MIDDLE_LEFT_DISTANCE_PIN_TRIGGER, PI_ON);
+	gpioDelay(10); /* 10us trigger pulse */
+	gpioWrite(MIDDLE_LEFT_DISTANCE_PIN_TRIGGER, PI_OFF);
+
+	gpioWrite(MIDDLE_DISTANCE_PIN_TRIGGER, PI_ON);
+	gpioDelay(10); /* 10us trigger pulse */
 	gpioWrite(MIDDLE_DISTANCE_PIN_TRIGGER, PI_OFF);
-    gpioWrite(MIDDLE_RIGHT_DISTANCE_PIN_TRIGGER, PI_OFF);
-	gpioWrite(RIGHT_DISTANCE_PIN_TRIGGER, PI_OFF);
+
+    gpioWrite(MIDDLE_RIGHT_DISTANCE_PIN_TRIGGER, PI_ON);
+	gpioDelay(10); /* 10us trigger pulse */
+	gpioWrite(MIDDLE_RIGHT_DISTANCE_PIN_TRIGGER, PI_OFF);
+
+	gpioWrite(RIGHT_DISTANCE_PIN_TRIGGER, PI_ON);
+	gpioDelay(10); /* 10us trigger pulse */
+	gpioWrite(RIGHT_DISTANCE_PIN_TRIGGER, PI_OFF);	
 }
 
 void sonarEcho(int gpio, int level, uint32_t tick)
