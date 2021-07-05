@@ -180,7 +180,6 @@ void sonarEcho(int gpio, int level, uint32_t tick)
    }
    else if (level == PI_OFF)
    {
-	   cout << "\nGPIOOOOOO" << gpio;
       	diffTick = tick - startTick;
 		float distance = (diffTick * 34300) / 2 / 100000;
 		if(gpio == LEFT_DISTANCE_PIN_ECHO)
