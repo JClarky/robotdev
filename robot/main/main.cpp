@@ -122,7 +122,7 @@ float cx(Mat frame)
     }
     else
     {
-        return(NULL);
+        return(0);
     }
 }
 
