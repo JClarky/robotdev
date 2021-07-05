@@ -593,6 +593,15 @@ void testing()
         float speed = 0;
 		while (true)
 		{
+            out.update(out);
+            cout << "left dist" << out.s_left_distance << "\n";
+            cout << "middle left dist" << out.s_middle_left_distance << "\n";
+            cout << "middle dist" << out.s_middle_distance << "\n";
+            cout << "middle right dist" << out.s_middle_right_distance << "\n";
+            cout << "right dist" << out.s_right_distance << "\n";
+            cout << "left line" << out.s_left_line << "\n";
+            cout << "right line" << out.s_right_line << "\n";
+
 			string input;
 			cout << "d increase, a decrease, s idle, f to flip ";
 			cin >> input;
@@ -638,7 +647,7 @@ int main()
     start_motors();
     //maze = true;
     //mode_maze();   
-    //out.update(out);
+    out.update(out);
     //follow();
     testing();    
 

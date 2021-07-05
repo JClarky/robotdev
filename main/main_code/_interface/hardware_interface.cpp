@@ -34,22 +34,31 @@ using namespace std;
 // Left distance sensor
 #define LEFT_DISTANCE_PIN_ECHO      17
 #define LEFT_DISTANCE_PIN_TRIGGER    27
+float left_distance = 0;
 
 // Middle left distance sensor
 #define MIDDLE_LEFT_DISTANCE_PIN_ECHO      18
 #define MIDDLE_LEFT_DISTANCE_PIN_TRIGGER    23
+float middle_left_distance = 0;
 
 // Middle distance sensor
 #define MIDDLE_DISTANCE_PIN_ECHO      24
 #define MIDDLE_DISTANCE_PIN_TRIGGER    25
+float middle_distance = 0;
 
 // Middle right distance sensor
 #define MIDDLE_RIGHT_DISTANCE_PIN_ECHO      11
 #define MIDDLE_RIGHT_DISTANCE_PIN_TRIGGER    8
+float middle_right_distance = 0;
 
 // Right distance sensor
 #define RIGHT_DISTANCE_PIN_ECHO      7
 #define RIGHT_DISTANCE_PIN_TRIGGER    1
+float right_distance = 0;
+
+// Line sensors
+#define LEFT_LINE_PIN    20
+#define RIGHT_LINE_PIN   21
 
 // ESC throttle values
 #define MAX_THROTTLE        1960  
@@ -75,6 +84,10 @@ bool initalise_gpio()
 		// init success
 		return(true);
 	}
+
+	// Distance sensors
+	gpioSetMode(LEFT_LINE_PIN, PI_INPUT);
+	gpioSetMode(RIGHT_LINE_PIN, PI_INPUT);
 	
 	// Left distance sensor
 	gpioSetMode(LEFT_DISTANCE_PIN_ECHO, PI_OUTPUT); 
@@ -150,7 +163,7 @@ void sonarTrigger(void)
 
 void sonarEcho(int gpio, int level, uint32_t tick)
 {
-   static uint32_t startTick, firstTick=0;
+   static uint32_t startTick, firstTick=0;	
 
    int diffTick;
 
@@ -158,49 +171,38 @@ void sonarEcho(int gpio, int level, uint32_t tick)
 
    if (level == PI_ON)
    {
-      startTick = tick;
+      	startTick = tick;
    }
    else if (level == PI_OFF)
    {
-      diffTick = tick - startTick;
+      	diffTick = tick - startTick;
+		float distance = (diffTick * 34300) / 2
+		if(gpio == LEFT_DISTANCE_PIN_ECHO)
+		{
+			left_distance = distance;
+		}
+		else if(gpio == MIDDLE_LEFT_DISTANCE_PIN_ECHO)
+		{
+			middle_left_distance = distance;
+		}
+		else if(gpio == MIDDLE_DISTANCE_PIN_ECHO)
+		{
+			middle_distance = distance;
+		}
+		else if(gpio == MIDDLE_RIGHT_DISTANCE_PIN_ECHO)
+		{
+			middle_right_distance = distance;
+		}
+		else if(gpio == RIGHT_DISTANCE_PIN_ECHO)
+		{
+			right_distance = distance;
+		}
 
-      printf("%u %u\n", tick-firstTick, diffTick);
+      	//printf("%u %u\n", tick-firstTick, diffTick);
    }
 }
 
 /* Start function; initalises and arms */
-
-void sonarTrigger(void)
-{
-   /* trigger a sonar reading */
-
-   gpioWrite(SONAR_TRIGGER, PI_ON);
-
-   gpioDelay(10); /* 10us trigger pulse */
-
-   gpioWrite(SONAR_TRIGGER, PI_OFF);
-}
-
-void sonarEcho(int gpio, int level, uint32_t tick)
-{
-   static uint32_t startTick, firstTick=0;
-
-   int diffTick;
-
-   if (!firstTick) firstTick = tick;
-
-   if (level == PI_ON)
-   {
-      startTick = tick;
-   }
-   else if (level == PI_OFF)
-   {
-      diffTick = tick - startTick;
-
-      printf("%u %u\n", tick-firstTick, diffTick);
-   }
-}
-
 
 void start_motors()
 {
@@ -259,19 +261,6 @@ void move(float left, float right) // value from -100 to 100
 
 /* Output class update function; sensor update */
 
-float read_sonar(int trig, int echo)
-{
-	gpioWrite(trig, 0);
-	//pause
-	gpioWrite(trig, 1);
-	//pause
-	gpioWrite(trig, 0);
-	//pause
-	int gpioRead();
-
-	gpioTrigger(trig, 50, 1);
-}
-
 void Output::update(Output& out)
 {
 	out.gamepad_left_x = 1;
@@ -283,12 +272,12 @@ void Output::update(Output& out)
 	/* Read distance sensors */
 	
 
-	out.s_left_distance = 1;
-	out.s_middle_left_distance = 1;
-	out.s_middle_distance = 1;
-	out.s_middle_right_distance = 1;
-	out.s_right_distance = 1;
+	out.s_left_distance = left_distance;
+	out.s_middle_left_distance = middle_left_distance;
+	out.s_middle_distance = middle_distance;
+	out.s_middle_right_distance = middle_right_distance;
+	out.s_right_distance = right_distance;
 
-	out.s_left_line = 1;
-	out.s_right_line = 1;
+	out.s_left_line = gpioRead(LEFT_LINE_PIN);
+	out.s_right_line = gpioRead(RIGHT_LINE_PIN);
 }
