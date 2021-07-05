@@ -601,6 +601,8 @@ void testing()
             cout << "right dist" << out.s_right_distance << "\n";
             cout << "left line" << out.s_left_line << "\n";
             cout << "right line" << out.s_right_line << "\n";
+            cout << "button 1" << out.s_button_1 << "\n";
+            cout << "button 2" << out.s_button_2 << "\n";
 
 			string input;
 			cout << "d increase, a decrease, s idle, f to flip ";

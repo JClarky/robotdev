@@ -60,6 +60,10 @@ float right_distance = 0;
 #define LEFT_LINE_PIN    20
 #define RIGHT_LINE_PIN   21
 
+// Buttons
+#define BUTTON_1_PIN   0
+#define BUTTON_2_PIN   5
+
 // ESC throttle values
 #define MAX_THROTTLE        1960  
 #define MIN_THROTTLE		1040
@@ -79,15 +83,14 @@ bool initalise_gpio()
 		// init fail
 		return(false);
 	}
-	else
-	{
-		// init success
-		return(true);
-	}
 
 	// Distance sensors
 	gpioSetMode(LEFT_LINE_PIN, PI_INPUT);
 	gpioSetMode(RIGHT_LINE_PIN, PI_INPUT);
+
+	// Buttons
+	gpioSetMode(BUTTON_1_PIN, PI_INPUT);
+	gpioSetMode(BUTTON_2_PIN, PI_INPUT);
 	
 	// Left distance sensor
 	gpioSetMode(LEFT_DISTANCE_PIN_ECHO, PI_OUTPUT); 
@@ -114,7 +117,6 @@ bool initalise_gpio()
 	gpioSetMode(RIGHT_DISTANCE_PIN_TRIGGER, PI_INPUT);
 	gpioWrite(RIGHT_DISTANCE_PIN_TRIGGER, PI_OFF);
 
-
 	/* update sonars 20 times a second, timer #0 */
 
     gpioSetTimerFunc(0, 50, sonarTrigger); /* every 50ms */
@@ -125,9 +127,10 @@ bool initalise_gpio()
 	gpioSetAlertFunc(MIDDLE_LEFT_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(MIDDLE_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(MIDDLE_RIGHT_DISTANCE_PIN_ECHO, sonarEcho);
-	gpioSetAlertFunc(RIGHT_DISTANCE_PIN_ECHO, sonarEcho);	
-}
+	gpioSetAlertFunc(RIGHT_DISTANCE_PIN_ECHO, sonarEcho);	 
 
+	return(true);
+}
 
 void arm()
 {
@@ -280,4 +283,7 @@ void Output::update(Output& out)
 
 	out.s_left_line = gpioRead(LEFT_LINE_PIN);
 	out.s_right_line = gpioRead(RIGHT_LINE_PIN);
+
+	out.s_button_1 = gpioRead(BUTTON_1_PIN);
+	out.s_button_2 = gpioRead(BUTTON_2_PIN);
 }
