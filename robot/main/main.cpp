@@ -59,6 +59,26 @@ float max_distance = 500; // Max distance to follow
 float left_angle = -30;
 float right_angle = 30;
 
+// Left distance sensor
+#define LEFT_DISTANCE_PIN_ECHO      17
+#define LEFT_DISTANCE_PIN_TRIGGER    27
+
+// Middle left distance sensor
+#define MIDDLE_LEFT_DISTANCE_PIN_ECHO      18
+#define MIDDLE_LEFT_DISTANCE_PIN_TRIGGER    23
+
+// Middle distance sensor
+#define MIDDLE_DISTANCE_PIN_ECHO      24
+#define MIDDLE_DISTANCE_PIN_TRIGGER    25
+
+// Middle right distance sensor
+#define MIDDLE_RIGHT_DISTANCE_PIN_ECHO      11
+#define MIDDLE_RIGHT_DISTANCE_PIN_TRIGGER    8
+
+// Right distance sensor
+#define RIGHT_DISTANCE_PIN_ECHO      7
+#define RIGHT_DISTANCE_PIN_TRIGGER    1
+
 //
 // Maze mode
 //
