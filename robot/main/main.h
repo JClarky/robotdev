@@ -28,8 +28,13 @@ class Output
         float s_left_line;
         float s_right_line;
 
+        float s_button_1;
+        float s_button_2;
+
         float s_left_distance;
+        float s_middle_left_distance;
         float s_middle_distance;
+        float s_middle_right_distance;
         float s_right_distance;
 
         float gamepad_right_y;
