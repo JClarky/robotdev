@@ -393,7 +393,8 @@ void mode_maze()
 bool valid(float distance)
 {
     cout << "\n dist:" << distance;
-    if(0.1 < distance)
+    // Not infinitely small or too far away
+    if(0.1 < distance < 10000)
     {
         cout << "\n yes";
         return(true);
@@ -570,9 +571,58 @@ void follow()
 
 void sumo_mode()
 {
-    if (true)
+    while (true)
     {
+        out.update(out); // Update the struct classs with current sensor data
 
+        float mid_distances[3] = { out.s_middle_left_distance , out.s_middle_distance , out.s_middle_right_distance };
+        float left_line = out.s_left_line;
+        float right_line = out.s_right_line;
+
+        // Check if the robot is at the edge of sumo ring
+
+        if(left_line == 1 & right_line == 1)
+        {
+            move(-50, -50);
+        }
+        else if(left_line == 1)
+        {
+            move(-60, -50);
+        }
+        else if(right_line == 1)
+        {
+            move(-50, -60);
+        }
+    
+        // Check if enemy is detected
+
+        /*
+            Logic
+            - Check if middle distances valid
+            - Check if left distance is valid
+            - Check if right distance is vlaid
+            Define Valid:
+                Not infinte value (no distance)
+                Not out of range
+        */
+
+        // Cycle through the middle distances 
+        bool mid = false;
+        for(int i = 0; i < 3; i++)
+        {
+            float d = mid_distances[i];
+            if(valid(d))
+            {
+                mid = true;
+            }
+        }
+
+        if(mid)
+        {
+            // currenlt working here 6/07/2021 WOWOW
+        }
+
+        
     }
 }
 
