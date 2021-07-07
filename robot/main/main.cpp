@@ -163,7 +163,7 @@ void mode_maze()
     while(maze)
     {         
         cap.read(frame);
-        imshow("frame", frame);
+        //imshow("frame", frame);
         //frame = imread("C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/simulation/cam.jpg");
 
         if (frame.empty())
@@ -385,7 +385,7 @@ void mode_maze()
 
         //sleep_for(nanoseconds(1000)); // wait 10000 nano seconds otherwise we refresh faster than frame rate
         //sleep_until(system_clock::now() + nanoseconds(100000)); // change to 10000
-        sleep(0.1);
+        sleep(0.3);
     }
     return;
 }
