@@ -712,23 +712,23 @@ void testing()
 
 int main()
 {     
-    gpioInitialise();
+    //gpioInitialise();
     // Arm motors & calibrate if required
-    start_motors();
+    //start_motors();
     /* update sonars 20 times a second, timer #0 */
 
-    gpioSetTimerFunc(0, 50, sonarTrigger); /* every 50ms */
+    //gpioSetTimerFunc(0, 50, sonarTrigger); /* every 50ms */
 
     /* monitor sonar echos */
 
-    gpioSetAlertFunc(LEFT_DISTANCE_PIN_ECHO, sonarEcho);
+    /*gpioSetAlertFunc(LEFT_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(MIDDLE_LEFT_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(MIDDLE_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(MIDDLE_RIGHT_DISTANCE_PIN_ECHO, sonarEcho);
-	gpioSetAlertFunc(RIGHT_DISTANCE_PIN_ECHO, sonarEcho);	 
+	gpioSetAlertFunc(RIGHT_DISTANCE_PIN_ECHO, sonarEcho);	*/ 
     maze = true;
     mode_maze();   
-    out.update(out);
+    //out.update(out);
     //follow();
     //testing();    
 
