@@ -152,6 +152,7 @@ void mode_maze()
     cap.set(CAP_PROP_FRAME_WIDTH, img_width);
     cap.set(CAP_PROP_FRAME_HEIGHT, img_height);
 
+    namedWindow( "frame", WINDOW_AUTOSIZE );
     namedWindow( "l", WINDOW_AUTOSIZE );
     namedWindow( "m", WINDOW_AUTOSIZE );
     namedWindow( "r", WINDOW_AUTOSIZE );
@@ -170,6 +171,7 @@ void mode_maze()
     while(maze)
     {         
         cap.read(frame);
+        imshow("frame", frame);
         //frame = imread("C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/simulation/cam.jpg");
 
         if (frame.empty())
@@ -377,7 +379,10 @@ void mode_maze()
 
         // temppppppppppppppppppppppppppppppppppppppppppppppp
 
-        // Display frames        
+        // Display frames   
+        cout << "imshowwww";    
+         
+        
         imshow("l", f_left);
         imshow("m", f_mid);
         imshow("r", f_right);
