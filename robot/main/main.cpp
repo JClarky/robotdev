@@ -152,6 +152,13 @@ void mode_maze()
     cap.set(CAP_PROP_FRAME_WIDTH, img_width);
     cap.set(CAP_PROP_FRAME_HEIGHT, img_height);
 
+    namedWindow( "l", WINDOW_AUTOSIZE );
+    namedWindow( "m", WINDOW_AUTOSIZE );
+    namedWindow( "r", WINDOW_AUTOSIZE );
+    namedWindow( "lc", WINDOW_AUTOSIZE );
+    namedWindow( "mc", WINDOW_AUTOSIZE );
+    namedWindow( "rc", WINDOW_AUTOSIZE );
+
     // Unable to open capture
     if (!cap.isOpened())
     { 
@@ -370,7 +377,7 @@ void mode_maze()
 
         // temppppppppppppppppppppppppppppppppppppppppppppppp
 
-        // Display frames
+        // Display frames        
         imshow("l", f_left);
         imshow("m", f_mid);
         imshow("r", f_right);
@@ -384,11 +391,7 @@ void mode_maze()
 
         sleep_for(nanoseconds(10)); // wait 10000 nano seconds otherwise we refresh faster than frame rate
         sleep_until(system_clock::now() + nanoseconds(10000)); // change to 10000
-
-        /*if (waitKey(5) >= 0)
-            break;*/
     }
-    cout << "end";
     return;
 }
 bool valid(float distance)
@@ -713,23 +716,23 @@ void testing()
 
 int main()
 {     
-    //gpioInitialise();
+    gpioInitialise();
     // Arm motors & calibrate if required
-    //start_motors();
+    start_motors();
     /* update sonars 20 times a second, timer #0 */
 
-    //gpioSetTimerFunc(0, 50, sonarTrigger); /* every 50ms */
+    gpioSetTimerFunc(0, 50, sonarTrigger); /* every 50ms */
 
     /* monitor sonar echos */
 
-    /*gpioSetAlertFunc(LEFT_DISTANCE_PIN_ECHO, sonarEcho);
+    gpioSetAlertFunc(LEFT_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(MIDDLE_LEFT_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(MIDDLE_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(MIDDLE_RIGHT_DISTANCE_PIN_ECHO, sonarEcho);
-	gpioSetAlertFunc(RIGHT_DISTANCE_PIN_ECHO, sonarEcho);	*/ 
+	gpioSetAlertFunc(RIGHT_DISTANCE_PIN_ECHO, sonarEcho);	 
     maze = true;
     mode_maze();   
-    //out.update(out);
+    out.update(out);
     //follow();
     //testing();    
 
