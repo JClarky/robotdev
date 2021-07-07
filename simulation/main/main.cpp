@@ -390,13 +390,12 @@ void mode_maze()
         imshow("lc", contoured_f_left);
         imshow("mc", contoured_f_mid);
         imshow("rc", contoured_f_right);
-        waitKey(0);
 
         using namespace this_thread; // sleep_for, sleep_until
         using namespace chrono; // nanoseconds, system_clock, seconds
 
-        sleep_for(nanoseconds(10)); // wait 10000 nano seconds otherwise we refresh faster than frame rate
-        sleep_until(system_clock::now() + nanoseconds(10000)); // change to 10000
+        sleep_for(nanoseconds(100)); // wait 10000 nano seconds otherwise we refresh faster than frame rate
+        sleep_until(system_clock::now() + nanoseconds(100000)); // change to 10000
     }
     return;
 }
