@@ -152,14 +152,6 @@ void mode_maze()
     cap.set(CAP_PROP_FRAME_WIDTH, img_width);
     cap.set(CAP_PROP_FRAME_HEIGHT, img_height);
 
-    namedWindow( "frame", WINDOW_AUTOSIZE );
-    namedWindow( "l", WINDOW_AUTOSIZE );
-    namedWindow( "m", WINDOW_AUTOSIZE );
-    namedWindow( "r", WINDOW_AUTOSIZE );
-    namedWindow( "lc", WINDOW_AUTOSIZE );
-    namedWindow( "mc", WINDOW_AUTOSIZE );
-    namedWindow( "rc", WINDOW_AUTOSIZE );
-
     // Unable to open capture
     if (!cap.isOpened())
     { 
@@ -380,12 +372,9 @@ void mode_maze()
         // temppppppppppppppppppppppppppppppppppppppppppppppp
 
         // Display frames   
-        cout << "imshowwww";    
-         
-        
-        imshow("l", f_left);
-        imshow("m", f_mid);
-        imshow("r", f_right);
+        //imshow("l", f_left);
+        //imshow("m", f_mid);
+        //imshow("r", f_right);
 
         imshow("lc", contoured_f_left);
         imshow("mc", contoured_f_mid);
@@ -394,9 +383,9 @@ void mode_maze()
         using namespace this_thread; // sleep_for, sleep_until
         using namespace chrono; // nanoseconds, system_clock, seconds
 
-        sleep_for(nanoseconds(1000)); // wait 10000 nano seconds otherwise we refresh faster than frame rate
-        sleep_until(system_clock::now() + nanoseconds(100000)); // change to 10000
-        sleep(1);
+        //sleep_for(nanoseconds(1000)); // wait 10000 nano seconds otherwise we refresh faster than frame rate
+        //sleep_until(system_clock::now() + nanoseconds(100000)); // change to 10000
+        sleep(0.1);
     }
     return;
 }
