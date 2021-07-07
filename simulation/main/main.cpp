@@ -383,9 +383,9 @@ void mode_maze()
         using namespace this_thread; // sleep_for, sleep_until
         using namespace chrono; // nanoseconds, system_clock, seconds
 
-        //sleep_for(nanoseconds(1000)); // wait 10000 nano seconds otherwise we refresh faster than frame rate
-        //sleep_until(system_clock::now() + nanoseconds(100000)); // change to 10000
-        sleep(0.3);
+        sleep_for(nanoseconds(1000)); // wait 10000 nano seconds otherwise we refresh faster than frame rate
+        sleep_until(system_clock::now() + nanoseconds(100000)); // change to 10000
+        //sleep(0.3);
     }
     return;
 }
