@@ -388,6 +388,7 @@ void mode_maze()
         if (waitKey(5) >= 0)
             break;
     }
+    cout << "end";
     return;
 }
 bool valid(float distance)
