@@ -386,7 +386,7 @@ void mode_maze()
         //sleep_for(nanoseconds(1000)); // wait 10000 nano seconds otherwise we refresh faster than frame rate
         //sleep_until(system_clock::now() + nanoseconds(100000)); // change to 10000
         //sleep(1);
-        wait(0);
+        waitKey(0);
     }
     return;
 }
