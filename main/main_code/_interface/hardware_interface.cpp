@@ -281,28 +281,31 @@ void move(float left, float right) // value from -100 to 100
 		r_value = r_value + CENTER_THROTTLE;
 	}
 
+	float new_value_r = CENTER_THROTTLE;
+	float new_value_l = CENTER_THROTTLE;
+
 	if(old_left == 0 && old_right == 0)
 	{		
 		if(left != 0)
 		{
 			if(left < 0)
 			{
-				float new_value_l = CENTER_THROTTLE + 50;
+				new_value_l = new_value_l + 50;
 			}
 			else
 			{
-				float new_value_l = CENTER_THROTTLE - 50;
+				new_value_l = new_value_l - 50;
 			}	
 		}	
 		if(right != 0)
 		{
 			if(right < 0)
 			{
-				float new_value_r = CENTER_THROTTLE + 50;
+				new_value_r = new_value_r + 50;
 			}
 			else
 			{
-				float new_value_r = CENTER_THROTTLE - 50;
+				new_value_r = new_value_r - 50;
 			}	
 		}	
 		gpioServo(RIGHT_MOTOR_PIN, (int)new_value_r);
