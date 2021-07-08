@@ -245,6 +245,9 @@ void stop_motors()
 
 /* Move function; controls motor speeds */
 
+float old_left;
+float old_right;
+
 void move(float left, float right) // value from -100 to 100
 {
 	float upper_range = MAX_THROTTLE - CENTER_THROTTLE;
@@ -278,8 +281,38 @@ void move(float left, float right) // value from -100 to 100
 		r_value = r_value + CENTER_THROTTLE;
 	}
 
+	if(old_left == 0 && old_right == 0)
+	{
+		if(left != 0 || right != 0)
+		{
+			if(left < 0)
+			{
+				float new_value_l = CENTER_THROTTLE - 50;
+			}
+			else
+			{
+				float new_value_l = CENTER_THROTTLE + 50;
+			}
+			if(right < 0)
+			{
+				float new_value_r = CENTER_THROTTLE - 50;
+			}
+			else
+			{
+				float new_value_r = CENTER_THROTTLE + 50;
+			}
+			
+
+			gpioServo(RIGHT_MOTOR_PIN, (int)new_value_r);
+			gpioServo(LEFT_MOTOR_PIN, (int)new_value_l);	
+		}		
+	}
+
 	gpioServo(RIGHT_MOTOR_PIN, (int)r_value);
 	gpioServo(LEFT_MOTOR_PIN, (int)l_value);
+	old_left = left;
+	old_right = right;
+
 	
     cout << "\nLeft motor: " << l_value << "\n";
 	cout << "\nRight motor: " << r_value << "\n";
