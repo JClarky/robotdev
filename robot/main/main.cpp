@@ -809,6 +809,8 @@ void testing()
 				//throw("Bad input");
 			}
             move(speed, speed);
+            usleep(1500000); // sleep 1s
+            move(0, 0);
 		}
 	}
 	catch (const std::exception&)
