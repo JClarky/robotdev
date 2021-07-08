@@ -255,8 +255,8 @@ float old_right = 0;
 
 void move(float left, float right) // value from -100 to 100
 {
-	left = (left/100)*50;
-	right = (right/100)*50; // scaled to 50 max
+	left = (left/100)*10;
+	right = (right/100)*10; // scaled to 50 max
 	float upper_range = MAX_THROTTLE - CENTER_THROTTLE;
 	float lower_range = CENTER_THROTTLE - MIN_THROTTLE;
 
