@@ -45,7 +45,7 @@ using namespace cv;
 Output out;
 
 // Camera setup
-int threshold_min = 40;
+int threshold_min = 10;
 int threshold_max = 255;
 int largest_contour_index = 0;
 int largest_area = 0;
@@ -166,6 +166,7 @@ void mode_maze()
         xx = xx +1; 
         cap.read(frame);
         flip(frame, frame, 0);
+        flip(frame, frame, 1);
         //imshow("frame", frame);
         //frame = imread("C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/simulation/cam.jpg");
 
