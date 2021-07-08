@@ -74,8 +74,8 @@ float right_distance = 0;
 #define MIN_THROTTLE		 1040
 #define CENTER_THROTTLE		 1500
 #define ARM_THROTTLE		 1400
-#define UPPER_THROTTLE_START 1550
-#define LOWER_THROTTLE_START 1450
+#define UPPER_THROTTLE_START 1532
+#define LOWER_THROTTLE_START 1474
 
 void sonarTrigger(void);
 
@@ -258,10 +258,8 @@ void move(float left, float right) // value from -100 to 100
 {
 	left = (left/100)*50;
 	right = (right/100)*50; // scaled to max 50 
-	//float upper_range = MAX_THROTTLE - UPPER_THROTTLE_START;
-	//float lower_range = CENTER_THROTTLE - LOWER_THROTTLE_START;
-	float upper_range = MAX_THROTTLE - CENTER_THROTTLE;
-	float lower_range = CENTER_THROTTLE - MIN_THROTTLE;
+	float upper_range = MAX_THROTTLE - UPPER_THROTTLE_START;
+	float lower_range = CENTER_THROTTLE - LOWER_THROTTLE_START;
 
 	float l_percentage = left / 100;
 	float r_percentage = right / 100;
@@ -272,23 +270,23 @@ void move(float left, float right) // value from -100 to 100
 	if (l_percentage > 0)
 	{
 		l_value = l_percentage * upper_range;
-		l_value = l_value + CENTER_THROTTLE;
+		l_value = l_value + UPPER_THROTTLE_START;
 	}
 	else
 	{
 		l_value = l_percentage * lower_range;
-		l_value = l_value + CENTER_THROTTLE;
+		l_value = l_value + LOWER_THROTTLE_START;
 	}
 
 	if (r_percentage > 0)
 	{
 		r_value = r_percentage * upper_range;
-		r_value = r_value + CENTER_THROTTLE;
+		r_value = r_value + UPPER_THROTTLE_START;
 	}
 	else
 	{
 		r_value = r_percentage * lower_range;
-		r_value = r_value + CENTER_THROTTLE;
+		r_value = r_value + LOWER_THROTTLE_START;
 	}
 
 	if(left == 0)
@@ -334,7 +332,7 @@ void move(float left, float right) // value from -100 to 100
 
 	
 	
-	gpioServo(RIGHT_MOTOR_PIN, (int)r_value);
+	gpioServo(RIGHT_MOTOR_PIN, (int)r_value-15);
 	gpioServo(LEFT_MOTOR_PIN, (int)l_value);
 	old_left = left;
 	old_right = right;
