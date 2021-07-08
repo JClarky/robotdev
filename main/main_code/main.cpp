@@ -391,7 +391,7 @@ void mode_maze()
         //sleep(1);
         waitKey(1);
 
-        if(xx == 100)
+        if(xx == 600)
         {
             break;
         }
