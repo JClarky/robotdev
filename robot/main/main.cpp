@@ -576,20 +576,29 @@ void sumo_mode()
         out.update(out); // Update the struct classs with current sensor data
 
         float mid_distances[3] = { out.s_middle_left_distance , out.s_middle_distance , out.s_middle_right_distance };
+        float left = mid_distances[0];
+        float straight = mid_distances[1];
+        float right = mid_distances[2];
         float left_line = out.s_left_line;
         float right_line = out.s_right_line;
 
+        float left_motor_speed = 0;
+        float right_motor_speed = 0;
+
+        const int distances_size = sizeof(distances) / sizeof(int); // find size of N as bytes to store integer varies by system
+        int idx = distance(distances, max_element(distances, distances + distances_size));
+
         // Check if the robot is at the edge of sumo ring
 
-        if(left_line == 1 & right_line == 1)
+        if(left_line == 1 & right_line == 1) // Face-on to edge
         {
             move(-50, -50);
         }
-        else if(left_line == 1)
+        else if(left_line == 1) // Hit left side first
         {
             move(-60, -50);
         }
-        else if(right_line == 1)
+        else if(right_line == 1) // Hit right side first
         {
             move(-50, -60);
         }
@@ -617,18 +626,123 @@ void sumo_mode()
             }
         }
 
-        if(mid)
+        if(mid) // Middle distance valid
         {
-            // currenlt working here 6/07/2021 WOWOW
+            // 3 valid distances
+            if(valid(left) == true && valid(straight) == true && valid(right) == true)
+            {
+                cout << "\n 3 dist";
+                int idx = distance(distances, min_element(distances, distances + distances_size)); // finds index of smallest distance in array
+                float theta = angle(idx); // Gets the angle of this sensor
+                
+                if(idx == 0) // Left sensor
+                {
+                    right_motor_speed = 100;
+                    left_motor_speed = map(-50, 100, 0, 50, theta); // Map angle (value from 0-50) to -50-100
+                }
+                else if(idx == 1) // Middle sensor
+                {
+                    right_motor_speed = 100;
+                    left_motor_speed = 100;
+                }
+                else // Right sensor
+                {                    
+                    right_motor_speed = map(-50, 100, 0, 50, theta);
+                    left_motor_speed = 100;
+                }
+                
+                move(left_motor_speed, right_motor_speed);
+            }        
+            // If 2 distances (centre and side)
+            else if(valid(straight) == true && valid(left) == true || valid(straight) == true && valid(right) == true) // If centre is valid
+            {
+                cout << "\n 2 dist";
+                if(valid(left)) // If left valid 
+                {
+                    // convert angle to positive
+                    float distance_angle = left_angle * -1;
+                    // x is distance between straight and left
+                    float x = sqrt( pow(straight, 2) + pow(left, 2) -2 * straight * left * cos(distance_angle));
+                    // y is straight to centre of x
+                    float y = 0.5 * x;
+                    // theta2 is angle between y and straight
+                    float theta2 = asin( (left * sin(distance_angle)) / (x) );
+                    // z from centre of x to theta angle
+                    float z = sqrt( pow(straight, 2) + pow(y, 2) -2 * straight * y * cos(theta2));
+                    // angle from centre
+                    float theta = acos( (pow(z, 2) + pow(straight, 2) - pow(y, 2)) / (2 * straight * z) );
+                    right_motor_speed = 100;
+                    left_motor_speed = map(-50, 100, 0, 50, theta);
+                    
+                }
+                else if(valid(right)) // If right valid 
+                {
+                    // convert angle to positive
+                    float distance_angle = right_angle;
+                    // x is distance between straight and right
+                    float x = sqrt( pow(straight, 2) + pow(right, 2) -2 * straight * left * cos(distance_angle));
+                    // y is straight to centre of x
+                    float y = 0.5 * x;
+                    // theta2 is angle between y and straight
+                    float theta2 = asin( (left * sin(distance_angle)) / (x) );
+                    // z from centre of x to theta angle
+                    float z = sqrt( pow(straight, 2) + pow(y, 2) -2 * straight * y * cos(theta2));
+                    // angle from centre
+                    float theta = acos( (pow(z, 2) + pow(straight, 2) - pow(y, 2)) / (2 * straight * z) );
+                    right_motor_speed = map(-50, 100, 0, 50, theta);
+                    left_motor_speed = 100;
+                }
+                move(left_motor_speed, right_motor_speed);
+            }
+            // If 1 distance is valid (bias left side)
+            else
+            {
+                cout << "\n1 distance";                 
+                if (idx == 0 && out.s_left_distance != 0)
+                {
+                    cout << out.s_left_distance << "\n"; // Print chosen index value
+                    move(-20, 100);           
+                    cout << "\n-20,100"; 
+                }
+                else if (idx == 2 && out.s_right_distance != 0)
+                {
+                    cout << out.s_right_distance << "\n"; // Print chosen index value
+                    move(100, -20);
+                    cout << "\n100,-20";
+                }
+                else if(out.s_middle_distance != 0)
+                {
+                    cout << out.s_middle_distance << "\n"; // Print chosen index value
+                    move(100, 100);
+                    cout << "\n100,100";
+                }
+                else
+                {
+                    cout << "\n100,-100";
+                    move(100, -100);
+                }   
+            }  
         }
 
+        if(valid(out.s_left_distance))
+        {
+            move(-40, 100);
+        }
+        else if(valid(out.s_right_distance))
+        {
+            move(100, -40);
+        }
+        else
+        {
+            move(100, -100);
+        }
         
     }
 }
 
 //
 // Flip command
-//
+// 
 
 bool flip()
 {
@@ -726,11 +840,11 @@ int main()
 	gpioSetAlertFunc(MIDDLE_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(MIDDLE_RIGHT_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(RIGHT_DISTANCE_PIN_ECHO, sonarEcho);	 
-    maze = true;
-    mode_maze();   
+    //maze = true;
+    //mode_maze();   
     out.update(out);
     //follow();
-    //testing();    
+    testing();    
 
     gpioTerminate();
     return 0;
