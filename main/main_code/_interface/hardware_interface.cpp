@@ -20,6 +20,7 @@
 #include <pigpio.h>
 #include <unistd.h>
 #include <iostream>
+#include <cstdlib>
 #ifdef _WIN32
 #include <Windows.h>
 #else
@@ -78,7 +79,6 @@ float right_distance = 0;
 void sonarTrigger(void);
 
 void sonarEcho(int gpio, int level, uint32_t tick);
-
 
 bool initalise_gpio()
 {
@@ -250,19 +250,134 @@ void stop_motors()
 
 /* Move function; controls motor speeds */
 
-float old_left = 0;
-float old_right = 0;
+// Curent motor speeds -100 to 100
+float current_left; 
+float current_right;
+// Target motor speeds -100 to 100
+float target_left;
+float target_right;
 
 void move(float left, float right) // value from -100 to 100
 {
+	// Scale motor speeds (0-50)
 	left = (left/100)*50;
-	right = (right/100)*50; // scaled to 50 max
+	right = (right/100)*50; 
+
+	// Set global target speed
+	target_left = left;
+	target_right = right;
+
+	// Calculate increment (current speed to target speed)
+	
+	float increment_left;
+	float increment_right;
+	float difference_left = target_left - current_left;
+	float difference_right = target_right - current_right;
+
+	// If it is not from current speed of 0
+	// Equation increment = 100(0.95^difference)+2
+	if(current_left != 0)
+	{
+		if(difference_left < 0)
+		{
+			difference_left = abs(difference_left); 
+			increment_left = 100(0.95^difference_left);
+			increment_left = increment_left * -1;
+		}
+		else
+		{
+			increment_left = 100(0.95^difference_left);
+		}	
+	}
+	else
+	{
+		if(difference_right < 0)
+		{
+			increment_left = -2;
+		}
+		else
+		{
+			increment_left = 2;
+		}	
+	}
+	if(current_right != 0)
+	{
+		if(difference_right < 0)
+		{
+			difference_right = abs(difference_right); 
+			increment_right = 100(0.95^difference_right);
+			increment_right = increment_right * -1;
+		}
+		else
+		{
+			increment_right = 100(0.95^difference_right);
+		}		
+	}
+	else
+	{
+		if(difference_right < 0)
+		{
+			increment_right = -2;
+		}
+		else
+		{
+			increment_right = 2;
+		}	
+	}
+
+	// Filter increments
+	if(0 < increment_right < 2)
+	{
+		increment_right = 2;
+	}
+	else if(-2 < increment_right < 0)
+	{
+		increment_right = -2;
+	}
+	if(0 < increment_left < 2)
+	{
+		increment_right = 2;
+	}
+	else if(-2 < increment_left < 0)
+	{
+		increment_right = -2;
+	}
+
+	if(difference_left > increment_left && increment_left > 0)
+	{
+		increment_left = difference_left;
+	}
+	else if(difference_left < increment_left && increment_left < 0)
+	{
+		increment_left = difference_left;
+	}
+
+	if(difference_right > increment_right && increment_right > 0)
+	{
+		increment_right = difference_right;
+	}
+	else if(difference_right < increment_right && increment_right < 0)
+	{
+		increment_right = difference_right;
+	}
+
+	// Calaculate new speed from increment
+	cout << "\nIncrement Left: "<<increment_left<" Increment Right: "<<increment_right<<"\n";
+	left = current_left + increment_left;
+	right = current_right + increment_right;
+
+
+	cout << "\nNew Left: "<<left<" New Right: "<<right<<"\n";
+
+	// Ranges for forwards and backwards
 	float upper_range = MAX_THROTTLE - CENTER_THROTTLE;
 	float lower_range = CENTER_THROTTLE - MIN_THROTTLE;
 
+	// Convert move values to percenatges
 	float l_percentage = left / 100;
 	float r_percentage = right / 100;
 
+	// PWM output speeds
     float l_value;
     float r_value;
 
@@ -291,7 +406,7 @@ void move(float left, float right) // value from -100 to 100
 	float new_value_r = CENTER_THROTTLE;
 	float new_value_l = CENTER_THROTTLE;
 
-	if(old_left == 0 && old_right == 0)
+	if(current_left == 0 && current_right == 0)
 	{		
 		if(left != 0)
 		{
@@ -315,22 +430,15 @@ void move(float left, float right) // value from -100 to 100
 				new_value_r = new_value_r - 50;
 			}	
 		}	
-		cout << "\nCALIBRATIOPN\n";
-		gpioServo(RIGHT_MOTOR_PIN, (int)new_value_r);
-		gpioServo(LEFT_MOTOR_PIN, (int)new_value_l);
-		usleep(100000); // sleep 0.1s
-		gpioServo(RIGHT_MOTOR_PIN, CENTER_THROTTLE);
-		gpioServo(LEFT_MOTOR_PIN, CENTER_THROTTLE);
-		usleep(2000000); // sleep 1s
-		gpioServo(RIGHT_MOTOR_PIN, (int)r_value-15);
-		gpioServo(LEFT_MOTOR_PIN, (int)l_value);
+		//gpioServo(RIGHT_MOTOR_PIN, (int)r_value-15);
+		//gpioServo(LEFT_MOTOR_PIN, (int)l_value);
 		usleep(100000); // sleep 0.1s
 	}
 	
-	gpioServo(RIGHT_MOTOR_PIN, (int)r_value-15);
-	gpioServo(LEFT_MOTOR_PIN, (int)l_value);
-	old_left = left;
-	old_right = right;
+	//gpioServo(RIGHT_MOTOR_PIN, (int)r_value-15);
+	//gpioServo(LEFT_MOTOR_PIN, (int)l_value);
+	current_left = left;
+	current_right = right;
 
 	
     cout << "\nLeft motor: " << l_value << "\n";

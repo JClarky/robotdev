@@ -194,7 +194,7 @@ void mode_maze()
         if (cx_l)
         {
             cout << "contour left\n";
-            //move(-10,100);
+            move(-10,100);
         }
         // If there is a contour in the middle
         else if (cx_m)
@@ -210,7 +210,7 @@ void mode_maze()
                 float r = 100 - (cx_m / c) * 100;
                 cout << "contour mid right\n";
                 cout << "\n r="<<r<<"\n";
-                //move(100, r);
+                move(100, r);
             }
             // If the the contour is to the left of center
             else
@@ -218,7 +218,7 @@ void mode_maze()
                 float l = (cx_m / c) * 100;
                 cout << "contour mid left\n";
                 cout << "\n l="<<l<<"\n";
-                //move(l, 100);
+                move(l, 100);
             }
 
         }
@@ -232,7 +232,7 @@ void mode_maze()
         else
         {
             cout << "contour none\n";
-            //move(100, -20);
+            move(100, -20);
         }
 
         // temppppppppppppppppppppppppppppppppppppppppppppppp
@@ -851,11 +851,12 @@ int main()
 	gpioSetAlertFunc(MIDDLE_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(MIDDLE_RIGHT_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(RIGHT_DISTANCE_PIN_ECHO, sonarEcho);	 
-    maze = true;
-    mode_maze();   
-    out.update(out);
+
+    //maze = true;
+    //mode_maze();   
+    //out.update(out);
     //follow();
-    //testing();    
+    testing();    
 
     gpioTerminate();
     return 0;
