@@ -856,7 +856,7 @@ int main()
     //mode_maze();   
     //out.update(out);
     //follow();
-    //testing();    
+    testing();    
 
     gpioTerminate();
     return 0;
