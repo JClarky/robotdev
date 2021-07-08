@@ -45,7 +45,7 @@ using namespace cv;
 Output out;
 
 // Camera setup
-int threshold_min = 10;
+int threshold_min = 80;
 int threshold_max = 255;
 int largest_contour_index = 0;
 int largest_area = 0;
@@ -202,6 +202,7 @@ void mode_maze()
             cout << "contour middle\n";
             // Get center pixel value of image
             float c = img_width / 2;
+            cout << "\nc: " << c << " cx: " << cx_m << "\n";
             // If the the contour is to the right of center
             if (cx_m < c)
             {
