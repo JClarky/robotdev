@@ -204,11 +204,12 @@ void mode_maze()
             float c = (img_width / 3) / 2;
             cout << "\nc: " << c << " cx: " << cx_m << "\n";
             // If the the contour is to the right of center
-            if (cx_m < c)
+            if (cx_m > c)
             {
                 cx_m = cx_m - c;
                 float r = (cx_m / c) * 100;
                 cout << "contour mid right\n";
+                cout << "\n r="<<r<<"\n";
                 //move(100, r);
             }
             // If the the contour is to the left of center
@@ -216,6 +217,7 @@ void mode_maze()
             {
                 float l = (cx_m / c) * 100;
                 cout << "contour mid left\n";
+                cout << "\n l="<<l<<"\n";
                 //move(l, 100);
             }
 
