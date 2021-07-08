@@ -270,8 +270,8 @@ void move(float left, float right) // value from -100 to 100
 
 	// Calculate increment (current speed to target speed)
 	
-	float increment_left;
-	float increment_right;
+	float increment_left = 0;
+	float increment_right = 0;
 	float difference_left = target_left - current_left;
 	float difference_right = target_right - current_right;
 
@@ -291,11 +291,9 @@ void move(float left, float right) // value from -100 to 100
 		}	
 	}
 	else
-	{
-		cout << "wth";
+	{		
 		if(target_left != 0)
 		{
-			cout << "wth inside";
 			if(difference_left < 0)
 			{
 				increment_left = -2;
