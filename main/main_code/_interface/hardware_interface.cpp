@@ -256,8 +256,8 @@ float old_right = 0;
 
 void move(float left, float right) // value from -100 to 100
 {
-	left = (left/100)*50;
-	right = (right/100)*50; // scaled to max 50 
+	left = (left/100)*30;
+	right = (right/100)*30; // scaled to max 50 
 	float upper_range = MAX_THROTTLE - UPPER_THROTTLE_START;
 	float lower_range = CENTER_THROTTLE - LOWER_THROTTLE_START;
 
@@ -327,7 +327,7 @@ void move(float left, float right) // value from -100 to 100
 		}	
 		gpioServo(RIGHT_MOTOR_PIN, (int)r_value-15);
 		gpioServo(LEFT_MOTOR_PIN, (int)l_value);
-		usleep(200000); // sleep 0.2s
+		usleep(100000); // sleep 0.1s
 	}
 
 	if(r_value < CENTER_THROTTLE)
@@ -335,7 +335,7 @@ void move(float left, float right) // value from -100 to 100
 		r_value = r_value - 15;
 	}
 	
-	gpioServo(RIGHT_MOTOR_PIN, (int)r_value);
+	gpioServo(RIGHT_MOTOR_PIN, (int)r_value-15);
 	gpioServo(LEFT_MOTOR_PIN, (int)l_value);
 	old_left = left;
 	old_right = right;
