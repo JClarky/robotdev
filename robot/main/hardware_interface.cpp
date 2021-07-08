@@ -281,12 +281,12 @@ void move(float left, float right) // value from -100 to 100
 		if(difference_left < 0)
 		{
 			difference_left = abs(difference_left); 
-			increment_left = 100*((float)0.95^difference_left);
+			increment_left = 100*(pow(0.95,difference_left));
 			increment_left = increment_left * -1;
 		}
 		else
 		{
-			increment_left = 100*((float)0.95^difference_left);
+			increment_left = 100*(pow(0.95,difference_left));
 		}	
 	}
 	else
@@ -305,12 +305,12 @@ void move(float left, float right) // value from -100 to 100
 		if(difference_right < 0)
 		{
 			difference_right = abs(difference_right); 
-			increment_right = 100*((float)0.95^difference_right);
+			increment_right = 100*(pow(0.95,difference_right));
 			increment_right = increment_right * -1;
 		}
 		else
 		{
-			increment_right = 100*((float)0.95^difference_right);
+			increment_right = 100*(pow(0.95,difference_right));
 		}		
 	}
 	else
