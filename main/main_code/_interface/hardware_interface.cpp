@@ -278,8 +278,7 @@ void move(float left, float right) // value from -100 to 100
 	// If it is not from current speed of 0
 	// Equation increment = 100(0.95^difference)+2
 	if(current_left != 0)
-	{
-		cout << "wth";
+	{		
 		if(difference_left < 0)
 		{
 			difference_left = abs(difference_left); 
@@ -293,8 +292,10 @@ void move(float left, float right) // value from -100 to 100
 	}
 	else
 	{
+		cout << "wth";
 		if(target_left != 0)
 		{
+			cout << "wth inside";
 			if(difference_left < 0)
 			{
 				increment_left = -2;
