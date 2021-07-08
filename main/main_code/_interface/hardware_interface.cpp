@@ -332,7 +332,7 @@ void move(float left, float right) // value from -100 to 100
 
 	
 	
-	gpioServo(RIGHT_MOTOR_PIN, (int)r_value-15);
+	gpioServo(RIGHT_MOTOR_PIN, (int)r_value);
 	gpioServo(LEFT_MOTOR_PIN, (int)l_value);
 	old_left = left;
 	old_right = right;
