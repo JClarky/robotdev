@@ -367,7 +367,7 @@ void move(float left, float right) // value from -100 to 100
 	}
 	cout << "\nafter filter 1 " <<increment_left;
 
-	if(difference_left > increment_left && increment_left > 0)
+	if(difference_left < increment_left && increment_left > 0)
 	{
 		increment_left = difference_left;
 	}
@@ -376,7 +376,7 @@ void move(float left, float right) // value from -100 to 100
 		increment_left = difference_left;
 	}
 
-	if(difference_right > increment_right && increment_right > 0)
+	if(difference_right < increment_right && increment_right > 0)
 	{
 		increment_right = difference_right;
 	}
