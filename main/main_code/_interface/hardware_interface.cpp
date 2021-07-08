@@ -151,6 +151,8 @@ void sonarTrigger(void)
 {
     /* trigger a sonar reading */
 
+	gpioInitialise();
+
     gpioWrite(LEFT_DISTANCE_PIN_TRIGGER, PI_ON);
 	gpioDelay(10); /* 10us trigger pulse */
 	gpioWrite(LEFT_DISTANCE_PIN_TRIGGER, PI_OFF);
@@ -185,6 +187,7 @@ void sonarTrigger(void)
 void sonarEcho(int gpio, int level, uint32_t tick)
 {
    static uint32_t startTick, firstTick=0;	
+   gpioInitialise();
 
    int diffTick;
 
