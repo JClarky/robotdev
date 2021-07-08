@@ -837,11 +837,11 @@ int main()
 	gpioSetAlertFunc(MIDDLE_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(MIDDLE_RIGHT_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(RIGHT_DISTANCE_PIN_ECHO, sonarEcho);	 
-    maze = true;
-    mode_maze();   
+    //maze = true;
+    //mode_maze();   
     out.update(out);
     //follow();
-    //testing();    
+    testing();    
 
     gpioTerminate();
     return 0;
