@@ -162,8 +162,7 @@ void mode_maze()
     
     // Main loops for maze mode
     while(maze)
-    {        
-        xx = xx +1; 
+    {       
         cap.read(frame);
         flip(frame, frame, 0);
         flip(frame, frame, 1);
@@ -394,11 +393,11 @@ void mode_maze()
         //sleep_until(system_clock::now() + nanoseconds(100000)); // change to 10000
         //sleep(1);
         waitKey(1);
-
-        //if(xx == 600)
-        //{
-        //    break;
-        //}
+        xx = xx + 1; 
+        if(xx == 200)
+        {
+            break;
+        }
     }
     move(0,0);
     return;
