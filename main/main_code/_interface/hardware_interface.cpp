@@ -20,8 +20,6 @@
 #include <pigpio.h>
 #include <unistd.h>
 #include <iostream>
-#include <cstdlib>
-#include<cmath>
 #ifdef _WIN32
 #include <Windows.h>
 #else
@@ -72,10 +70,12 @@ float right_distance = 0;
 #define BUTTON_2_PIN   5
 
 // ESC throttle values
-#define MAX_THROTTLE        1960  
-#define MIN_THROTTLE		1040
-#define CENTER_THROTTLE		1500
-#define ARM_THROTTLE		1400
+#define MAX_THROTTLE         1960  
+#define MIN_THROTTLE		 1040
+#define CENTER_THROTTLE		 1500
+#define ARM_THROTTLE		 1400
+#define UPPER_THROTTLE_START 1550
+#define LOWER_THROTTLE_START 1450
 
 void sonarTrigger(void);
 
@@ -251,159 +251,19 @@ void stop_motors()
 
 /* Move function; controls motor speeds */
 
-// Curent motor speeds -100 to 100
-float current_left; 
-float current_right;
-// Target motor speeds -100 to 100
-float target_left;
-float target_right;
+float old_left = 0;
+float old_right = 0;
 
 void move(float left, float right) // value from -100 to 100
 {
-	// Scale motor speeds (0-50)
 	left = (left/100)*50;
-	right = (right/100)*50; 
-
-	// Set global target speed
-	target_left = left;
-	target_right = right;
-
-	// Calculate increment (current speed to target speed)
-	
-	float increment_left = 0;
-	float increment_right = 0;
-	float difference_left = target_left - current_left;
-	float difference_right = target_right - current_right;
-	cout << "\nDiffernece left " << difference_left << "\n";
-	cout << "\ndifference_right " << difference_right << "\n";
-
-	// If it is not from current speed of 0
-	// Equation increment = 100(0.95^difference)+2
-	if(current_left != 0)
-	{		
-		cout << "\nnot 0";
-		if(difference_left < 0)
-		{
-			cout << "\nless then 0";
-			difference_left = difference_left*-1; 
-			increment_left = 100*(pow(0.95,difference_left));
-			increment_left = increment_left * -1;
-		}
-		else if(difference_left == 0)
-		{
-			cout << "\n= 0";
-			increment_left = 0;
-		}
-		else
-		{
-			cout << "\ngreater 0";
-			increment_left = 100*(pow(0.95,difference_left));
-		}	
-		cout << "\nafter incr " <<increment_left;
-	}
-	else
-	{		
-		if(target_left != 0)
-		{
-			if(difference_left < 0)
-			{
-				increment_left = -2;
-			}
-			else
-			{
-				increment_left = 2;
-			}	
-		}
-		
-	}
-	if(current_right != 0)
-	{
-		if(difference_right < 0)
-		{
-			difference_right = difference_right*-1; 
-			increment_right = 100*(pow(0.95,difference_right));
-			increment_right = increment_right * -1;
-		}
-		else if(difference_right == 0)
-		{
-			increment_right = 0;
-		}
-		else
-		{
-			increment_right = 100*(pow(0.95,difference_right));
-		}		
-	}
-	else
-	{
-		if(target_right != 0)
-		{
-			if(difference_right < 0)
-			{
-				increment_right = -2;
-			}
-			else
-			{
-				increment_right = 2;
-			}	
-		}
-	}
-	cout << "\nbefore filter 1 " <<increment_left;
-	// Filter increments
-	if(0 < increment_right && increment_right < 2 && increment_right != 0)
-	{
-		increment_right = 2;
-	}
-	else if(-2 < increment_right && increment_right < 0 && increment_right != 0)
-	{
-		increment_right = -2;
-	}
-	if(0 < increment_left && increment_left < 2 && increment_left != 0)
-	{
-		increment_left = 2;
-	}
-	else if(-2 < increment_left && increment_left < 0 && increment_left != 0)
-	{
-		increment_left = -2;
-	}
-	cout << "\nafter filter 1 " <<increment_left;
-
-	if(difference_left < increment_left && increment_left > 0)
-	{
-		increment_left = difference_left;
-	}
-	else if(difference_left < increment_left && increment_left < 0)
-	{
-		increment_left = difference_left;
-	}
-
-	if(difference_right < increment_right && increment_right > 0)
-	{
-		increment_right = difference_right;
-	}
-	else if(difference_right < increment_right && increment_right < 0)
-	{
-		increment_right = difference_right;
-	}
-	cout << "\nafter fitler 2 " <<increment_left;
-
-	// Calaculate new speed from increment
-	cout << "\nIncrement Left: "<<increment_left<<" Increment Right: "<<increment_right<<"\n";
-	cout << "\ncurrent_left: "<<current_left<<" current_right: "<<current_right<<"\n";
-	left = current_left + increment_left;
-	right = current_right + increment_right;
-
-
-	cout << "\nNew Left: "<<left<<" New Right: "<<right<<"\n";
-
-	// Ranges for forwards and backwards
+	right = (right/100)*50; // scaled to max 50 
 	float upper_range = MAX_THROTTLE - CENTER_THROTTLE;
 	float lower_range = CENTER_THROTTLE - MIN_THROTTLE;
 
-	// Convert move values to percenatges
 	float l_percentage = left / 100;
 	float r_percentage = right / 100;
 
-	// PWM output speeds
     float l_value;
     float r_value;
 
@@ -430,41 +290,59 @@ void move(float left, float right) // value from -100 to 100
 	}
 
 	float new_value_r = CENTER_THROTTLE;
-	float new_value_l = CENTER_THROTTLE;
+	float new_value_l = CENTER_THROTTLE;	
 
-	if(current_left == 0 && current_right == 0)
+	if(old_left == 0 && old_right == 0)
 	{		
 		if(left != 0)
 		{
 			if(left < 0)
 			{
-				new_value_l = new_value_l + 50;
+				new_value_l = new_value_l + 40;
 			}
 			else
 			{
-				new_value_l = new_value_l - 50;
+				new_value_l = new_value_l - 40;
 			}	
 		}	
 		if(right != 0)
 		{
 			if(right < 0)
 			{
-				new_value_r = new_value_r + 50;
+				new_value_r = new_value_r + 40;
 			}
 			else
 			{
-				new_value_r = new_value_r - 50;
+				new_value_r = new_value_r - 40;
 			}	
 		}	
 		//gpioServo(RIGHT_MOTOR_PIN, (int)r_value-15);
 		//gpioServo(LEFT_MOTOR_PIN, (int)l_value);
 		usleep(100000); // sleep 0.1s
 	}
+
+	if(r_value < UPPER_THROTTLE_START && r_value > CENTER_THROTTLE)
+	{
+		r_value = UPPER_THROTTLE_START;
+	}
+	else if(r_value > LOWER_THROTTLE_START && r_value < CENTER_THROTTLE)
+	{
+		r_value = LOWER_THROTTLE_START;
+	}
+
+	if(l_value < UPPER_THROTTLE_START && l_value > CENTER_THROTTLE)
+	{
+		l_value = UPPER_THROTTLE_START;
+	}
+	else if(l_value > LOWER_THROTTLE_START && l_value < CENTER_THROTTLE)
+	{
+		l_value = LOWER_THROTTLE_START;
+	}
 	
 	//gpioServo(RIGHT_MOTOR_PIN, (int)r_value-15);
 	//gpioServo(LEFT_MOTOR_PIN, (int)l_value);
-	current_left = left;
-	current_right = right;
+	old_left = left;
+	old_right = right;
 
 	
     cout << "\nLeft motor: " << l_value << "\n";
