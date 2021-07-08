@@ -344,11 +344,11 @@ void move(float left, float right) // value from -100 to 100
 	}
 	if(0 < increment_left < 2)
 	{
-		increment_right = 2;
+		increment_left = 2;
 	}
 	else if(-2 < increment_left < 0)
 	{
-		increment_right = -2;
+		increment_left = -2;
 	}
 
 	if(difference_left > increment_left && increment_left > 0)
