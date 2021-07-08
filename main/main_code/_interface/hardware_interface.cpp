@@ -70,15 +70,16 @@ float right_distance = 0;
 #define BUTTON_2_PIN   5
 
 // ESC throttle values
-#define MAX_THROTTLE        1960  
-#define MIN_THROTTLE		1040
-#define CENTER_THROTTLE		1500
-#define ARM_THROTTLE		1400
+#define MAX_THROTTLE         1960  
+#define MIN_THROTTLE		 1040
+#define CENTER_THROTTLE		 1500
+#define ARM_THROTTLE		 1400
+#define UPPER_THROTTLE_START 1550
+#define LOWER_THROTTLE_START 1450
 
 void sonarTrigger(void);
 
 void sonarEcho(int gpio, int level, uint32_t tick);
-
 
 bool initalise_gpio()
 {
@@ -256,7 +257,9 @@ float old_right = 0;
 void move(float left, float right) // value from -100 to 100
 {
 	left = (left/100)*50;
-	right = (right/100)*50; // scaled to 50 max
+	right = (right/100)*50; // scaled to max 50 
+	//float upper_range = MAX_THROTTLE - UPPER_THROTTLE_START;
+	//float lower_range = CENTER_THROTTLE - LOWER_THROTTLE_START;
 	float upper_range = MAX_THROTTLE - CENTER_THROTTLE;
 	float lower_range = CENTER_THROTTLE - MIN_THROTTLE;
 
@@ -288,8 +291,17 @@ void move(float left, float right) // value from -100 to 100
 		r_value = r_value + CENTER_THROTTLE;
 	}
 
+	if(left == 0)
+	{
+		l_value = CENTER_THROTTLE;
+	}
+	if(right == 0)
+	{
+		r_value = CENTER_THROTTLE;
+	}
+
 	float new_value_r = CENTER_THROTTLE;
-	float new_value_l = CENTER_THROTTLE;
+	float new_value_l = CENTER_THROTTLE;	
 
 	if(old_left == 0 && old_right == 0)
 	{		
@@ -297,37 +309,32 @@ void move(float left, float right) // value from -100 to 100
 		{
 			if(left < 0)
 			{
-				new_value_l = new_value_l + 50;
+				new_value_l = UPPER_THROTTLE_START + 20;
 			}
 			else
 			{
-				new_value_l = new_value_l - 50;
+				new_value_l = LOWER_THROTTLE_START - 20;
 			}	
 		}	
 		if(right != 0)
 		{
 			if(right < 0)
 			{
-				new_value_r = new_value_r + 50;
+				new_value_r = UPPER_THROTTLE_START + 20;
 			}
 			else
 			{
-				new_value_r = new_value_r - 50;
+				new_value_r = LOWER_THROTTLE_START - 20;
 			}	
 		}	
-		cout << "\nCALIBRATIOPN\n";
-		gpioServo(RIGHT_MOTOR_PIN, (int)new_value_r);
-		gpioServo(LEFT_MOTOR_PIN, (int)new_value_l);
-		usleep(100000); // sleep 0.1s
-		gpioServo(RIGHT_MOTOR_PIN, CENTER_THROTTLE);
-		gpioServo(LEFT_MOTOR_PIN, CENTER_THROTTLE);
-		usleep(2000000); // sleep 1s
-		gpioServo(RIGHT_MOTOR_PIN, (int)r_value-15);
-		gpioServo(LEFT_MOTOR_PIN, (int)l_value);
+		//gpioServo(RIGHT_MOTOR_PIN, (int)r_value-15);
+		//gpioServo(LEFT_MOTOR_PIN, (int)l_value);
 		usleep(100000); // sleep 0.1s
 	}
+
 	
-	gpioServo(RIGHT_MOTOR_PIN, (int)r_value-15);
+	
+	gpioServo(RIGHT_MOTOR_PIN, (int)r_value);
 	gpioServo(LEFT_MOTOR_PIN, (int)l_value);
 	old_left = left;
 	old_right = right;
