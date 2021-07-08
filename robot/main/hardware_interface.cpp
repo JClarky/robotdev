@@ -281,12 +281,12 @@ void move(float left, float right) // value from -100 to 100
 		if(difference_left < 0)
 		{
 			difference_left = abs(difference_left); 
-			increment_left = 100(0.95^difference_left);
+			increment_left = 100*((float)0.95^difference_left);
 			increment_left = increment_left * -1;
 		}
 		else
 		{
-			increment_left = 100(0.95^difference_left);
+			increment_left = 100*((float)0.95^difference_left);
 		}	
 	}
 	else
@@ -305,12 +305,12 @@ void move(float left, float right) // value from -100 to 100
 		if(difference_right < 0)
 		{
 			difference_right = abs(difference_right); 
-			increment_right = 100(0.95^difference_right);
+			increment_right = 100*((float)0.95^difference_right);
 			increment_right = increment_right * -1;
 		}
 		else
 		{
-			increment_right = 100(0.95^difference_right);
+			increment_right = 100*((float)0.95^difference_right);
 		}		
 	}
 	else
@@ -362,12 +362,12 @@ void move(float left, float right) // value from -100 to 100
 	}
 
 	// Calaculate new speed from increment
-	cout << "\nIncrement Left: "<<increment_left<" Increment Right: "<<increment_right<<"\n";
+	cout << "\nIncrement Left: "<<increment_left<<" Increment Right: "<<increment_right<<"\n";
 	left = current_left + increment_left;
 	right = current_right + increment_right;
 
 
-	cout << "\nNew Left: "<<left<" New Right: "<<right<<"\n";
+	cout << "\nNew Left: "<<left<<" New Right: "<<right<<"\n";
 
 	// Ranges for forwards and backwards
 	float upper_range = MAX_THROTTLE - CENTER_THROTTLE;
