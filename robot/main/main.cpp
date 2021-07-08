@@ -585,8 +585,8 @@ void sumo_mode()
         float left_motor_speed = 0;
         float right_motor_speed = 0;
 
-        const int distances_size = sizeof(distances) / sizeof(int); // find size of N as bytes to store integer varies by system
-        int idx = distance(distances, max_element(distances, distances + distances_size));
+        const int distances_size = sizeof(mid_distances) / sizeof(int); // find size of N as bytes to store integer varies by system
+        int idx = distance(mid_distances, max_element(mid_distances, mid_distances + distances_size));
 
         // Check if the robot is at the edge of sumo ring
 
@@ -632,7 +632,7 @@ void sumo_mode()
             if(valid(left) == true && valid(straight) == true && valid(right) == true)
             {
                 cout << "\n 3 dist";
-                int idx = distance(distances, min_element(distances, distances + distances_size)); // finds index of smallest distance in array
+                int idx = distance(mid_distances, min_element(mid_distances, mid_distances + distances_size)); // finds index of smallest distance in array
                 float theta = angle(idx); // Gets the angle of this sensor
                 
                 if(idx == 0) // Left sensor
