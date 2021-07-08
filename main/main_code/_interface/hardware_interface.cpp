@@ -78,7 +78,7 @@ void sonarEcho(int gpio, int level, uint32_t tick);
 bool initalise_gpio()
 {
 	
-	if (gpioInitialise() > 0)
+	if (gpioInitialise() < 0)
 	{
 		// init fail
 		cout << "failure";
