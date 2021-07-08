@@ -247,6 +247,9 @@ void move(float left, float right) // value from -100 to 100
 	float upper_range = MAX_THROTTLE - CENTER_THROTTLE;
 	float lower_range = CENTER_THROTTLE - MIN_THROTTLE;
 
+	float right_upper_range = (MAX_THROTTLE - 100) - CENTER_THROTTLE;
+	float right_lower_range = CENTER_THROTTLE - (MIN_THROTTLE + 100);
+
 	float l_percentage = left / 100;
 	float r_percentage = right / 100;
 
@@ -266,12 +269,12 @@ void move(float left, float right) // value from -100 to 100
 
 	if (r_percentage > 0)
 	{
-		r_value = r_percentage * upper_range;
+		r_value = r_percentage * right_upper_range;
 		r_value = r_value + CENTER_THROTTLE;
 	}
 	else
 	{
-		r_value = r_percentage * lower_range;
+		r_value = r_percentage * right_lower_range;
 		r_value = r_value + CENTER_THROTTLE;
 	}
 
