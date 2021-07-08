@@ -308,6 +308,7 @@ void move(float left, float right) // value from -100 to 100
 				new_value_r = new_value_r - 50;
 			}	
 		}	
+		cout << "\nCALIBRATIOPN\n";
 		gpioServo(RIGHT_MOTOR_PIN, (int)new_value_r);
 		gpioServo(LEFT_MOTOR_PIN, (int)new_value_l);
 	}
