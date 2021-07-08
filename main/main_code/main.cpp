@@ -746,7 +746,6 @@ void sumo_mode()
 
 bool flip()
 {
-    /*
     move(100,100);
     sleep(1);
     move(-100,-100);
@@ -758,8 +757,6 @@ bool flip()
     move(100,100);
     sleep(1);
     move(0,0);
-    return(true);
-    */
     return(true);
 }
 
