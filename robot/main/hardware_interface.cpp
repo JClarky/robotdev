@@ -278,9 +278,11 @@ void move(float left, float right) // value from -100 to 100
 		r_value = r_value + CENTER_THROTTLE;
 	}
 
-	gpioServo(LEFT_MOTOR_PIN, (int)l_value);
 	gpioServo(RIGHT_MOTOR_PIN, (int)r_value);
-    cout << l_value;
+	gpioServo(LEFT_MOTOR_PIN, (int)l_value);
+	
+    cout << "\nLeft motor: " << l_value << "\n";
+	cout << "\nRight motor: " << r_value << "\n";
 }
 
 /* Output class update function; sensor update */
