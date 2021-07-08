@@ -347,25 +347,25 @@ void move(float left, float right) // value from -100 to 100
 			}	
 		}
 	}
-
+	cout << "\nbefore filter 1 " <<increment_left;
 	// Filter increments
-	if(0 < increment_right < 2 && increment_right != 0)
+	if(0 < increment_right && increment_right < 2 && increment_right != 0)
 	{
 		increment_right = 2;
 	}
-	else if(-2 < increment_right < 0 && increment_right != 0)
+	else if(-2 < increment_right && increment_right < 0 && increment_right != 0)
 	{
 		increment_right = -2;
 	}
-	if(0 < increment_left < 2 && increment_left != 0)
+	if(0 < increment_left && increment_left < 2 && increment_left != 0)
 	{
 		increment_left = 2;
 	}
-	else if(-2 < increment_left < 0 && increment_left != 0)
+	else if(-2 < increment_left && increment_left < 0 && increment_left != 0)
 	{
 		increment_left = -2;
 	}
-	cout << "\nafter filter 1" <<increment_left;
+	cout << "\nafter filter 1 " <<increment_left;
 
 	if(difference_left > increment_left && increment_left > 0)
 	{
