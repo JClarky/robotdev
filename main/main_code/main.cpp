@@ -808,6 +808,7 @@ void testing()
 				stop_motors();
 				//throw("Bad input");
 			}
+            cout << "speed : " << speed;
             move(speed, speed);
 		}
 	}
