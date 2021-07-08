@@ -364,6 +364,7 @@ void move(float left, float right) // value from -100 to 100
 
 	// Calaculate new speed from increment
 	cout << "\nIncrement Left: "<<increment_left<<" Increment Right: "<<increment_right<<"\n";
+	cout << "\ncurrent_left: "<<current_left<<" current_right: "<<current_right<<"\n";
 	left = current_left + increment_left;
 	right = current_right + increment_right;
 
