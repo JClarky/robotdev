@@ -289,6 +289,15 @@ void move(float left, float right) // value from -100 to 100
 		r_value = r_value + LOWER_THROTTLE_START;
 	}
 
+	if(left == 0)
+	{
+		l_value = CENTER_THROTTLE;
+	}
+	if(right == 0)
+	{
+		l_r_value = CENTER_THROTTLE;
+	}
+
 	float new_value_r = CENTER_THROTTLE;
 	float new_value_l = CENTER_THROTTLE;	
 
