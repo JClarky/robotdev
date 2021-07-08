@@ -378,9 +378,9 @@ void mode_maze()
         //imshow("m", f_mid);
         //imshow("r", f_right);
 
-        //imshow("lc", contoured_f_left);
-        //imshow("mc", contoured_f_mid);
-        //imshow("rc", contoured_f_right);
+        imshow("lc", contoured_f_left);
+        imshow("mc", contoured_f_mid);
+        imshow("rc", contoured_f_right);
 
         using namespace this_thread; // sleep_for, sleep_until
         using namespace chrono; // nanoseconds, system_clock, seconds
