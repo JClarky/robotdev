@@ -319,7 +319,7 @@ void move(float left, float right) // value from -100 to 100
 		usleep(100000); // sleep 0.1s
 		gpioServo(RIGHT_MOTOR_PIN, CENTER_THROTTLE);
 		gpioServo(LEFT_MOTOR_PIN, CENTER_THROTTLE);
-		usleep(1000000); // sleep 1s
+		usleep(2000000); // sleep 1s
 	}
 
 	gpioServo(RIGHT_MOTOR_PIN, (int)r_value);
