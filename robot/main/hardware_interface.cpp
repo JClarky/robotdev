@@ -281,7 +281,7 @@ void move(float left, float right) // value from -100 to 100
 	{		
 		if(difference_left < 0)
 		{
-			difference_left = abs(difference_left); 
+			difference_left = difference_left*-1; 
 			increment_left = 100*(pow(0.95,difference_left));
 			increment_left = increment_left * -1;
 		}
@@ -313,7 +313,7 @@ void move(float left, float right) // value from -100 to 100
 	{
 		if(difference_right < 0)
 		{
-			difference_right = abs(difference_right); 
+			difference_right = difference_right*-1; 
 			increment_right = 100*(pow(0.95,difference_right));
 			increment_right = increment_right * -1;
 		}
