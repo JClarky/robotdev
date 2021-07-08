@@ -279,20 +279,25 @@ void move(float left, float right) // value from -100 to 100
 	// Equation increment = 100(0.95^difference)+2
 	if(current_left != 0)
 	{		
+		cout << "\nnot 0";
 		if(difference_left < 0)
 		{
+			cout << "\nless then 0";
 			difference_left = difference_left*-1; 
 			increment_left = 100*(pow(0.95,difference_left));
 			increment_left = increment_left * -1;
 		}
 		else if(difference_left == 0)
 		{
+			cout << "\n= 0";
 			increment_left = 0;
 		}
 		else
 		{
+			cout << "\ngreater 0";
 			increment_left = 100*(pow(0.95,difference_left));
 		}	
+		cout << "\nafter incr " <<increment_left;
 	}
 	else
 	{		
