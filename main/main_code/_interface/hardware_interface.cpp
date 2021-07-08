@@ -274,6 +274,8 @@ void move(float left, float right) // value from -100 to 100
 	float increment_right = 0;
 	float difference_left = target_left - current_left;
 	float difference_right = target_right - current_right;
+	cout << "\nDiffernece left " << difference_left << "\n";
+	cout << "\ndifference_right " << difference_right << "\n";
 
 	// If it is not from current speed of 0
 	// Equation increment = 100(0.95^difference)+2
@@ -363,6 +365,7 @@ void move(float left, float right) // value from -100 to 100
 	{
 		increment_left = -2;
 	}
+	cout << "\nafter filter 1" <<increment_left;
 
 	if(difference_left > increment_left && increment_left > 0)
 	{
@@ -381,6 +384,7 @@ void move(float left, float right) // value from -100 to 100
 	{
 		increment_right = difference_right;
 	}
+	cout << "\nafter fitler 2 " <<increment_left;
 
 	// Calaculate new speed from increment
 	cout << "\nIncrement Left: "<<increment_left<<" Increment Right: "<<increment_right<<"\n";
