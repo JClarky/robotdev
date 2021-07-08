@@ -74,7 +74,7 @@ float right_distance = 0;
 #define MIN_THROTTLE		 1040
 #define CENTER_THROTTLE		 1500
 #define ARM_THROTTLE		 1400
-#define UPPER_THROTTLE_START 1532
+#define UPPER_THROTTLE_START 1550
 #define LOWER_THROTTLE_START 1474
 
 void sonarTrigger(void);
