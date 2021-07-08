@@ -787,11 +787,11 @@ void testing()
 			cin >> input;
 			if (input == "d")
 			{
-				speed = speed + 2;
+				speed = speed + 50;
 			}
 			else if (input == "a")
 			{
-				speed = speed - 2;
+				speed = speed - 50;
 			}
 			else if (input == "s")
 			{
