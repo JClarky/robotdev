@@ -165,6 +165,7 @@ void mode_maze()
     {        
         xx = xx +1; 
         cap.read(frame);
+        flip(frame, frame, 0);
         //imshow("frame", frame);
         //frame = imread("C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/simulation/cam.jpg");
 
@@ -388,9 +389,9 @@ void mode_maze()
         //sleep_for(nanoseconds(1000)); // wait 10000 nano seconds otherwise we refresh faster than frame rate
         //sleep_until(system_clock::now() + nanoseconds(100000)); // change to 10000
         //sleep(1);
-        waitKey(0);
+        //waitKey(0);
 
-        if(xx == 1)
+        if(xx == 400)
         {
             break;
         }
