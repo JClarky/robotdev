@@ -193,7 +193,7 @@ void mode_maze()
         if (cx_l)
         {
             cout << "contour left\n";
-            move(-10,100);
+            //move(-10,100);
         }
         // If there is a contour in the middle
         else if (cx_m)
@@ -207,14 +207,14 @@ void mode_maze()
                 cx_m = cx_m - c;
                 float r = (cx_m / c) * 100;
                 cout << "contour mid right\n";
-                move(100, r);
+                //move(100, r);
             }
             // If the the contour is to the left of center
             else
             {
                 float l = (cx_m / c) * 100;
                 cout << "contour mid left\n";
-                move(l, 100);
+                //move(l, 100);
             }
 
         }
@@ -222,13 +222,13 @@ void mode_maze()
         else if (cx_r)
         {
             cout << "contour right\n";
-            move(100, -10);
+           // move(100, -10);
         }
         // No contours
         else
         {
             cout << "contour none\n";
-            move(100, -20);
+            //move(100, -20);
         }
 
         // temppppppppppppppppppppppppppppppppppppppppppppppp
