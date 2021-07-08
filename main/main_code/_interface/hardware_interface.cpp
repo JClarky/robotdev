@@ -260,8 +260,8 @@ void move(float left, float right) // value from -100 to 100
 	left = left * -1;
 	right = right * -1;
 
-	left = (left/100)*30;
-	right = (right/100)*30; // scaled to max 50 
+	left = (left/100)*60;
+	right = (right/100)*60; // scaled to max 50 
 	float upper_range = MAX_THROTTLE - UPPER_THROTTLE_START;
 	float lower_range = CENTER_THROTTLE - LOWER_THROTTLE_START;
 
