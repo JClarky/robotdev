@@ -207,7 +207,7 @@ void mode_maze()
             if (cx_m > c)
             {
                 cx_m = cx_m - c;
-                float r = (cx_m / c) * 100;
+                float r = 100 - (cx_m / c) * 100;
                 cout << "contour mid right\n";
                 cout << "\n r="<<r<<"\n";
                 //move(100, r);
