@@ -151,6 +151,7 @@ void mode_maze()
     cap.open(0, 0); // Initates capture (device id, default api)
     cap.set(CAP_PROP_FRAME_WIDTH, img_width);
     cap.set(CAP_PROP_FRAME_HEIGHT, img_height);
+    int xx = 0;
 
     // Unable to open capture
     if (!cap.isOpened())
@@ -161,7 +162,8 @@ void mode_maze()
     
     // Main loops for maze mode
     while(maze)
-    {         
+    {        
+        xx = xx +1; 
         cap.read(frame);
         //imshow("frame", frame);
         //frame = imread("C:/Users/jayde/OneDrive/Documents/Code/Robot_Development/robotdev/simulation/cam.jpg");
@@ -376,9 +378,9 @@ void mode_maze()
         //imshow("m", f_mid);
         //imshow("r", f_right);
 
-        imshow("lc", contoured_f_left);
-        imshow("mc", contoured_f_mid);
-        imshow("rc", contoured_f_right);
+        //imshow("lc", contoured_f_left);
+        //imshow("mc", contoured_f_mid);
+        //imshow("rc", contoured_f_right);
 
         using namespace this_thread; // sleep_for, sleep_until
         using namespace chrono; // nanoseconds, system_clock, seconds
@@ -386,8 +388,14 @@ void mode_maze()
         //sleep_for(nanoseconds(1000)); // wait 10000 nano seconds otherwise we refresh faster than frame rate
         //sleep_until(system_clock::now() + nanoseconds(100000)); // change to 10000
         //sleep(1);
-        waitKey(0);
+        //waitKey(0);
+
+        if(xx == 500)
+        {
+            break;
+        }
     }
+    move(0,0);
     return;
 }
 bool valid(float distance)
@@ -838,11 +846,11 @@ int main()
 	gpioSetAlertFunc(MIDDLE_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(MIDDLE_RIGHT_DISTANCE_PIN_ECHO, sonarEcho);
 	gpioSetAlertFunc(RIGHT_DISTANCE_PIN_ECHO, sonarEcho);	 
-    //maze = true;
-    //mode_maze();   
+    maze = true;
+    mode_maze();   
     out.update(out);
     //follow();
-    testing();    
+    //testing();    
 
     gpioTerminate();
     return 0;
